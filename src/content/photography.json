@@ -285,5 +285,19 @@
     "alt": "Senior professionals engaged in a collaborative business meeting in a modern office setting.",
     "photographer": "Vlada Karpovich",
     "license": "https://www.pexels.com/license/"
+  },
+  "home-feature-talent": {
+    "id": "1181354",
+    "source": "https://www.pexels.com/photo/software-engineer-standing-beside-server-racks-1181354/",
+    "alt": "An engineer using a laptop while monitoring data servers in a modern server room.",
+    "photographer": "Christina Morillo",
+    "license": "https://www.pexels.com/license/"
+  },
+  "home-feature-process": {
+    "id": "12903292",
+    "source": "https://www.pexels.com/photo/business-people-meeting-in-the-office-12903292/",
+    "alt": "Two professionals shaking hands in a bright office.",
+    "photographer": "Mizuno K",
+    "license": "https://www.pexels.com/license/"
   }
 }

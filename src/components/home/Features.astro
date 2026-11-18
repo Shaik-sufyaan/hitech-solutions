@@ -1,0 +1,205 @@
+---
+/*
+ * Two full-bleed image panels that lead deeper into the site (user-requested 2026-11-18,
+ * after a split "report / success stories" reference).
+ *
+ * Each panel is one link: photo, navy scrim, centred headline and line of copy.
+ * With a mouse, the "Learn more" button rises in on hover or keyboard focus and the photo
+ * eases forward slightly. Touch screens have no hover, so the button is always shown there.
+ * Reduced motion keeps the reveal but drops the movement.
+ */
+import { Picture } from 'astro:assets';
+import { features } from '../../content/home';
+import { getPhoto } from '../../content/photography';
+import Icon from '../ui/Icon.astro';
+
+const panels = features.panels.map((panel) => ({ ...panel, photo: getPhoto(panel.photoKey) }));
+---
+
+<section class="features" aria-labelledby="features-title">
+  <h2 id="features-title" class="visually-hidden">{features.title}</h2>
+  <ul role="list" class="features__list">
+    {
+      panels.map((panel) => (
+        <li class="features__item">
+          <a class="features__panel" href={panel.href} data-photo-id={panel.photo.id}>
+            <Picture
+              class="features__photo"
+              src={panel.photo.image}
+              alt={panel.photo.alt}
+              formats={['avif', 'webp']}
+              widths={[480, 800, 1100, 1600]}
+              sizes="(min-width: 48rem) 50vw, 100vw"
+              loading="lazy"
+              style={`object-position: ${panel.focus}`}
+            />
+            <span class="features__copy">
+              <span class="features__title">{panel.title}</span>
+              <span class="features__body">{panel.body}</span>
+              <span class="features__cta">
+                {features.cta}
+                <Icon name="arrow-right" size={18} />
+              </span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .features {
+    background: var(--color-navy);
+  }
+
+  .features__list {
+    display: grid;
+    gap: 2px; /* a navy seam between the two photographs */
+  }
+
+  .features__panel {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(24rem, 112vw, 30rem);
+    padding: var(--space-12) var(--gutter);
+    overflow: hidden;
+    color: var(--color-on-navy);
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .features__panel :global(.features__photo),
+  .features__panel :global(picture) {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+  }
+
+  .features__panel :global(.features__photo) {
+    object-fit: cover;
+    transition: transform 700ms var(--ease-out);
+  }
+
+  /* Even navy scrim for white type over any photo; deepens a little on hover. */
+  .features__panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(to top, rgb(19 33 46 / 0.55), rgb(19 33 46 / 0) 60%),
+      rgb(19 33 46 / 0.5);
+    transition: background-color var(--dur-base) var(--ease-out);
+  }
+
+  .features__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 30rem;
+  }
+
+  .features__title {
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-light);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--tracking-heading);
+    text-wrap: balance;
+  }
+
+  .features__body {
+    margin-top: var(--space-4);
+    color: var(--color-on-navy-muted);
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* Matches the site's inverse button: white, navy text, square shoulders. */
+  .features__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 3rem;
+    margin-top: var(--space-8);
+    padding: 0 var(--space-6);
+    border-radius: var(--radius-control);
+    background: #fff;
+    color: var(--color-navy);
+    font-size: 1rem;
+    font-weight: var(--fw-semibold);
+    line-height: 1.2;
+    white-space: nowrap;
+    transition:
+      opacity var(--dur-base) var(--ease-out),
+      transform var(--dur-base) var(--ease-out),
+      background-color var(--dur-fast) var(--ease-out);
+  }
+
+  .features__cta :global(svg) {
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+
+  .features__panel:hover .features__cta {
+    background: var(--color-action-tint);
+  }
+
+  .features__panel:hover .features__cta :global(svg) {
+    transform: translateX(3px);
+  }
+
+  .features__panel:focus-visible {
+    outline: 2px solid var(--color-focus-on-navy);
+    outline-offset: -6px;
+    border-radius: 0;
+  }
+
+  /* Mouse and trackpad: the button waits for hover or focus. */
+  @media (hover: hover) and (pointer: fine) {
+    .features__cta {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+
+    .features__panel:hover .features__cta,
+    .features__panel:focus-visible .features__cta {
+      opacity: 1;
+      transform: none;
+    }
+
+    .features__panel:hover::after,
+    .features__panel:focus-visible::after {
+      background-color: rgb(19 33 46 / 0.62);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .features__panel:hover :global(.features__photo),
+    .features__panel:focus-visible :global(.features__photo) {
+      transform: scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .features__cta {
+      transform: none !important;
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .features__list {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .features__panel {
+      min-height: clamp(28rem, 44vw, 40rem);
+      padding-inline: clamp(var(--space-8), 5vw, var(--space-16));
+    }
+  }
+</style>

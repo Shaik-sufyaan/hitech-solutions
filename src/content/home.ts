@@ -12,6 +12,33 @@ export const hero = {
   primaryCta: 'Find IT talent',
   candidatePrompt: 'Looking for a technology role?',
   candidateCta: 'Explore opportunities',
+  /** Supplied by the user (2026-11-18); matches the "at a glance" years card. Confirm before launch. */
+  experience: { value: '30+', label: 'years of IT staffing experience' },
+};
+
+/**
+ * Two image panels linking deeper into the site (user-requested 2026-11-18).
+ * Photos are registered in photography.json under each photoKey.
+ */
+export const features = {
+  title: 'Explore Hitech Solutions',
+  cta: 'Learn more',
+  panels: [
+    {
+      title: 'IT talent for the systems your business runs on.',
+      body: 'Find specialists for a project, or build a team for the long term.',
+      href: '/hire-talent/',
+      photoKey: 'home-feature-talent',
+      focus: '62% 50%',
+    },
+    {
+      title: 'From first conversation to first day.',
+      body: 'See how we match technology professionals to your team.',
+      href: '/how-we-work/',
+      photoKey: 'home-feature-process',
+      focus: '50% 28%',
+    },
+  ],
 };
 
 /*
@@ -165,7 +192,7 @@ export const glance = {
   title: 'Hitech Solutions at a glance.',
   pending: 'Values shown are provisional and must be confirmed by Hitech before launch.',
   cards: [
-    { label: 'Years placing technology professionals', value: '10+' as string | null },
+    { label: 'Years placing technology professionals', value: '30+' as string | null }, // supplied by the user 2026-11-18
     { label: 'Technology professionals placed', value: '2,500+' as string | null },
   ],
   /** Percentages, 0 to 100. */
