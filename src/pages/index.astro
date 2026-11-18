@@ -30,4 +30,33 @@ import Closing from '../components/home/Closing.astro';
   </div>
   <Faq />
   <Closing />
+  <section class="explore-strip" aria-labelledby="explore-title">
+    <div class="container explore-strip__inner">
+      <div class="explore-strip__intro">
+        <h2 id="explore-title" class="t-h2">Find your next step.</h2>
+        <p>Explore our approach, the technology roles we focus on, and answers to your hiring questions.</p>
+      </div>
+      <nav aria-label="Explore Hitech Solutions">
+      <ul role="list">
+        <li><a href="/how-we-work/"><span>How we work<small>From the first conversation to getting started</small></span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></li>
+        <li><a href="/specialties/"><span>Our specialties<small>Explore technology teams and roles</small></span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></li>
+        <li><a href="/faq/"><span>Common questions<small>More information before you take the next step</small></span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></li>
+      </ul>
+      </nav>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .explore-strip { background: var(--color-page); color: var(--color-ink); padding-block: clamp(4rem, 6vw, 6rem); }
+  .explore-strip__inner { display: grid; align-items: start; gap: var(--space-10); }
+  .explore-strip__intro h2::after { content: ''; display: block; width: 3rem; height: 3px; background: var(--color-amber); margin-top: var(--space-6); }
+  .explore-strip__intro p { color: var(--color-ink-muted); max-width: 32rem; margin-top: var(--space-6); }
+  .explore-strip li { border-bottom: 1px solid var(--color-line); }
+  .explore-strip li:first-child { border-top: 1px solid var(--color-line); }
+  .explore-strip a { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding-block: var(--space-5); font-size: var(--fs-body); font-weight: var(--fw-semibold); text-decoration: none; color: var(--color-ink); }
+  .explore-strip a:hover { color: var(--color-action); }
+  .explore-strip small { display: block; margin-top: var(--space-1); color: var(--color-ink-muted); font-size: var(--fs-small); font-weight: var(--fw-regular); }
+  .explore-strip svg { width: 24px; height: 24px; flex-shrink: 0; color: var(--color-action); }
+  @media (min-width: 64rem) { .explore-strip__inner { grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); } }
+</style>

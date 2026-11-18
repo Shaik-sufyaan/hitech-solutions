@@ -4,7 +4,7 @@
  * Decorative by default (aria-hidden); pass a label to expose it.
  */
 interface Props {
-  name: 'arrow-right' | 'check' | 'menu' | 'close' | 'plus' | 'minus' | 'external' | 'chevron-down';
+  name: 'arrow-right' | 'check' | 'menu' | 'close' | 'plus' | 'minus' | 'external' | 'chevron-down' | 'refresh';
   size?: number;
   label?: string;
   class?: string;
@@ -20,6 +20,7 @@ const paths: Record<Props['name'], string> = {
   plus: 'M12 5v14M5 12h14',
   minus: 'M5 12h14',
   'chevron-down': 'M6 9l6 6 6-6',
+  refresh: 'M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5',
   external: 'M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4',
 };
 ---

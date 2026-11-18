@@ -4,22 +4,25 @@ import Button from '../ui/Button.astro';
 import { process } from '../../content/home';
 import { site } from '../../content/site';
 import conversation from '../../assets/images/process-conversation.jpg';
+import { getPhoto } from '../../content/photography';
 
 interface Props {
   paper?: boolean;
+  photoKey?: string;
 }
-const { paper = true } = Astro.props;
+const { paper = true, photoKey } = Astro.props;
+const photo = photoKey ? getPhoto(photoKey) : null;
 ---
 
 <section id="process" class:list={['section process', paper && 'section--paper']} aria-labelledby="process-title">
   <div class="container process__grid">
     <figure class="process__photo">
       <Picture
-        src={conversation}
+        src={photo?.image ?? conversation}
         formats={['avif', 'webp']}
         widths={[400, 640, 900, 1200]}
         sizes="(min-width: 64rem) 42vw, 100vw"
-        alt="Two colleagues reviewing information together on a laptop."
+        alt={photo?.alt ?? 'Two colleagues reviewing information together on a laptop.'}
       />
     </figure>
 

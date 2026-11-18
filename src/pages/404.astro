@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
+import EditorialPhoto from '../components/page/EditorialPhoto.astro';
 import { site } from '../content/site';
 ---
 
@@ -13,11 +14,13 @@ import { site } from '../content/site';
         <Button href="/" size="lg">Go to the homepage</Button>
         <a href={site.requestTalentHref}>Request IT talent</a>
       </div>
+      <div class="notfound__photo"><EditorialPhoto photoKey="/404" /></div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  .notfound__photo { width: min(100%, 36rem); margin-top: var(--space-6); }
   .notfound {
     display: grid;
     gap: var(--space-5);

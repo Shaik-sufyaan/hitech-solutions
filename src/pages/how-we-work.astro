@@ -16,8 +16,8 @@ import { site } from '../content/site';
     breadcrumbs={[{ label: 'Home', href: '/' }]}
     primary={{ label: process.ctaLabel, href: site.requestTalentHref }}
   />
-  <Process paper={false} />
-  <Overview paper showLink={false} />
+  <Process paper={false} photoKey="process-detail" />
+  <Overview paper showLink={false} photoKey="overview-detail" />
   <Faq title="Questions about the process" only={[2, 3, 4]} paper={false} />
   <Closing showCandidate={false} />
 </BaseLayout>

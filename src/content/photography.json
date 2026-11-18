@@ -1,0 +1,276 @@
+{
+  "hire-overview": {"id":"7988116","source":"https://www.pexels.com/photo/men-in-the-office-working-on-their-computer-7988116/","alt":"Two programmers collaborating in a bright, modern office, coding on monitors.","photographer":"Mikhail Nilov","license":"https://www.pexels.com/license/"},
+  "/faq": {
+    "id": "7433859",
+    "source": "https://www.pexels.com/photo/business-partners-having-a-meeting-at-the-office-7433859/",
+    "alt": "Senior professionals engaged in a collaborative business meeting in a modern office setting.",
+    "photographer": "Vlada Karpovich",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/hire-talent": {
+    "id": "8117405",
+    "source": "https://www.pexels.com/photo/team-working-together-inside-the-office-8117405/",
+    "alt": "A group of professionals engaged in a planning meeting at the office, showcasing teamwork and collaboration.",
+    "photographer": "Ivan S",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/hire-talent/contract-staffing": {
+    "id": "8068833",
+    "source": "https://www.pexels.com/photo/people-having-a-meeting-at-the-office-8068833/",
+    "alt": "Business team meeting with diverse professionals working together in a modern office setting.",
+    "photographer": "Edmond Dantès",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/hire-talent/contract-to-hire": {
+    "id": "9301312",
+    "source": "https://www.pexels.com/photo/business-people-in-a-business-meeting-9301312/",
+    "alt": "Three colleagues engaged in a business meeting, showcasing diversity and collaboration in a contemporary office setting.",
+    "photographer": "Mikhail Nilov",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/hire-talent/direct-hire": {
+    "id": "4342498",
+    "source": "https://www.pexels.com/photo/business-meeting-4342498/",
+    "alt": "Business professionals engaged in a meeting in a modern office setting, focusing on collaboration and planning.",
+    "photographer": "Edmond Dantès",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/how-we-work": {
+    "id": "8171200",
+    "source": "https://www.pexels.com/photo/colleagues-having-a-meeting-in-the-office-8171200/",
+    "alt": "A business team in a modern office engaged in a presentation led by a woman, fostering teamwork and collaboration.",
+    "photographer": "Kampus Production",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/job-seekers": {
+    "id": "36733363",
+    "source": "https://www.pexels.com/photo/professional-business-team-meeting-in-modern-office-36733363/",
+    "alt": "Group of professionals having a discussion in a modern office setting with natural light.",
+    "photographer": "Vitaly Gariev",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/request-talent": {
+    "id": "7433848",
+    "source": "https://www.pexels.com/photo/business-partners-having-a-meeting-at-the-office-7433848/",
+    "alt": "Professionals discussing documents during a business meeting in a modern office setting.",
+    "photographer": "Vlada Karpovich",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties": {
+    "id": "7988219",
+    "source": "https://www.pexels.com/photo/people-having-a-business-meeting-in-the-office-7988219/",
+    "alt": "Team of professionals collaborating in an office with digital interface on background screen.",
+    "photographer": "Mikhail Nilov",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/software-engineering": {
+    "id": "1181673",
+    "source": "https://www.pexels.com/photo/person-using-both-computer-and-a-laptop-1181673/",
+    "alt": "Programmer working on code across multiple screens in a modern office setting.",
+    "photographer": "Christina Morillo",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/cloud-and-infrastructure": {
+    "id": "5480781",
+    "source": "https://www.pexels.com/photo/server-racks-on-data-center-5480781/",
+    "alt": "System with various wires managing access to centralized resource of server in data center",
+    "photographer": "Brett Sayles",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/data-and-ai": {
+    "id": "7988079",
+    "source": "https://www.pexels.com/photo/people-using-computers-at-work-7988079/",
+    "alt": "Two male developers at desks programming in a modern office workspace with large monitors.",
+    "photographer": "Mikhail Nilov",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/cybersecurity": {
+    "id": "5926382",
+    "source": "https://www.pexels.com/photo/crop-faceless-developer-working-on-software-code-on-laptop-5926382/",
+    "alt": "Hands typing code into a laptop viewed from above.",
+    "photographer": "Sora Shimazaki",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/enterprise-applications": {
+    "id": "18999158",
+    "source": "https://www.pexels.com/photo/people-in-meeting-in-office-18999158/",
+    "alt": "Business team engaging in a collaborative meeting in a well-lit modern office setting.",
+    "photographer": "Matheus Bertelli",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/it-support": {
+    "id": "7888760",
+    "source": "https://www.pexels.com/photo/people-in-a-business-meeting-7888760/",
+    "alt": "Engaged office team in business discussion around a laptop, fostering collaboration.",
+    "photographer": "RDNE Stock project",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/software-engineering/full-stack-developer": {
+    "id": "36496927",
+    "source": "https://www.pexels.com/photo/close-up-of-programmer-typing-code-on-laptop-36496927/",
+    "alt": "A programmer working on code with a laptop and monitor setup in an office.",
+    "photographer": "Jakub Zerdzicki",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/software-engineering/back-end-engineer": {
+    "id": "36706460",
+    "source": "https://www.pexels.com/photo/developer-working-on-code-in-a-modern-office-36706460/",
+    "alt": "Software developer coding on dual monitors in a well-lit modern office, focused and engaged.",
+    "photographer": "Zayed Hossain",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/software-engineering/qa-engineer": {
+    "id": "6805152",
+    "source": "https://www.pexels.com/photo/programmer-working-in-office-6805152/",
+    "alt": "Male programmer concentrating on coding at a computer in a contemporary office setting.",
+    "photographer": "cottonbro studio",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/cloud-and-infrastructure/cloud-engineer": {
+    "id": "37605911",
+    "source": "https://www.pexels.com/photo/it-technician-working-in-data-center-server-room-37605911/",
+    "alt": "An IT professional operates a computer in a server room, managing network systems and connected devices.",
+    "photographer": "panumas nikhomkhai",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/cloud-and-infrastructure/devops-engineer": {
+    "id": "6804602",
+    "source": "https://www.pexels.com/photo/men-working-with-computers-6804602/",
+    "alt": "Two programmers at work in a modern office, focused on coding and enjoying a coffee break.",
+    "photographer": "cottonbro studio",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/cloud-and-infrastructure/systems-administrator": {
+    "id": "6466141",
+    "source": "https://www.pexels.com/photo/network-servers-on-an-enclosure-6466141/",
+    "alt": "High-tech server rack in a secure data center with network cables and hardware components.",
+    "photographer": "Sergei Starostin",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/data-and-ai/data-engineer": {
+    "id": "1181675",
+    "source": "https://www.pexels.com/photo/close-up-photo-of-person-typing-on-laptop-1181675/",
+    "alt": "A developer writes code on a laptop in front of multiple monitors in an office setting.",
+    "photographer": "Christina Morillo",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/data-and-ai/data-analyst": {
+    "id": "8091172",
+    "source": "https://www.pexels.com/photo/a-close-up-shot-of-a-person-typing-on-a-laptop-8091172/",
+    "alt": "A close-up view of hands typing on a laptop keyboard in a modern workspace.",
+    "photographer": "PNW Production",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/data-and-ai/machine-learning-engineer": {
+    "id": "34328485",
+    "source": "https://www.pexels.com/photo/female-programmer-working-in-colorful-office-34328485/",
+    "alt": "A female programmer is focused on multiple computer screens in a vibrant, colorful office environment.",
+    "photographer": "Caleb Oquendo",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/cybersecurity/security-analyst": {
+    "id": "40857900",
+    "source": "https://www.pexels.com/photo/focused-software-developer-at-work-in-office-40857900/",
+    "alt": "A software developer intensely working on a computer setup in an office environment.",
+    "photographer": "Rubaitul Azad",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/cybersecurity/security-engineer": {
+    "id": "19226354",
+    "source": "https://www.pexels.com/photo/engineer-fixing-core-swith-in-data-center-room-19226354/",
+    "alt": "A technician inserts a circuit board into a server rack, illustrating technology and connectivity.",
+    "photographer": "panumas nikhomkhai",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/cybersecurity/iam-specialist": {
+    "id": "36175215",
+    "source": "https://www.pexels.com/photo/close-up-of-hands-typing-on-laptop-keyboard-indoors-36175215/",
+    "alt": "Close-up of a person's hands typing on a laptop keyboard indoors. Soft lighting.",
+    "photographer": "Alicia Christin Gerald",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/enterprise-applications/erp-consultant": {
+    "id": "8190809",
+    "source": "https://www.pexels.com/photo/a-group-of-people-having-a-meeting-in-the-office-8190809/",
+    "alt": "Diverse business team collaborating during an office meeting. Engaged discussion and teamwork.",
+    "photographer": "Kampus Production",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/enterprise-applications/crm-developer": {
+    "id": "36764552",
+    "source": "https://www.pexels.com/photo/close-up-of-hands-typing-on-laptop-keyboard-indoors-36764552/",
+    "alt": "Hands typing on a laptop keyboard indoors with blurred background and natural lighting.",
+    "photographer": "Vitaly Gariev",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/enterprise-applications/business-analyst": {
+    "id": "8374287",
+    "source": "https://www.pexels.com/photo/a-person-typing-on-laptop-8374287/",
+    "alt": "A close-up view of hands typing on a laptop keyboard with a focus on manicured nails and technology.",
+    "photographer": "ANTONI SHKRABA production",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/it-support/service-desk-analyst": {
+    "id": "15551901",
+    "source": "https://www.pexels.com/photo/close-up-of-a-person-typing-on-a-laptop-keyboard-15551901/",
+    "alt": "Close-up view of hands typing on a laptop, perfect for technology or work-from-home concepts.",
+    "photographer": "Aan Amrin",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/it-support/desktop-support-technician": {
+    "id": "6857195",
+    "source": "https://www.pexels.com/photo/hands-typing-on-a-laptop-6857195/",
+    "alt": "Close-up of hands typing on a laptop keyboard with AirPods placed beside it on a desk.",
+    "photographer": "cottonbro studio",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/specialties/it-support/network-technician": {
+    "id": "19226353",
+    "source": "https://www.pexels.com/photo/engineer-fixing-core-swith-in-data-center-room-19226353/",
+    "alt": "An individual connecting a cable into a network server port indoors, focusing on technology setup.",
+    "photographer": "panumas nikhomkhai",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/404": {
+    "id": "11114651",
+    "source": "https://www.pexels.com/photo/hand-typing-on-laptop-keyboard-11114651/",
+    "alt": "Black and white close-up of hands typing on a laptop keyboard, showcasing focus and concentration.",
+    "photographer": "Ivan Mudruk",
+    "license": "https://www.pexels.com/license/"
+  },
+  "home-glance-meeting": {
+    "id": "3183183",
+    "source": "https://www.pexels.com/photo/people-having-business-meeting-together-3183183/",
+    "alt": "Overhead view of colleagues working around a table with laptops and notes.",
+    "photographer": "fauxels",
+    "license": "https://www.pexels.com/license/"
+  },
+  "home-glance-laptop": {
+    "id": "4034007",
+    "source": "https://www.pexels.com/photo/hands-laptop-typing-macbook-4034007/",
+    "alt": "Close-up of hands typing on a laptop, focused on productivity and technology in a home office setting.",
+    "photographer": "cottonbro studio",
+    "license": "https://www.pexels.com/license/"
+  },
+  "process-detail": {
+    "id": "5520320",
+    "source": "https://www.pexels.com/photo/people-having-a-meeting-5520320/",
+    "alt": "Colleagues reviewing documents and a laptop at a meeting table.",
+    "photographer": "Pavel Danilyuk",
+    "license": "https://www.pexels.com/license/"
+  },
+  "overview-detail": {
+    "id": "7693733",
+    "source": "https://www.pexels.com/photo/a-person-using-a-laptop-while-in-a-meeting-7693733/",
+    "alt": "Hands working on a laptop beside printed charts during a meeting.",
+    "photographer": "Yan Krukau",
+    "license": "https://www.pexels.com/license/"
+  },
+  "job-seekers-detail": {
+    "id": "17615041",
+    "source": "https://www.pexels.com/photo/hands-typing-on-laptop-17615041/",
+    "alt": "Close-up of a person typing on a laptop with a smartphone beside, indoors setting.",
+    "photographer": "Beyzanur K.",
+    "license": "https://www.pexels.com/license/"
+  }
+}

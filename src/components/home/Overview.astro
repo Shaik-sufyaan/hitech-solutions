@@ -4,12 +4,15 @@ import Icon from '../ui/Icon.astro';
 import { overview } from '../../content/home';
 import { routes } from '../../content/navigation';
 import collaboration from '../../assets/images/overview-collaboration.jpg';
+import { getPhoto } from '../../content/photography';
 
 interface Props {
   paper?: boolean;
   showLink?: boolean;
+  photoKey?: string;
 }
-const { paper = false, showLink = true } = Astro.props;
+const { paper = false, showLink = true, photoKey } = Astro.props;
+const photo = photoKey ? getPhoto(photoKey) : null;
 ---
 
 <section id="hire" class:list={['section overview', paper && 'section--paper']} aria-labelledby="overview-title">
@@ -49,11 +52,11 @@ const { paper = false, showLink = true } = Astro.props;
 
     <figure class="overview__photo">
       <Picture
-        src={collaboration}
+        src={photo?.image ?? collaboration}
         formats={['avif', 'webp']}
         widths={[400, 640, 900, 1200]}
         sizes="(min-width: 64rem) 40vw, 100vw"
-        alt="Two colleagues discussing work on a laptop at a shared desk."
+        alt={photo?.alt ?? 'Two colleagues discussing work on a laptop at a shared desk.'}
       />
     </figure>
   </div>

@@ -71,6 +71,7 @@
   --container: 80rem;            /* 1280 */
   --gutter: clamp(1.25rem, 0.6rem + 2.8vw, 3rem);           /* 20 → 48 */
   --header-height: 4.75rem;      /* 76 */
+  --credentials-height: 5.625rem; /* 90: partner strip under the home hero (incl. its 1px rule) */
 
   /* Shape: square-shouldered */
   --radius-control: 2px;

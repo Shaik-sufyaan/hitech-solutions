@@ -6,7 +6,7 @@ import { site } from '../../content/site';
 import { primaryNav } from '../../content/navigation';
 
 interface Props {
-  /** Transparent over the home hero at the top of the page; solid navy once scrolled. */
+  /** Retained for layout compatibility; the header stays white on every page. */
   overHero?: boolean;
 }
 
@@ -240,29 +240,12 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     else closePanels();
   });
 
-  /* ---------- Over-hero header: transparent at the very top, solid navy once scrolled ---------- */
-  if (header?.classList.contains('site-header--over-hero')) {
-    let queued = false;
-    const sync = () => {
-      queued = false;
-      header.classList.toggle('is-scrolled', window.scrollY > 4);
-    };
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (!queued) {
-          queued = true;
-          requestAnimationFrame(sync);
-        }
-      },
-      { passive: true },
-    );
-    sync();
-  }
 </script>
 
 <style>
   .site-header {
+    --color-ink: #000000;
+    --color-navy: #000000;
     position: sticky;
     top: 0;
     z-index: 50;
@@ -306,7 +289,7 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     background: transparent;
     color: var(--color-ink);
     font-size: 1rem;
-    font-weight: var(--fw-medium);
+    font-weight: 700;
     text-decoration: none;
     cursor: pointer;
     transition:
@@ -330,7 +313,7 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
 
   .site-header__link:hover,
   .site-header__trigger:hover {
-    color: var(--color-action);
+    color: #000000;
   }
 
   .site-header__link:hover::after,
@@ -546,7 +529,7 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     border-bottom: 1px solid var(--color-line);
     color: var(--color-ink);
     font-size: 1.125rem;
-    font-weight: var(--fw-medium);
+    font-weight: 700;
     text-decoration: none;
     cursor: pointer;
     list-style: none;
@@ -647,64 +630,20 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     }
   }
 
-  /* ---------- Over-hero variant (home page) ----------
-   * Top of page: transparent over the animated hero, light text with a soft shadow.
-   * Scrolled, or with a menu open: solid navy. Text stays light throughout. */
-  .site-header--over-hero {
-    --color-focus: var(--color-focus-on-navy);
-    background: transparent;
-    border-bottom-color: rgb(255 255 255 / 0.14);
-    transition:
-      background-color var(--dur-base) var(--ease-out),
-      border-color var(--dur-base) var(--ease-out);
+  /* Consistent white navigation, including the home hero and scrolled states. */
+  .site-header__brand :global(.wordmark) { color: #000000; }
+  .site-header__brand :global(.wordmark__desc) { font-weight: 600; }
+
+  .site-header__actions :global(.site-header__cta) {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+    font-weight: 700;
   }
 
-  .site-header--over-hero.is-scrolled,
-  .site-header--over-hero.has-panel,
-  .site-header--over-hero.is-open {
-    background: var(--color-navy);
-    border-bottom-color: rgb(255 255 255 / 0.1);
-  }
-
-  .site-header--over-hero .site-header__brand :global(.wordmark),
-  .site-header--over-hero .site-header__toggle,
-  .site-header--over-hero .site-header__link,
-  .site-header--over-hero .site-header__trigger:not([aria-expanded='true']) {
-    color: var(--color-on-navy);
-  }
-
-  .site-header--over-hero .site-header__link:hover,
-  .site-header--over-hero .site-header__trigger:not([aria-expanded='true']):hover {
-    color: var(--color-on-navy-link);
-  }
-
-  .site-header--over-hero .site-header__link::after,
-  .site-header--over-hero .site-header__trigger::after {
-    background: var(--color-on-navy);
-  }
-
-  /* Lifts the text off the moving glyphs while the bar is transparent. */
-  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) .site-header__brand,
-  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) .site-header__link,
-  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) .site-header__trigger,
-  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) .site-header__toggle {
-    text-shadow: 0 1px 2px rgb(10 18 26 / 0.9), 0 0 12px rgb(10 18 26 / 0.75);
-  }
-
-  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) :global(svg) {
-    filter: drop-shadow(0 1px 2px rgb(10 18 26 / 0.9));
-  }
-
-  /* The blue button vanishes on navy; a white outline keeps it secondary to the hero's white CTA. */
-  .site-header--over-hero .site-header__actions :global(.site-header__cta) {
-    background: rgb(19 33 46 / 0.55);
-    border-color: rgb(255 255 255 / 0.75);
-    color: var(--color-on-navy);
-  }
-
-  .site-header--over-hero .site-header__actions :global(.site-header__cta:hover) {
-    background: #fff;
-    border-color: #fff;
-    color: var(--color-navy);
+  .site-header__actions :global(.site-header__cta:hover) {
+    background: var(--color-paper);
+    color: #000000;
+    border-color: #000000;
   }
 </style>

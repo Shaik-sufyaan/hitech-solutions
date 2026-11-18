@@ -7,3 +7,10 @@ dist/
 .DS_Store
 .impeccable/config.local.json
 .impeccable/build-check/
+
+# Local QA artifacts (screenshots, scratch review scripts, logs)
+.impeccable/review/
+.impeccable/*.png
+.impeccable/*.jpg
+.impeccable/*.py
+debug.log

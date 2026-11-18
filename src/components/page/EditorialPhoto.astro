@@ -1,0 +1,42 @@
+---
+import { Picture } from 'astro:assets';
+import { getPhoto } from '../../content/photography';
+
+interface Props {
+  photoKey: string;
+  priority?: boolean;
+  portrait?: boolean;
+}
+const { photoKey, priority = false, portrait = false } = Astro.props;
+const photo = getPhoto(photoKey);
+---
+
+<figure class:list={['editorial-photo', { 'editorial-photo--portrait': portrait }]} data-photo-id={photo.id}>
+  <Picture
+    src={photo.image}
+    alt={photo.alt}
+    formats={['webp']}
+    widths={[400, 720, 1100, 1600]}
+    sizes="(min-width: 64rem) 42vw, 100vw"
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+  />
+</figure>
+
+<style>
+  .editorial-photo {
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-media);
+    background: var(--color-line);
+  }
+  .editorial-photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (min-width: 64rem) {
+    .editorial-photo--portrait { aspect-ratio: 5 / 4; }
+  }
+</style>

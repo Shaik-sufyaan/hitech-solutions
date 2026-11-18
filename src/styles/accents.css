@@ -1,0 +1,16 @@
+/* Restrained amber details: preserve white reading surfaces and blue actions. */
+.overview__copy > .t-h2::after,
+.faq__head > .t-h2::after,
+.job-seekers__copy > .t-h2::after,
+.page-hero__title::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin-top: var(--space-6);
+  background: var(--color-amber);
+}
+.overview__check { background: var(--color-amber); color: var(--color-navy); }
+.faq__item[open] .faq__icon { background: var(--color-amber); border-color: var(--color-amber); color: var(--color-navy); }
+.stories__head { padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-amber); }
+.closing__inner > .t-h2::after { content: ''; display: block; width: 3rem; height: 3px; background: var(--color-amber); margin: var(--space-6) auto 0; }

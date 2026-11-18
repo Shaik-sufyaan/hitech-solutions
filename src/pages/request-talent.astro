@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Pending from '../components/ui/Pending.astro';
+import EditorialPhoto from '../components/page/EditorialPhoto.astro';
 import { site } from '../content/site';
 import { engagement } from '../content/home';
 
@@ -36,6 +37,7 @@ const steps = [
         <p class="request__seeker">
           Looking for a job instead? <a href={site.careersUrl ?? site.jobSeekersFallbackHref}>Explore opportunities</a>
         </p>
+        <div class="request__photo"><EditorialPhoto photoKey="/request-talent" /></div>
       </div>
 
       <div class="request__panel">
@@ -331,6 +333,8 @@ const steps = [
   .request__title {
     max-width: 14ch;
   }
+
+  .request__photo { margin-top: var(--space-8); }
 
   .request__lead {
     margin-top: var(--space-5);

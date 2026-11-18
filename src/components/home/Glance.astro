@@ -1,127 +1,140 @@
 ---
 import { glance } from '../../content/home';
+import EditorialPhoto from '../page/EditorialPhoto.astro';
+
+const circumference = 2 * Math.PI * 72;
+const icons = [
+  'M8 3v4M16 3v4M4 10h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1M8 14h3M8 17h6',
+  'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3a4 4 0 0 1 0 8M22 21v-2a4 4 0 0 0-3-3.87M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0',
+];
 ---
 
-<section class="section glance" aria-labelledby="glance-title" aria-describedby="glance-note">
-  <div class="container">
-    <div class="glance__overview">
-      <h2 id="glance-title" class="t-h2">{glance.title}</h2>
-      <dl class="glance__highlights">
-        {glance.cards.map((card) => (
-          <div class="glance__highlight">
-            <dt>{card.label}</dt>
-            <dd class:list={['glance__number', { 'is-empty': card.value === null }]}>
-              {card.value ?? 'Pending'}
-            </dd>
-          </div>
+<section id="at-a-glance" class="section glance" aria-labelledby="glance-title" aria-describedby="glance-note">
+  <div class="container glance__layout">
+    <div class="glance__content">
+    <div class="glance__top">
+      <div class="glance__intro">
+        <h2 id="glance-title" class="t-h2">{glance.title}</h2>
+        <p>A closer look at our work in technology staffing.</p>
+      </div>
+      <ul role="list" class="glance__cards">
+        {glance.cards.map((card, index) => (
+          <li class="glance__card">
+            <svg class="glance__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d={icons[index]} />
+            </svg>
+            <div>
+              <p class:list={['glance__number', { 'is-empty': card.value === null }]}>{card.value ?? 'Pending'}</p>
+              <p class="glance__label">{card.label}</p>
+            </div>
+          </li>
         ))}
-      </dl>
+      </ul>
     </div>
-    <dl class="glance__metrics">
+
+    <ul role="list" class="glance__metrics">
       {glance.rings.map((metric) => (
-        <div class="glance__metric">
-          <dt>{metric.label}</dt>
-          <dd class:list={['glance__percentage', { 'is-empty': metric.value === null }]}>
-            {metric.value === null ? 'Pending' : <>{metric.value}<span>%</span></>}
-          </dd>
-        </div>
+        <li class="glance__metric">
+          <div class="glance__ring">
+            <svg viewBox="0 0 168 168" aria-hidden="true">
+              <circle class="glance__track" cx="84" cy="84" r="72" />
+              {metric.value !== null && (
+                <circle class="glance__arc" cx="84" cy="84" r="72"
+                  stroke-dasharray={circumference}
+                  stroke-dashoffset={circumference * (1 - Math.min(100, Math.max(0, metric.value)) / 100)}
+                />
+              )}
+            </svg>
+            <p class:list={['glance__percentage', { 'is-empty': metric.value === null }]}>
+              {metric.value === null ? 'Pending' : <>{metric.value}<span>%</span></>}
+            </p>
+          </div>
+          <p class="glance__metric-label">{metric.label}</p>
+        </li>
       ))}
-    </dl>
+    </ul>
     <p id="glance-note" class="glance__note">
-      <strong>Values to be confirmed.</strong>
-      {glance.pending}
+      <strong>Values to be confirmed.</strong> {glance.pending}
     </p>
+
+    </div>
+    <div class="glance__photography">
+      <EditorialPhoto photoKey="home-glance-laptop" />
+    </div>
   </div>
 </section>
 
 <style>
-  .glance__overview {
-    display: grid;
-    gap: 2.5rem;
-    padding-bottom: clamp(2.5rem, 4vw, 4rem);
-  }
-  .glance h2 { max-width: 24rem; }
-  .glance__highlights { display: grid; gap: 2rem; }
-  .glance__highlight, .glance__metric {
+  .glance { background: var(--color-page); }
+  .glance__layout { display: grid; gap: var(--space-12); }
+  .glance__content { min-width: 0; }
+  .glance__top { display: grid; gap: 2rem; align-items: center; }
+  .glance__intro h2 { max-width: 28rem; }
+  .glance__intro > p { color: var(--color-ink-muted); margin-top: 1rem; font-size: var(--fs-small); }
+  .glance__cards { display: grid; gap: 1.5rem; }
+  .glance__card {
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    min-width: 0;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 8px solid var(--color-amber);
+    border-radius: var(--radius-media);
+    background: var(--color-page);
+    box-shadow: 0 6px 24px rgb(19 33 46 / 0.09);
+    min-height: 10.5rem;
   }
-  .glance dt {
-    max-width: 16rem;
-    color: var(--color-ink-muted);
-    font-size: var(--fs-small);
-    line-height: 1.5;
-  }
-  .glance__number, .glance__percentage {
-    order: -1;
-    margin-bottom: 1rem;
-    color: var(--color-navy);
+  .glance__icon { width: 2rem; height: 2rem; margin-top: 0.6rem; flex-shrink: 0; color: var(--color-action); }
+  .glance__number {
+    font-size: clamp(2.25rem, 3vw, 3rem);
     font-weight: 400;
-    font-variant-numeric: lining-nums tabular-nums;
-    letter-spacing: -0.055em;
-    line-height: 1;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
   }
-  .glance__number { font-size: clamp(3.25rem, 4.8vw, 4.75rem); }
-  .glance__metrics {
-    display: grid;
-    background: var(--color-paper);
-    padding: clamp(1.5rem, 3vw, 2.75rem);
-    gap: 1.75rem;
-  }
-  .glance__metric + .glance__metric {
-    border-top: 1px solid var(--color-line);
-    padding-top: 1.75rem;
-  }
+  .glance__label { color: var(--color-ink-muted); font-size: var(--fs-small); margin-top: 0.5rem; max-width: 16rem; }
+  .glance__metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+  .glance__metric { display: grid; align-content: start; justify-items: start; gap: 1rem; text-align: left; }
+  .glance__ring { position: relative; width: min(100%, 8rem); aspect-ratio: 1; }
+  .glance__ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .glance__track { fill: none; stroke: var(--color-line); stroke-width: 2; }
+  .glance__arc { fill: none; stroke: var(--color-action); stroke-width: 10; }
   .glance__percentage {
-    color: var(--color-navy);
-    font-size: clamp(2.75rem, 3.8vw, 3.75rem);
-    margin-bottom: 0.75rem;
-    white-space: nowrap;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding-top: 32%;
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
   }
-  .glance__percentage span {
-    font-size: 0.5em;
-    margin-left: 0.12em;
-    letter-spacing: -0.02em;
-  }
-  .glance__metric dt { color: var(--color-ink); font-weight: 500; }
+  .glance__percentage span { font-size: 0.48em; margin-left: 0.08em; letter-spacing: 0; }
+  .glance__metric-label { font-size: var(--fs-small); font-weight: 500; max-width: 10rem; }
   .glance__note {
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
     padding-left: 1rem;
     border-left: 3px solid var(--color-amber);
     color: var(--color-ink-muted);
     font-size: 0.8125rem;
     line-height: 1.65;
-    max-width: 53rem;
   }
-  .glance__note strong {
-    color: var(--color-ink);
-    font-weight: 600;
-    margin-right: 0.4em;
-  }
-  .glance .is-empty { font-size: 1.5rem; letter-spacing: 0; }
+  .glance__note strong { color: var(--color-ink); font-weight: 600; margin-right: 0.4em; }
+  .glance .is-empty { font-size: 1.125rem; letter-spacing: 0; }
+  .glance__photography { min-width: 0; }
+  .glance__photography :global(.editorial-photo) { aspect-ratio: 4 / 3; }
   @media (min-width: 40rem) {
-    .glance__highlights {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2.5rem;
-    }
-    .glance__metrics {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2rem;
-    }
-    .glance__metric + .glance__metric {
-      border-top: 0;
-      padding-top: 0;
-      border-left: 1px solid var(--color-line);
-      padding-left: 2rem;
-    }
+    .glance__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (min-width: 64rem) {
-    .glance__overview {
-      grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-      gap: clamp(3rem, 6vw, 6rem);
-      align-items: start;
-    }
+    .glance__layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); }
+    /* Square, top-aligned with the heading; it no longer stretches to the column's full height. */
+    .glance__photography { align-self: start; }
+    .glance__photography :global(.editorial-photo) { height: auto; aspect-ratio: 1 / 1; }
+    .glance__photography :global(picture) { display: block; height: 100%; }
+    .glance__photography :global(img) { object-position: 58% center; }
   }
 </style>

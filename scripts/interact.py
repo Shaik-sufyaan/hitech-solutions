@@ -34,7 +34,7 @@ with sync_playwright() as p:
     report['faq_open'] = pg.evaluate('document.querySelector(".faq__item").open')
     pg.locator('#faq').scroll_into_view_if_needed()
     pg.locator('#faq').screenshot(path=str(out / 'faq-open.png'))
-    pg.locator('.site-header__nav a').first.hover(); pg.wait_for_timeout(300)
+    pg.locator('.site-header__link').first.hover(); pg.wait_for_timeout(300)
     pg.evaluate('window.scrollTo(0,0)')
     pg.screenshot(path=str(out / 'nav-hover.png'), clip={'x': 0, 'y': 0, 'width': 1440, 'height': 90})
     pg.close()

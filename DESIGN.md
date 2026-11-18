@@ -229,6 +229,16 @@ components:
 
 ## At-a-glance revision (2026-11-18)
 
+### Latest local review: reference-led statistics and photography
+
+Latest homepage layout refinement: keep the At-a-glance heading, two stat cards, three percentage rings and provisional-values notice in a left-aligned content column, with the laptop photograph filling the right column on desktop. Remove the meeting photograph from this section. Stack the photograph below the content under 64rem. A compact white Explore Hitech Solutions navigation strip now separates the homepage's navy closing band from its navy footer; it links to How we work, Specialties and FAQ without adding business claims.
+
+Latest navigation/surround refinement: the top header stays white on every page and at every scroll position, with black navigation labels at weight 700 and a white, black-outlined Request talent button. No transparent or navy home-header state remains. The three black stacking panels sit against a white outer background.
+
+The user's latest reference supersedes the open statistics panel described below: use two white icon cards with 8px amber caps and subtle shadows, followed by three blue percentage rings with inline percent signs. Preserve the visible provisional-values notice. Two complementary workplace photographs follow the statistics. Interior pages pair the navy hero copy with a unique rectangular workplace photograph; the form and error pages integrate their own photos into the content instead. Every page has a distinct source photograph, with provenance in `src/content/photography.json` and `src/assets/images/CREDITS.md`.
+
+The user also approved black stacking panels with white/gray copy and orange links, hiring-model headings and process numbers for local review. This overrides the earlier Light Middle Rule for the three deck panels only. Keep the desktop stacking behavior and mobile/reduced-motion flow. These visual revisions remain uncommitted and unpublished pending review.
+
 The revised home statistics section supersedes the stat-card and ring-figure guidance below. Use an open desktop heading/figures split, with two navy headline values in Libre Franklin at weight 400 and 52–76px. Present the three percentages as aligned 44–60px figures in one Cool Paper panel with internal dividers; keep percent signs inline at half size. Stack the figures and dividers on mobile. Do not use ring charts, individual card borders or amber card caps here. Keep the provisional-values disclosure visible below the panel, marked by a small amber left rule. Values remain unverified until Hitech confirms them.
 
 ## Overview

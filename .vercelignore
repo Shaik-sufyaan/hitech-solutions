@@ -2,5 +2,6 @@
 reference/
 /scripts/
 docs/
+tests/
 DESIGN.md
 PRODUCT.md

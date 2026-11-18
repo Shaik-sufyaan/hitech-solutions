@@ -8,7 +8,8 @@ import Button from '../components/ui/Button.astro';
 import { pages, specialties, jobSeekers } from '../content/home';
 import { site } from '../content/site';
 import { routes } from '../content/navigation';
-import laptop from '../assets/images/candidates-laptop.jpg';
+import { getPhoto } from '../content/photography';
+const photo = getPhoto('job-seekers-detail');
 ---
 
 <BaseLayout title={pages.jobSeekers.title} description={pages.jobSeekers.lead}>
@@ -50,11 +51,11 @@ import laptop from '../assets/images/candidates-laptop.jpg';
       </div>
       <figure class="seekers__photo">
         <Picture
-          src={laptop}
+          src={photo.image}
           formats={['avif', 'webp']}
           widths={[400, 640, 900, 1200]}
           sizes="(min-width: 64rem) 40vw, 100vw"
-          alt="A technology professional working on a laptop at a desk."
+          alt={photo.alt}
         />
       </figure>
     </div>

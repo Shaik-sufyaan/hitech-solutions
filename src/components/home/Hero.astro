@@ -207,8 +207,12 @@ import specialist from '../../assets/images/hero-specialist.jpg';
 
   /* Desktop: centred statement framed by two working photographs at the edges. */
   @media (min-width: 75rem) {
+    /* Hero plus the partner strip fill the first screen, so no gap shows beneath the strip. */
     .hero {
-      min-height: 36rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: clamp(36rem, calc(100svh - var(--credentials-height)), 66rem);
     }
 
     .hero__inner {

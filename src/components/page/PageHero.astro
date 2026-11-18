@@ -4,6 +4,7 @@
  * Shorter and left-aligned so it reads as a section of the site, not a second homepage.
  */
 import Button from '../ui/Button.astro';
+import EditorialPhoto from './EditorialPhoto.astro';
 import type { NavLink } from '../../content/navigation';
 
 interface Props {
@@ -19,6 +20,7 @@ const { title, lead, breadcrumbs = [], primary, secondary } = Astro.props;
 
 <section class="page-hero on-navy" aria-labelledby="page-title">
   <div class="container page-hero__inner">
+    <div class="page-hero__copy">
     {
       breadcrumbs.length > 0 && (
         <nav aria-label="Breadcrumb" class="page-hero__crumbs">
@@ -50,6 +52,8 @@ const { title, lead, breadcrumbs = [], primary, secondary } = Astro.props;
       )
     }
     <slot />
+    </div>
+    <EditorialPhoto photoKey={Astro.url.pathname} priority portrait />
   </div>
 </section>
 
@@ -60,6 +64,10 @@ const { title, lead, breadcrumbs = [], primary, secondary } = Astro.props;
   }
 
   .page-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4rem);
     padding-top: clamp(2.5rem, 1.5rem + 3vw, 4rem);
     padding-bottom: clamp(3rem, 2rem + 4vw, 5.5rem);
   }
@@ -113,6 +121,13 @@ const { title, lead, breadcrumbs = [], primary, secondary } = Astro.props;
     margin-top: var(--space-8);
   }
 
+  .page-hero__copy { min-width: 0; }
+  .page-hero__actions :global(.btn) {
+    max-width: 100%;
+    white-space: normal;
+    padding-block: var(--space-3);
+  }
+
   .page-hero__actions > a:not(.btn) {
     color: var(--color-on-navy);
     font-weight: var(--fw-semibold);
@@ -125,5 +140,10 @@ const { title, lead, breadcrumbs = [], primary, secondary } = Astro.props;
 
   .page-hero :global(.pending) {
     margin-top: var(--space-8);
+  }
+
+  @media (min-width: 64rem) {
+    .page-hero__inner { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+    .page-hero__title { font-size: clamp(2.375rem, 3.5vw, 3.5rem); }
   }
 </style>

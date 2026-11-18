@@ -1,9 +1,9 @@
 ---
 /*
  * Stacking deck (home page): Specialties, Ways to hire and Process as three
- * light sheets (grey / white / grey; dark panels were rejected by the user on
- * 2026-11-18). On desktop with motion allowed, each sheet is an inset card on a
- * slightly darker bed; it pins (CSS sticky on native scroll) a little lower than
+ * black sheets (local contrast preview requested by the user).
+ * On desktop with motion allowed, each sheet is an inset card on a
+ * white background; it pins (CSS sticky on native scroll) a little lower than
  * the one before so every covered sheet keeps a visible top edge, and the covered
  * sheet shrinks and dims slightly as the next arrives. On mobile or with reduced
  * motion they are ordinary full-width sections.
@@ -87,6 +87,40 @@ import Process from './Process.astro';
 </script>
 
 <style>
+  .deck {
+    --color-ink: #ffffff;
+    --color-ink-muted: #c4c4c4;
+    --color-page: #000000;
+    --color-paper: #000000;
+    --color-line: #303030;
+    --color-line-strong: #606060;
+    --color-action: var(--color-amber);
+    --color-action-hover: var(--color-amber-hover);
+    --color-focus: #ffffff;
+    --color-deck-bed: #ffffff;
+    color: var(--color-ink);
+    background: var(--color-deck-bed);
+  }
+
+  .deck :global(.step__number) {
+    color: var(--color-amber);
+    border-color: var(--color-amber);
+  }
+
+  .deck :global(.model .t-h3) {
+    color: var(--color-amber);
+  }
+
+  .deck :global(.btn--primary) {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .deck :global(.btn--primary:hover) {
+    background: #dedede;
+    color: #000000;
+  }
+
   /* Sheets are opaque so the one underneath never shows through. */
   .deck__panel {
     --tone-bg: var(--color-page);
@@ -98,7 +132,7 @@ import Process from './Process.astro';
   }
 
   @media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
-    /* The bed: a shade darker than the sheets, so every sheet's edge reads. */
+    /* White surround contrasts with the black inset sheets. */
     .deck {
       padding: var(--space-4) var(--deck-inset) var(--space-8);
       background: var(--color-deck-bed);
@@ -141,7 +175,7 @@ import Process from './Process.astro';
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--color-navy);
+      background: #000000;
       opacity: calc(var(--cover, 0) * 0.1);
       pointer-events: none;
     }
