@@ -62,8 +62,8 @@ import Icon from '../ui/Icon.astro';
       >
       </div>
       <div class="assistant__suggestions" aria-label="Conversation starters" data-chat-suggestions>
-        <button type="button" class="assistant__choice" data-chat-prompt="I need to hire IT talent">Request talent</button>
-        <button type="button" class="assistant__choice" data-chat-prompt="I am looking for a job">Find a job</button>
+        <button type="button" class="assistant__choice" data-chat-prompt="I would like to book a meeting with Hitech Solutions about hiring IT talent">Book Meeting</button>
+        <button type="button" class="assistant__choice" data-chat-prompt="I have a question for Hitech Solutions">Get Support</button>
       </div>
       <p class="assistant__status" role="status" data-chat-status></p>
     </div>
@@ -84,8 +84,9 @@ import Icon from '../ui/Icon.astro';
         </button>
       </div>
       <p id="assistant-privacy" class="assistant__disclaimer">
-        AI can make mistakes. When AI is enabled, messages are sent to Anthropic to generate a reply. Don’t share
-        personal or sensitive information.
+        By continuing you agree that Hitech Solutions and our third-party vendors may monitor, record and access chats to
+        respond to you, and for quality, training, improvement and other purposes.
+        <a href="/privacy" target="_blank" rel="noopener">Privacy Notice<Icon name="external" size={12} /><span class="visually-hidden"> (opens in a new tab)</span></a>
       </p>
     </form>
   </section>
@@ -172,6 +173,7 @@ import Icon from '../ui/Icon.astro';
     line-height: 1.25;
     color: var(--color-ink);
   }
+
 
   .assistant__role {
     font-size: 0.75rem;
@@ -441,6 +443,19 @@ import Icon from '../ui/Icon.astro';
     cursor: wait;
   }
 
+  .assistant__disclaimer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--color-ink-muted);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .assistant__disclaimer a:hover {
+    color: var(--color-action);
+  }
+
   .assistant__disclaimer {
     margin-top: 0.75rem;
     color: var(--color-ink-muted);
@@ -450,6 +465,15 @@ import Icon from '../ui/Icon.astro';
   }
 
   /* ---------- Launcher ---------- */
+  /* The launcher only shows while the chat is closed; the open panel takes its place. */
+  .assistant:has(.assistant__panel:not([hidden])) .assistant__launcher {
+    display: none;
+  }
+
+  .assistant:has(.assistant__panel:not([hidden])) .assistant__panel {
+    bottom: 0;
+  }
+
   .assistant__launcher {
     display: flex;
     align-items: center;

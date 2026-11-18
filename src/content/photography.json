@@ -1,5 +1,11 @@
 {
-  "hire-overview": {"id":"7988116","source":"https://www.pexels.com/photo/men-in-the-office-working-on-their-computer-7988116/","alt":"Two programmers collaborating in a bright, modern office, coding on monitors.","photographer":"Mikhail Nilov","license":"https://www.pexels.com/license/"},
+  "hire-overview": {
+    "id": "7988116",
+    "source": "https://www.pexels.com/photo/men-in-the-office-working-on-their-computer-7988116/",
+    "alt": "Two programmers collaborating in a bright, modern office, coding on monitors.",
+    "photographer": "Mikhail Nilov",
+    "license": "https://www.pexels.com/license/"
+  },
   "/faq": {
     "id": "7433859",
     "source": "https://www.pexels.com/photo/business-partners-having-a-meeting-at-the-office-7433859/",
@@ -271,6 +277,13 @@
     "source": "https://www.pexels.com/photo/hands-typing-on-laptop-17615041/",
     "alt": "Close-up of a person typing on a laptop with a smartphone beside, indoors setting.",
     "photographer": "Beyzanur K.",
+    "license": "https://www.pexels.com/license/"
+  },
+  "/privacy": {
+    "id": "7433859",
+    "source": "https://www.pexels.com/photo/business-partners-having-a-meeting-at-the-office-7433859/",
+    "alt": "Senior professionals engaged in a collaborative business meeting in a modern office setting.",
+    "photographer": "Vlada Karpovich",
     "license": "https://www.pexels.com/license/"
   }
 }

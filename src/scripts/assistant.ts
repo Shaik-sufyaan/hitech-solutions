@@ -46,7 +46,7 @@ if (root) {
   let active: AbortController | null = null;
   let generation = 0;
   let busy = false;
-  const welcome = 'Hi, I’m the Hitech Assistant. I can help you find IT talent, explain how we work, or point you to the right page if you’re looking for your next role. What brings you here today?';
+  const welcome = 'Hi, I’m Hitech Assistant from Hitech Solutions. We help employers find IT talent and help technology professionals find their next role. Would you like me to help you hire IT talent, book a meeting with our team, or get support with a question?';
 
   function dismissGreeting() {
     greeting.hidden = true;
@@ -72,6 +72,11 @@ if (root) {
   function scrollToLatest() {
     const last = messages.lastElementChild as HTMLElement | null;
     if (!last) return;
+    // Only the greeting so far: show it from the top, like a fresh card.
+    if (messages.children.length === 1) {
+      scroller.scrollTop = 0;
+      return;
+    }
     const lastTop = last.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop;
     const fits = last.offsetHeight <= scroller.clientHeight - 24;
     scroller.scrollTop = fits || last.classList.contains('chat-message--user') ? scroller.scrollHeight : Math.max(0, lastTop - 12);
@@ -221,12 +226,11 @@ if (root) {
     greeting.hidden = true;
     setOpen(true);
   } else {
-    // Pop-up on load: the full panel on tablet and desktop, the compact greeting on phones
-    // (where the panel would cover the page's main action). Skipped once closed this visit.
+    // Pop-up on load: the full panel on every screen size (phones included, at the user's
+    // request). Skipped once the visitor closes it during this visit.
     const closedThisVisit = store.get(KEY.closed) === '1';
     const greetingDismissed = store.get(KEY.greeting) === '1';
-    const roomForPanel = window.matchMedia('(min-width: 48rem) and (min-height: 34rem)').matches;
-    if (!closedThisVisit && roomForPanel) {
+    if (!closedThisVisit) {
       greeting.hidden = true;
       window.setTimeout(() => {
         if (panel.hidden && store.get(KEY.closed) !== '1') setOpen(true, false);

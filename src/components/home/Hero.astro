@@ -205,6 +205,36 @@ import specialist from '../../assets/images/hero-specialist.jpg';
     }
   }
 
+  /* Shorter phones: a slimmer photo keeps the headline and button on the first screen... */
+  @media (max-width: 47.99rem) and (max-height: 42rem) {
+    .hero__photo--left {
+      aspect-ratio: 5 / 2;
+    }
+
+    .hero__inner {
+      padding-top: var(--space-6);
+    }
+  }
+
+  /* ...and on the shortest (iPhone SE in Safari is ~550px tall) the photo gives way to the button. */
+  @media (max-width: 47.99rem) and (max-height: 38rem) {
+    .hero__photo--left {
+      display: none;
+    }
+  }
+
+  /* Phones held sideways: there is no height for a photo, so the copy and button lead. */
+  @media (max-width: 74.99rem) and (max-height: 30rem) and (orientation: landscape) {
+    .hero__photo--left {
+      display: none;
+    }
+
+    .hero__inner {
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-12);
+    }
+  }
+
   /* Desktop: centred statement framed by two working photographs at the edges. */
   @media (min-width: 75rem) {
     /* Hero plus the partner strip fill the first screen, so no gap shows beneath the strip. */

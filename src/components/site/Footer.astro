@@ -51,7 +51,8 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="site-footer__legal">
       <p>&copy; {year} {site.name}. All rights reserved.</p>
-      <!-- TODO(business): add Privacy notice and Terms once the documents exist. -->
+      <a href="/privacy">Privacy notice</a>
+      <!-- TODO(business): add Terms of use once the document exists. -->
     </div>
   </div>
 </footer>
@@ -107,6 +108,10 @@ const year = new Date().getFullYear();
   }
 
   .site-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-6);
     padding-top: var(--space-6);
     padding-bottom: var(--space-8);
     border-top: 1px solid rgb(255 255 255 / 0.12);

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Pending from '../components/ui/Pending.astro';
 import EditorialPhoto from '../components/page/EditorialPhoto.astro';
 import { site } from '../content/site';
 import { engagement } from '../content/home';
@@ -122,7 +121,9 @@ const steps = [
           </div>
 
           <div class="lead-form__footer">
-            <Pending label="Privacy notice. A link explaining how inquiry details are handled must appear here before launch." />
+            <p class="lead-form__privacy">
+              How we handle the details you share: <a href="/privacy#forms">Privacy notice</a>
+            </p>
             <button type="submit" class="lead-form__submit" data-submit>
               <span data-submit-label>Send request</span>
             </button>
@@ -570,6 +571,15 @@ const steps = [
     margin-top: var(--space-10);
     padding-top: var(--space-8);
     border-top: 1px solid var(--color-line);
+  }
+
+  .lead-form__privacy {
+    color: var(--color-ink-muted);
+    font-size: var(--fs-small);
+  }
+
+  .lead-form__privacy a {
+    font-weight: var(--fw-semibold);
   }
 
   .lead-form__submit {

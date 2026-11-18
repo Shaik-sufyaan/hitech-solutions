@@ -263,6 +263,7 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
   .site-header__brand {
     display: inline-flex;
     flex-shrink: 0;
+    padding-block: var(--space-3); /* 44px+ tap area; the bar centres it */
     color: var(--color-navy);
     text-decoration: none;
   }
@@ -290,6 +291,7 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     color: var(--color-ink);
     font-size: 1rem;
     font-weight: 700;
+    white-space: nowrap; /* two-word labels never break onto a second line */
     text-decoration: none;
     cursor: pointer;
     transition:
@@ -581,7 +583,7 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
 
   .mobile-menu__panel a {
     display: block;
-    padding: var(--space-1) 0;
+    padding: var(--space-2) 0; /* ~41px rows: comfortable for a thumb */
     color: var(--color-ink);
     text-decoration: none;
   }
@@ -623,10 +625,16 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
       gap: var(--space-4);
     }
 
+    /* Small laptops and landscape tablets: tighter items so the full nav fits on one line. */
     .site-header__link,
     .site-header__trigger {
-      padding: 0 var(--space-3);
+      gap: var(--space-1);
+      padding: 0 var(--space-2);
       font-size: 0.9375rem;
+    }
+
+    .site-header__actions {
+      margin-left: var(--space-2);
     }
   }
 
