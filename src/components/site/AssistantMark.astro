@@ -1,0 +1,76 @@
+---
+/**
+ * Hitech Assistant mark: a square-shouldered speech tile carrying an "H" whose
+ * crossbar is the amber accent (the link between people and roles).
+ *
+ * - variant "tile": solid navy avatar for the chat card and panel header.
+ * - variant "line": the same bubble and H as a line icon on the site's 24px grid
+ *   (1.75 stroke, round caps), for the floating launcher. Takes currentColor.
+ *
+ * Provisional, like the wordmark: replace when Hitech supplies brand assets.
+ */
+interface Props {
+  variant?: 'tile' | 'line';
+  size?: number;
+  class?: string;
+}
+
+const { variant = 'tile', size = variant === 'tile' ? 40 : 24, class: className } = Astro.props;
+---
+
+{
+  variant === 'tile' ? (
+    <svg
+      class:list={['assistant-mark', className]}
+      viewBox="0 0 40 40"
+      width={size}
+      height={size}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        class="assistant-mark__field"
+        d="M4 0h32a4 4 0 0 1 4 4v26a4 4 0 0 1-4 4H16l-8 6v-6H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4Z"
+      />
+      <path class="assistant-mark__stems" d="M12.25 9h3.5v16h-3.5zM24.25 9h3.5v16h-3.5z" />
+      <path class="assistant-mark__link" d="M15.75 15.5h8.5v3h-8.5z" />
+    </svg>
+  ) : (
+    <svg
+      class:list={['assistant-mark', className]}
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M5 3.5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8.5L6 21v-3.5H5a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2Z" />
+      <path d="M9 7.5v6M15 7.5v6M9 10.5h6" />
+    </svg>
+  )
+}
+
+<style>
+  .assistant-mark {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Palette comes from tokens.css so a brand kit restyles the mark too. */
+  .assistant-mark__field {
+    fill: var(--color-navy);
+  }
+
+  .assistant-mark__stems {
+    fill: var(--color-on-navy);
+  }
+
+  .assistant-mark__link {
+    fill: var(--color-amber);
+  }
+</style>
