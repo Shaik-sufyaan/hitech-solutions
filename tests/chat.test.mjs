@@ -94,3 +94,47 @@ test('qualifies request-form suggestions with the disconnected-backend notice', 
   assert.match(body.answer, /nothing is sent/i);
   assert.ok(body.answer.length <= 1000);
 });
+
+// ---- Navigation: "take me to that page" ----
+import { wantsNavigation, pagesMentioned } from '../src/lib/assistant-directory.mjs';
+
+const convo = (...contents) => ({ messages: contents.map((content, i) => ({ role: i % 2 ? 'assistant' : 'user', content })) });
+const earlier = 'I suggest visiting our Data and AI specialty page to learn more about machine learning engineer roles.';
+
+test('recognises explicit navigation requests only', () => {
+  for (const text of ['can you take me to that page', 'Take me there', 'open that', 'go to the FAQ page', 'show me the specialties page', 'navigate to direct hire']) {
+    assert.equal(wantsNavigation(text), true, text);
+  }
+  for (const text of ['I want to go to work remotely', 'What does a data analyst do?', 'I need a cloud engineer']) {
+    assert.equal(wantsNavigation(text), false, text);
+  }
+});
+test('finds pages named in a reply, longest label first', () => {
+  assert.deepEqual(pagesMentioned(earlier).map(page => page.id), ['data', 'machine-learning-engineer']);
+  assert.deepEqual(pagesMentioned('Use Request talent or see Contract-to-hire.').map(page => page.id), ['request', 'contract-to-hire']);
+});
+test('guide mode opens the page the previous reply referred to', async () => {
+  const handler = createChatHandler({ env: {}, fetcher: () => { throw Error('must not call'); } });
+  const body = await (await handler(request(convo('Tell me about ML roles', earlier, 'can you take me to that page')))).json();
+  assert.equal(body.navigate.href, '/specialties/data-and-ai');
+  assert.match(body.answer, /Opening the Data and AI page/);
+});
+test('AI mode links pages it names and navigates on request', async () => {
+  const handler = createChatHandler({ env: enabled, fetcher: provider({
+    answer: "I can't automatically redirect you, but visit our Data and AI specialty page.", pageIds: [], navigate: null,
+  }) });
+  const body = await (await handler(request(convo('ML roles?', earlier, 'can you take me to that page')))).json();
+  assert.equal(body.mode, 'ai');
+  assert.equal(body.navigate.href, '/specialties/data-and-ai');
+  assert.ok(body.links.some(link => link.href === '/specialties/data-and-ai'));
+  assert.doesNotMatch(body.answer, /can't automatically redirect/i);
+});
+test('AI mode never navigates to unknown targets or without a request', async () => {
+  const evil = createChatHandler({ env: enabled, fetcher: provider({ answer: 'Here you go.', pageIds: [], navigate: 'https://evil.example' }) });
+  const a = await (await evil(request(convo('what is contract staffing?')))).json();
+  assert.equal(a.navigate, undefined);
+  const named = createChatHandler({ env: enabled, fetcher: provider({ answer: 'See Contract staffing for details.', pageIds: [], navigate: null }) });
+  const b = await (await named(request(convo('what is contract staffing?')))).json();
+  assert.equal(b.navigate, undefined);
+  assert.deepEqual(b.links.map(link => link.href), ['/hire-talent/contract-staffing']);
+});

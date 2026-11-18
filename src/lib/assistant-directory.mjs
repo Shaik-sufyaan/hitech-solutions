@@ -25,15 +25,66 @@ for (const [id, label, slug, keywords, roles] of groups) {
     pages.push({ id: roleSlug, label: role, href: `/specialties/${slug}/${roleSlug}`, keywords: [role.toLowerCase(), role.toLowerCase().replaceAll('-', ' ')], summary: `Example ${role} role information, not a vacancy or a promise of candidate availability.` });
   }
 }
-export function findPages(text) {
-  const words = text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-  const ranked = pages.map(page => ({ page, score: page.keywords.reduce((score, keyword) => {
+/** Pages whose keywords appear in the text, best match first (may be empty). */
+export function rankPages(text) {
+  const words = ` ${String(text).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()} `;
+  return pages.map(page => ({ page, score: page.keywords.reduce((score, keyword) => {
     const term = keyword.replace(/[^a-z0-9]+/g, ' ');
-    return score + (` ${words} `.includes(` ${term} `) ? term.split(' ').length * 3 : 0);
-  }, 0) })).filter(item => item.score > 0).sort((a, b) => b.score - a.score);
-  return (ranked.length ? ranked.slice(0, 3).map(item => item.page) : pages.filter(page => ['hire', 'jobs', 'faq'].includes(page.id))).map(({ id, label, href }) => ({ id, label, href }));
+    return score + (words.includes(` ${term} `) ? term.split(' ').length * 3 : 0);
+  }, 0) })).filter(item => item.score > 0).sort((a, b) => b.score - a.score).map(item => item.page);
 }
-export function guideReply(text, unavailable = false) {
+
+const toLink = ({ id, label, href }) => ({ id, label, href });
+
+export function findPages(text) {
+  const ranked = rankPages(text);
+  return (ranked.length ? ranked.slice(0, 3) : pages.filter(page => ['hire', 'jobs', 'faq'].includes(page.id))).map(toLink);
+}
+
+/** True when the visitor explicitly asks to be taken to / shown a page. */
+export function wantsNavigation(text) {
+  const t = String(text);
+  return /\b(take me|bring me|send me|navigate|link me|direct me|redirect me|go there)\b/i.test(t)
+    || /\b(go to|open|show me|visit)\b[^.?!]*\bpage\b/i.test(t)
+    || /\bopen (it|that|this)\b/i.test(t);
+}
+
+/** Directory pages named in a piece of text, in order of first mention. Longer labels win overlaps. */
+export function pagesMentioned(text) {
+  const haystack = String(text).toLowerCase();
+  const found = [];
+  const taken = [];
+  for (const page of [...pages].sort((a, b) => b.label.length - a.label.length)) {
+    const needle = page.label.toLowerCase();
+    let from = 0;
+    while (true) {
+      const at = haystack.indexOf(needle, from);
+      if (at === -1) break;
+      const end = at + needle.length;
+      const boundary = !/[a-z0-9]/.test(haystack[at - 1] ?? ' ') && !/[a-z0-9]/.test(haystack[end] ?? ' ');
+      if (boundary && !taken.some(([s, e]) => at < e && end > s)) {
+        taken.push([at, end]);
+        found.push({ page, at });
+        break;
+      }
+      from = at + 1;
+    }
+  }
+  return found.sort((a, b) => a.at - b.at).map(item => item.page);
+}
+
+/** Resolve the page a navigation request refers to: the message itself, else the previous reply ("that page"). */
+export function resolveTarget(text, previous = '') {
+  return pagesMentioned(text)[0] ?? rankPages(text)[0] ?? pagesMentioned(previous)[0] ?? rankPages(previous)[0] ?? null;
+}
+
+export function guideReply(text, unavailable = false, previous = '') {
+  if (wantsNavigation(text)) {
+    const target = resolveTarget(text, previous);
+    if (target) {
+      return { mode: 'guide', answer: `Opening the ${target.label} page for you.`, links: [toLink(target)], navigate: toLink(target) };
+    }
+  }
   return {
     mode: 'guide',
     answer: unavailable

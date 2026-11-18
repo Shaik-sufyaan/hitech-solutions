@@ -233,6 +233,18 @@ import Icon from '../ui/Icon.astro';
   }
 
   /* ---------- Panel ---------- */
+  @keyframes assistant-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  .assistant__panel:not([hidden]),
+  .assistant__greeting:not([hidden]) {
+    animation: assistant-in var(--dur-base) var(--ease-out);
+  }
+
   .assistant__panel {
     display: flex;
     flex-direction: column;
@@ -490,6 +502,7 @@ import Icon from '../ui/Icon.astro';
   @media (prefers-reduced-motion: reduce) {
     .assistant * {
       transition: none !important;
+      animation: none !important;
     }
   }
 </style>
