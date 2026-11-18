@@ -1,7 +1,7 @@
 ---
 /*
- * "At a glance" figures. Every value is PENDING (null renders as an em dash)
- * until Hitech supplies verified numbers in content/home.ts.
+ * "At a glance" figures. Values are provisional and the visible Pending notice
+ * makes clear that Hitech must confirm them before launch.
  */
 import Pending from '../ui/Pending.astro';
 import { glance } from '../../content/home';
@@ -143,7 +143,7 @@ const arc = (value: number | null) =>
   }
 
   .ring__arc {
-    stroke: var(--color-teal);
+    stroke: var(--color-action);
   }
 
   .ring__value {

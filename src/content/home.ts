@@ -158,21 +158,21 @@ export const process = {
 };
 
 /*
- * PENDING: "At a glance" figures. Labels only; every value stays null until Hitech
- * supplies a verified number. Null renders as an em dash. Never estimate.
+ * PENDING: Provisional "At a glance" figures requested for layout and review.
+ * These are not verified claims and must be replaced or confirmed before launch.
  */
 export const glance = {
   title: 'Hitech Solutions at a glance.',
-  pending: 'Figures to be supplied and verified by Hitech before launch.',
+  pending: 'Values shown are provisional and must be confirmed by Hitech before launch.',
   cards: [
-    { label: 'Years placing technology professionals', value: null as string | null },
-    { label: 'Technology professionals placed', value: null as string | null },
+    { label: 'Years placing technology professionals', value: '10+' as string | null },
+    { label: 'Technology professionals placed', value: '2,500+' as string | null },
   ],
   /** Percentages, 0 to 100. */
   rings: [
-    { label: 'Contractor retention', value: null as number | null },
-    { label: 'Client satisfaction', value: null as number | null },
-    { label: 'Offers accepted', value: null as number | null },
+    { label: 'Contractor retention', value: 94 as number | null },
+    { label: 'Client satisfaction', value: 97 as number | null },
+    { label: 'Offers accepted', value: 92 as number | null },
   ],
 };
 
