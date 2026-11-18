@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/page/PageHero.astro';
+import LinkIndex from '../../components/page/LinkIndex.astro';
+import Closing from '../../components/home/Closing.astro';
+import Pending from '../../components/ui/Pending.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { engagement, process } from '../../content/home';
+import { site } from '../../content/site';
+import { inSentence, modelHref, routes, slugify } from '../../content/navigation';
+
+export function getStaticPaths() {
+  return engagement.models.map((model) => ({
+    params: { model: slugify(model.title) },
+    props: { model },
+  }));
+}
+
+const { model } = Astro.props;
+const requestHref = `${site.requestTalentHref}?engagement=${model.id}`;
+const others = engagement.models.filter((m) => m.id !== model.id);
+---
+
+<BaseLayout title={model.title} description={model.body}>
+  <PageHero
+    title={model.title}
+    lead={model.body}
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Hire talent', href: routes.hireTalent },
+    ]}
+    primary={{ label: `Request ${inSentence(model.title)}`, href: requestHref }}
+  >
+    <Pending tone="dark" label={engagement.pending} />
+  </PageHero>
+
+  <section class="section model-detail" aria-labelledby="fit-title">
+    <div class="container model-detail__grid">
+      <div>
+        <h2 id="fit-title" class="t-h2">When it fits</h2>
+        <p class="t-lead model-detail__fit">Suited to {inSentence(model.bestFor)}.</p>
+        <p class="t-muted model-detail__note">
+          Not sure this is the right arrangement? Choose “Not sure yet” on the request form and we will talk it through
+          with you.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="t-h3 model-detail__steps-title">How it works</h2>
+        <ol class="model-detail__steps">
+          {
+            process.steps.map((step, i) => (
+              <li>
+                <span class="model-detail__num" aria-hidden="true">
+                  {i + 1}
+                </span>
+                <div>
+                  <p class="model-detail__step-title">{step.title}</p>
+                  <p class="t-muted">{step.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <a class="arrow-link model-detail__more" href={routes.howWeWork}>
+          More about how we work
+          <Icon name="arrow-right" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <LinkIndex
+    id="other-ways"
+    paper
+    columns={2}
+    title="Other ways to hire"
+    items={others.map((m) => ({ title: m.title, body: m.body, href: modelHref(m.title) }))}
+  />
+
+  <Closing
+    title={`Discuss ${inSentence(model.title)} with Hitech.`}
+    body="Tell us about the role and the timeline. We will confirm the brief and the terms with you before the search begins."
+    cta={{ label: `Request ${inSentence(model.title)}`, href: requestHref }}
+    showCandidate={false}
+  />
+</BaseLayout>
+
+<style>
+  .model-detail__grid {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .model-detail__fit {
+    margin-top: var(--space-5);
+    max-width: 30rem;
+  }
+
+  .model-detail__note {
+    margin-top: var(--space-5);
+    max-width: 30rem;
+  }
+
+  .model-detail__steps-title {
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-line-strong);
+  }
+
+  .model-detail__steps {
+    padding: 0;
+    list-style: none;
+  }
+
+  .model-detail__steps li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: var(--space-4);
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .model-detail__num {
+    display: inline-grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 1px solid var(--color-navy);
+    border-radius: var(--radius-control);
+    color: var(--color-navy);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .model-detail__step-title {
+    font-weight: var(--fw-semibold);
+  }
+
+  .model-detail__steps .t-muted {
+    margin-top: var(--space-1);
+    max-width: 34rem;
+  }
+
+  .model-detail__more {
+    margin-top: var(--space-6);
+  }
+
+  @media (min-width: 64rem) {
+    .model-detail__grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: clamp(3rem, 6vw, 6rem);
+    }
+  }
+</style>

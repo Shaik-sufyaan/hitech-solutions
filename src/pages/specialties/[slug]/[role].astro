@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/page/PageHero.astro';
+import LinkIndex from '../../../components/page/LinkIndex.astro';
+import Closing from '../../../components/home/Closing.astro';
+import Pending from '../../../components/ui/Pending.astro';
+import Icon from '../../../components/ui/Icon.astro';
+import { engagement, specialties } from '../../../content/home';
+import { roleDetails, withArticle } from '../../../content/roles';
+import { site } from '../../../content/site';
+import { modelHref, roleHref, routes, slugify, specialtyHref } from '../../../content/navigation';
+
+export function getStaticPaths() {
+  return specialties.groups.flatMap((group) =>
+    group.roles.map((role) => ({
+      params: { slug: slugify(group.title), role: slugify(role) },
+      props: { group, role },
+    })),
+  );
+}
+
+const { group, role } = Astro.props;
+const detail = roleDetails[role];
+if (!detail) throw new Error(`Missing role detail for "${role}" in src/content/roles.ts`);
+
+const requestHref = `${site.requestTalentHref}?role=${encodeURIComponent(role)}`;
+const requestLabel = `Request ${withArticle(role)}`;
+const otherRoles = group.roles.filter((r) => r !== role);
+---
+
+<BaseLayout title={`${role} | ${group.title}`} description={detail.summary}>
+  <PageHero
+    title={role}
+    lead={detail.summary}
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Specialties', href: routes.specialties },
+      { label: group.title, href: specialtyHref(group.title) },
+    ]}
+    primary={{ label: requestLabel, href: requestHref }}
+    secondary={{ label: 'How we work', href: routes.howWeWork }}
+  >
+    <Pending tone="dark" label={specialties.pending} />
+  </PageHero>
+
+  <section class="section role" aria-label={`About the ${role} role`}>
+    <div class="container role__grid">
+      <div>
+        <h2 class="t-h2">What the role involves</h2>
+        <ul role="list" class="role__list">
+          {
+            detail.responsibilities.map((item) => (
+              <li>
+                <span class="role__mark" aria-hidden="true">
+                  <Icon name="check" size={18} />
+                </span>
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="t-h2">Skills to include in your brief</h2>
+        <p class="t-muted role__note">
+          Listing the tools and experience that matter most helps us match the shortlist to the work.
+        </p>
+        <ul role="list" class="role__skills">
+          {detail.skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+        <a class="arrow-link role__request" href={requestHref}>
+          Start a request for this role
+          <Icon name="arrow-right" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <LinkIndex
+    id="ways-to-hire"
+    paper
+    title="Ways to hire"
+    intro={`Choose the arrangement that suits the work. We can talk it through when we confirm the brief.`}
+    items={engagement.models.map((m) => ({ title: m.title, body: m.bestFor, href: modelHref(m.title) }))}
+  />
+
+  <LinkIndex
+    id="related-roles"
+    columns={3}
+    title={`More ${group.title} roles`}
+    items={[
+      ...otherRoles.map((r) => ({
+        title: r,
+        body: roleDetails[r]?.summary ?? '',
+        href: roleHref(group.title, r),
+      })),
+      { title: `All ${group.title}`, body: group.body, href: specialtyHref(group.title) },
+    ]}
+  />
+
+  <Closing
+    title={`Hiring ${withArticle(role)}?`}
+    body="Tell us the skills that matter and your timeline. We will confirm the brief with you before the search begins."
+    cta={{ label: requestLabel, href: requestHref }}
+    showCandidate={false}
+  />
+</BaseLayout>
+
+<style>
+  .role__grid {
+    display: grid;
+    gap: var(--space-16);
+  }
+
+  .role__list,
+  .role__skills {
+    margin-top: var(--space-8);
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .role__list li {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    gap: var(--space-4);
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 1.0625rem;
+  }
+
+  .role__mark {
+    display: inline-grid;
+    place-items: center;
+    height: 1.6rem;
+    color: var(--color-action);
+  }
+
+  .role__note {
+    margin-top: var(--space-4);
+    max-width: 32rem;
+  }
+
+  .role__skills li {
+    position: relative;
+    padding: var(--space-4) 0 var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .role__skills li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(var(--space-4) + 0.8em);
+    width: 8px;
+    height: 1px;
+    background: var(--color-action);
+  }
+
+  .role__request {
+    margin-top: var(--space-8);
+  }
+
+  @media (min-width: 64rem) {
+    .role__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(3rem, 6vw, 6rem);
+    }
+  }
+</style>

@@ -1,0 +1,612 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pending from '../components/ui/Pending.astro';
+import { site } from '../content/site';
+import { engagement } from '../content/home';
+
+const steps = [
+  'We review your request and contact you to confirm the role, timeline and terms.',
+  'We agree a written brief and begin the search.',
+  'You receive a shortlist of candidates matched to the brief.',
+];
+---
+
+<BaseLayout
+  title="Request IT talent"
+  description="Tell Hitech Solutions about the technology role you need to fill."
+>
+  <section class="section request" aria-labelledby="request-title">
+    <div class="container request__grid">
+      <div class="request__intro">
+        <h1 id="request-title" class="t-display request__title">Tell us who you need to hire.</h1>
+        <p class="t-lead t-muted request__lead">
+          Share the role and the skills that matter. A short description is enough to start; we will confirm
+          the details with you.
+        </p>
+
+        <h2 class="request__next-title">What happens next</h2>
+        <ol class="request__next">
+          {steps.map((step, i) => (
+            <li>
+              <span class="request__next-num" aria-hidden="true">{i + 1}</span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
+        <p class="request__seeker">
+          Looking for a job instead? <a href={site.careersUrl ?? site.jobSeekersFallbackHref}>Explore opportunities</a>
+        </p>
+      </div>
+
+      <div class="request__panel">
+        <div class="form-status" data-status role="status" aria-live="polite" tabindex="-1" hidden></div>
+
+        <form
+          class="lead-form"
+          data-lead-form
+          data-endpoint={site.leadEndpoint ?? ''}
+          novalidate
+        >
+          <div class="form-errors" data-error-summary role="alert" tabindex="-1" hidden>
+            <h2>Please check the highlighted fields</h2>
+            <ul role="list" data-error-list></ul>
+          </div>
+
+          <fieldset>
+            <legend>About you</legend>
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" required maxlength="120" />
+              <p class="field__error" id="fullName-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="workEmail">Work email</label>
+              <input id="workEmail" name="workEmail" type="email" autocomplete="email" required maxlength="200" />
+              <p class="field__error" id="workEmail-error" hidden></p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" autocomplete="organization" required maxlength="160" />
+                <p class="field__error" id="company-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="phone">Phone <span class="field__optional">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
+                <p class="field__error" id="phone-error" hidden></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>About the role</legend>
+            <div class="field">
+              <label for="role">Role or skills needed</label>
+              <p class="field__hint" id="role-hint">For example: senior cloud engineer with AWS and Terraform experience.</p>
+              <input id="role" name="role" type="text" required maxlength="200" aria-describedby="role-hint" />
+              <p class="field__error" id="role-error" hidden></p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="engagement">Hiring arrangement</label>
+                <select id="engagement" name="engagement">
+                  <option value="not-sure">Not sure yet</option>
+                  {engagement.models.map((m) => <option value={m.id}>{m.title}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="arrangement">Work arrangement</label>
+                <select id="arrangement" name="arrangement">
+                  <option value="not-decided">Not decided</option>
+                  <option value="on-site">On-site</option>
+                  <option value="hybrid">Hybrid</option>
+                  <option value="remote">Remote</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="location">Location <span class="field__optional">(optional)</span></label>
+              <input id="location" name="location" type="text" autocomplete="address-level2" maxlength="120" />
+            </div>
+            <div class="field">
+              <label for="message">Anything else we should know? <span class="field__optional">(optional)</span></label>
+              <textarea id="message" name="message" rows="5" maxlength="3000"></textarea>
+            </div>
+          </fieldset>
+
+          <div class="field field--trap" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="lead-form__footer">
+            <Pending label="Privacy notice. A link explaining how inquiry details are handled must appear here before launch." />
+            <button type="submit" class="lead-form__submit" data-submit>
+              <span data-submit-label>Send request</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  type FieldName = 'fullName' | 'workEmail' | 'company' | 'phone' | 'role';
+
+  const form = document.querySelector<HTMLFormElement>('[data-lead-form]');
+  const status = document.querySelector<HTMLElement>('[data-status]');
+  const summary = form?.querySelector<HTMLElement>('[data-error-summary]');
+  const summaryList = form?.querySelector<HTMLUListElement>('[data-error-list]');
+  const submit = form?.querySelector<HTMLButtonElement>('[data-submit]');
+  const submitLabel = form?.querySelector<HTMLElement>('[data-submit-label]');
+
+  const labels: Record<FieldName, string> = {
+    fullName: 'Full name',
+    workEmail: 'Work email',
+    company: 'Company',
+    phone: 'Phone',
+    role: 'Role or skills needed',
+  };
+
+  const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function validate(data: FormData): Partial<Record<FieldName, string>> {
+    const errors: Partial<Record<FieldName, string>> = {};
+    const get = (k: string) => String(data.get(k) ?? '').trim();
+    if (!get('fullName')) errors.fullName = 'Enter your full name.';
+    const email = get('workEmail');
+    if (!email) errors.workEmail = 'Enter your work email address.';
+    else if (!EMAIL.test(email)) errors.workEmail = 'Enter an email address in the format name@company.com.';
+    if (!get('company')) errors.company = 'Enter your company name.';
+    const phone = get('phone');
+    if (phone && !/^[+()\d\s.-]{7,}$/.test(phone)) errors.phone = 'Enter a phone number using digits, spaces and + ( ) - only.';
+    if (!get('role')) errors.role = 'Describe the role or skills you need.';
+    return errors;
+  }
+
+  function showErrors(errors: Partial<Record<FieldName, string>>) {
+    if (!form || !summary || !summaryList) return;
+    (Object.keys(labels) as FieldName[]).forEach((name) => {
+      const input = form.querySelector<HTMLInputElement>(`#${name}`);
+      const msg = form.querySelector<HTMLElement>(`#${name}-error`);
+      if (!input || !msg) return;
+      const error = errors[name];
+      const describedBy = (input.getAttribute('aria-describedby') ?? '')
+        .split(' ')
+        .filter((id) => id && id !== `${name}-error`);
+      if (error) {
+        input.setAttribute('aria-invalid', 'true');
+        msg.textContent = error;
+        msg.hidden = false;
+        describedBy.push(`${name}-error`);
+      } else {
+        input.removeAttribute('aria-invalid');
+        msg.hidden = true;
+        msg.textContent = '';
+      }
+      if (describedBy.length) input.setAttribute('aria-describedby', describedBy.join(' '));
+      else input.removeAttribute('aria-describedby');
+    });
+
+    const entries = Object.entries(errors) as [FieldName, string][];
+    summaryList.replaceChildren(
+      ...entries.map(([name, error]) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#${name}`;
+        a.textContent = `${labels[name]}: ${error}`;
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          form.querySelector<HTMLElement>(`#${name}`)?.focus();
+        });
+        li.append(a);
+        return li;
+      }),
+    );
+    summary.hidden = entries.length === 0;
+    if (entries.length) summary.focus();
+  }
+
+  function setStatus(kind: 'info' | 'error' | 'success', title: string, body: string) {
+    if (!status) return;
+    status.className = `form-status form-status--${kind}`;
+    const h = document.createElement('h2');
+    h.textContent = title;
+    const p = document.createElement('p');
+    p.textContent = body;
+    status.replaceChildren(h, p);
+    status.hidden = false;
+    status.focus();
+  }
+
+  function setSubmitting(on: boolean) {
+    if (!submit || !submitLabel) return;
+    submit.disabled = on;
+    submit.setAttribute('aria-busy', String(on));
+    submitLabel.textContent = on ? 'Sending…' : 'Send request';
+  }
+
+  // Preselect the engagement type when arriving from an engagement link.
+  const params = new URLSearchParams(window.location.search);
+  const preset = params.get('engagement');
+  const select = form?.querySelector<HTMLSelectElement>('#engagement');
+  if (preset && select && [...select.options].some((o) => o.value === preset)) select.value = preset;
+  const presetRole = params.get('role');
+  const roleInput = form?.querySelector<HTMLInputElement>('#role');
+  if (presetRole && roleInput && !roleInput.value) roleInput.value = presetRole.slice(0, 200);
+
+  // Clear a field's error as soon as it becomes valid.
+  form?.addEventListener('input', (event) => {
+    const target = event.target as HTMLInputElement;
+    if (target.getAttribute('aria-invalid') !== 'true') return;
+    const errors = validate(new FormData(form));
+    if (!errors[target.name as FieldName]) {
+      target.removeAttribute('aria-invalid');
+      const msg = form.querySelector<HTMLElement>(`#${target.name}-error`);
+      if (msg) msg.hidden = true;
+    }
+  });
+
+  let inFlight = false;
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (inFlight) return;
+
+    const data = new FormData(form);
+    const errors = validate(data);
+    showErrors(errors);
+    if (Object.keys(errors).length) return;
+
+    // Spam trap: quietly stop without claiming delivery.
+    if (String(data.get('website') ?? '')) return;
+
+    const endpoint = form.dataset.endpoint;
+    if (!endpoint) {
+      setStatus(
+        'info',
+        'Your details look complete, but nothing was sent',
+        'This preview is not yet connected to Hitech’s inquiry system. Your entries are still in the form.',
+      );
+      return;
+    }
+
+    inFlight = true;
+    setSubmitting(true);
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
+
+    try {
+      const payload = Object.fromEntries([...data.entries()].filter(([k]) => k !== 'website'));
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+
+      if (response.status === 429) {
+        setStatus('error', 'Too many requests', 'Please wait a minute and send the form again. Your entries are still here.');
+        return;
+      }
+
+      if (response.status === 422) {
+        const body = await response.json().catch(() => ({}));
+        if (body && typeof body === 'object' && body.errors) showErrors(body.errors);
+        else setStatus('error', 'Please check your details', 'Some information could not be accepted. Review the form and try again.');
+        return;
+      }
+
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const body = await response.json().catch(() => ({}));
+      const reference = body && typeof body.reference === 'string' ? ` Your reference is ${body.reference}.` : '';
+      form.hidden = true;
+      setStatus(
+        'success',
+        'Thank you. We have received your request.',
+        `A member of the Hitech team will contact you to discuss the role.${reference}`,
+      );
+    } catch {
+      setStatus(
+        'error',
+        'Your request was not sent',
+        'Something went wrong on our side or the connection dropped. Your entries are still in the form; please try again.',
+      );
+    } finally {
+      window.clearTimeout(timeout);
+      inFlight = false;
+      setSubmitting(false);
+    }
+  });
+</script>
+
+<style>
+  .request__grid {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .request__title {
+    max-width: 14ch;
+  }
+
+  .request__lead {
+    margin-top: var(--space-5);
+    max-width: 32rem;
+  }
+
+  .request__next-title {
+    margin-top: var(--space-12);
+    font-size: 1.0625rem;
+    font-weight: var(--fw-semibold);
+  }
+
+  .request__next {
+    margin-top: var(--space-4);
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .request__next li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-ink-muted);
+    max-width: 32rem;
+  }
+
+  .request__next-num {
+    display: inline-grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 1px solid var(--color-navy);
+    border-radius: var(--radius-control);
+    color: var(--color-navy);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .request__seeker {
+    margin-top: var(--space-8);
+    color: var(--color-ink-muted);
+    font-size: var(--fs-small);
+  }
+
+  .request__seeker a {
+    font-weight: var(--fw-semibold);
+  }
+
+  .request__panel {
+    padding: clamp(1.25rem, 0.5rem + 3vw, 2.5rem);
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-media);
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  fieldset + fieldset {
+    margin-top: var(--space-10);
+  }
+
+  legend {
+    padding: 0;
+    margin-bottom: var(--space-5);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-semibold);
+  }
+
+  .field + .field,
+  .field-row + .field,
+  .field + .field-row {
+    margin-top: var(--space-5);
+  }
+
+  .field-row {
+    display: grid;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .field-row > .field {
+    margin-top: 0;
+  }
+
+  label {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+  }
+
+  .field__optional {
+    font-weight: var(--fw-regular);
+    color: var(--color-ink-muted);
+  }
+
+  .field__hint {
+    margin: calc(var(--space-1) * -1) 0 var(--space-2);
+    font-size: var(--fs-label);
+    color: var(--color-ink-muted);
+  }
+
+  input,
+  select,
+  textarea {
+    display: block;
+    width: 100%;
+    min-height: 3rem;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-control);
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-size: 1rem;
+    line-height: 1.4;
+    transition: border-color var(--dur-fast) var(--ease-out);
+  }
+
+  select {
+    appearance: none;
+    padding-right: var(--space-10);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2314212d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  input:hover,
+  select:hover,
+  textarea:hover {
+    border-color: var(--color-ink-muted);
+  }
+
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 1px;
+    border-color: var(--color-focus);
+  }
+
+  input[aria-invalid='true'] {
+    border-color: var(--color-error);
+  }
+
+  .field__error {
+    margin-top: var(--space-2);
+    color: var(--color-error);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-medium);
+  }
+
+  .field--trap {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-errors {
+    margin-bottom: var(--space-8);
+    padding: var(--space-5);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radius-control);
+    background: var(--color-page);
+  }
+
+  .form-errors h2 {
+    font-size: 1rem;
+    font-weight: var(--fw-semibold);
+    color: var(--color-error);
+  }
+
+  .form-errors :global(ul) {
+    margin-top: var(--space-2);
+    font-size: var(--fs-small);
+  }
+
+  .form-errors :global(a) {
+    color: var(--color-ink);
+  }
+
+  :global(.form-status) {
+    margin-bottom: var(--space-8);
+    padding: var(--space-5);
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-control);
+    background: var(--color-page);
+  }
+
+  :global(.form-status h2) {
+    font-size: 1.0625rem;
+    font-weight: var(--fw-semibold);
+  }
+
+  :global(.form-status p) {
+    margin-top: var(--space-2);
+    color: var(--color-ink-muted);
+  }
+
+  :global(.form-status--error) {
+    border-color: var(--color-error);
+  }
+
+  :global(.form-status--error h2) {
+    color: var(--color-error);
+  }
+
+  :global(.form-status--success) {
+    border-color: var(--color-success);
+  }
+
+  :global(.form-status--success h2) {
+    color: var(--color-success);
+  }
+
+  .lead-form__footer {
+    display: grid;
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .lead-form__submit {
+    justify-self: start;
+    min-height: 3.375rem;
+    padding: 0 var(--space-8);
+    border: 0;
+    border-radius: var(--radius-control);
+    background: var(--color-action);
+    color: #fff;
+    font-size: 1.0625rem;
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    transition: background-color var(--dur-fast) var(--ease-out);
+  }
+
+  .lead-form__submit:hover {
+    background: var(--color-action-hover);
+  }
+
+  .lead-form__submit:disabled {
+    cursor: progress;
+    opacity: 0.7;
+  }
+
+  @media (min-width: 40rem) {
+    .field-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .request__grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .request__intro {
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-10));
+    }
+  }
+</style>

@@ -1,0 +1,140 @@
+---
+import { Picture } from 'astro:assets';
+import Button from '../ui/Button.astro';
+import { process } from '../../content/home';
+import { site } from '../../content/site';
+import conversation from '../../assets/images/process-conversation.jpg';
+
+interface Props {
+  paper?: boolean;
+}
+const { paper = true } = Astro.props;
+---
+
+<section id="process" class:list={['section process', paper && 'section--paper']} aria-labelledby="process-title">
+  <div class="container process__grid">
+    <figure class="process__photo">
+      <Picture
+        src={conversation}
+        formats={['avif', 'webp']}
+        widths={[400, 640, 900, 1200]}
+        sizes="(min-width: 64rem) 42vw, 100vw"
+        alt="Two colleagues reviewing information together on a laptop."
+      />
+    </figure>
+
+    <div class="process__copy">
+      <h2 id="process-title" class="t-h2">{process.title}</h2>
+      <ol class="process__steps">
+        {
+          process.steps.map((step, index) => (
+            <li class="step" id={`step-${index + 1}`}>
+              <span class="step__number" aria-hidden="true">
+                {index + 1}
+              </span>
+              <div>
+                <h3 class="t-h3">{step.title}</h3>
+                <p class="step__body">{step.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <Button href={site.requestTalentHref} size="lg" class="process__cta">{process.ctaLabel}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process__grid {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .process__photo {
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-media);
+    aspect-ratio: 4 / 3;
+    background: var(--color-line);
+  }
+
+  .process__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+
+  .process__steps {
+    margin-top: var(--space-10);
+    padding: 0;
+    list-style: none;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: var(--space-5);
+    position: relative;
+    padding-bottom: var(--space-8);
+  }
+
+  .step:last-child {
+    padding-bottom: 0;
+  }
+
+  /* Connector rule between step numbers: the sequence carries meaning. */
+  .step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: calc(1.25rem - 0.5px);
+    top: 2.75rem;
+    bottom: 0.25rem;
+    width: 1px;
+    background: var(--color-line-strong);
+  }
+
+  .step__number {
+    display: inline-grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--color-navy);
+    border-radius: var(--radius-control);
+    background: var(--color-page);
+    color: var(--color-navy);
+    font-weight: var(--fw-semibold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .step .t-h3 {
+    padding-top: 0.45rem;
+  }
+
+  .step__body {
+    margin-top: var(--space-2);
+    color: var(--color-ink-muted);
+    max-width: 34rem;
+  }
+
+  .process__copy :global(.process__cta) {
+    margin-top: var(--space-10);
+  }
+
+  @media (min-width: 64rem) {
+    .process__grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+
+    .process__photo {
+      aspect-ratio: 1 / 1;
+    }
+
+    .process__photo :global(img) {
+      object-position: 30% 40%;
+    }
+  }
+</style>

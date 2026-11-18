@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/page/PageHero.astro';
+import Closing from '../../components/home/Closing.astro';
+import Pending from '../../components/ui/Pending.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { pages, specialties } from '../../content/home';
+import { site } from '../../content/site';
+import { roleHref, specialtyHref } from '../../content/navigation';
+---
+
+<BaseLayout title={pages.specialties.title} description={pages.specialties.lead}>
+  <PageHero
+    title={pages.specialties.title}
+    lead={pages.specialties.lead}
+    breadcrumbs={[{ label: 'Home', href: '/' }]}
+    primary={{ label: specialties.ctaLabel, href: site.requestTalentHref }}
+  >
+    <Pending tone="dark" label={specialties.pending} />
+  </PageHero>
+
+  <section class="section" aria-label="Specialty areas">
+    <div class="container">
+      <ul role="list" class="areas">
+        {
+          specialties.groups.map((group) => (
+            <li class="area">
+              <div class="area__main">
+                <h2 class="t-h3">
+                  <a href={specialtyHref(group.title)}>{group.title}</a>
+                </h2>
+                <p class="t-muted area__body">{group.body}</p>
+              </div>
+              <div class="area__roles">
+                <p class="area__roles-label">Example roles</p>
+                <ul role="list">
+                  {group.roles.map((role) => (
+                    <li>
+                      <a href={roleHref(group.title, role)}>{role}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a class="arrow-link area__link" href={specialtyHref(group.title)}>
+                <span>
+                  Details<span class="visually-hidden"> about {group.title}</span>
+                </span>
+                <Icon name="arrow-right" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <Closing
+    title="Hiring for a role not listed here?"
+    body="Tell us about it. If it falls outside our specialties we will say so plainly."
+    cta={{ label: 'Request talent', href: site.requestTalentHref }}
+    showCandidate={false}
+  />
+</BaseLayout>
+
+<style>
+  .areas {
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .area {
+    display: grid;
+    gap: var(--space-5);
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .area h2 a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .area h2 a:hover {
+    color: var(--color-action);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .area__body {
+    margin-top: var(--space-2);
+    max-width: 30rem;
+  }
+
+  .area__roles-label {
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+  }
+
+  .area__roles ul {
+    margin-top: var(--space-2);
+    font-size: var(--fs-small);
+  }
+
+  .area__roles li + li {
+    margin-top: var(--space-1);
+  }
+
+  .area__roles a {
+    color: var(--color-ink);
+    text-decoration-color: var(--color-line-strong);
+  }
+
+  .area__roles a:hover {
+    color: var(--color-action);
+    text-decoration-color: currentColor;
+  }
+
+  @media (min-width: 64rem) {
+    .area {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
+      gap: var(--space-12);
+      align-items: start;
+      padding: var(--space-10) 0;
+    }
+
+    .area__link {
+      justify-self: end;
+    }
+  }
+</style>

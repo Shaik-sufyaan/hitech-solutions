@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/page/PageHero.astro';
+import Process from '../components/home/Process.astro';
+import Overview from '../components/home/Overview.astro';
+import Faq from '../components/home/Faq.astro';
+import Closing from '../components/home/Closing.astro';
+import { pages, process } from '../content/home';
+import { site } from '../content/site';
+---
+
+<BaseLayout title={pages.howWeWork.title} description={pages.howWeWork.lead}>
+  <PageHero
+    title={pages.howWeWork.title}
+    lead={pages.howWeWork.lead}
+    breadcrumbs={[{ label: 'Home', href: '/' }]}
+    primary={{ label: process.ctaLabel, href: site.requestTalentHref }}
+  />
+  <Process paper={false} />
+  <Overview paper showLink={false} />
+  <Faq title="Questions about the process" only={[2, 3, 4]} paper={false} />
+  <Closing showCandidate={false} />
+</BaseLayout>

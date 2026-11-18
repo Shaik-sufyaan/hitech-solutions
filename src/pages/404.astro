@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import { site } from '../content/site';
+---
+
+<BaseLayout title="Page not found">
+  <section class="section">
+    <div class="container notfound">
+      <h1 class="t-display">We can’t find that page.</h1>
+      <p class="t-lead t-muted">The link may be out of date, or the page may have moved.</p>
+      <div class="notfound__actions">
+        <Button href="/" size="lg">Go to the homepage</Button>
+        <a href={site.requestTalentHref}>Request IT talent</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    display: grid;
+    gap: var(--space-5);
+    justify-items: start;
+    min-height: 50vh;
+    align-content: center;
+  }
+
+  .notfound__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-6);
+    margin-top: var(--space-4);
+  }
+
+  .notfound__actions a:not(.btn) {
+    font-weight: var(--fw-semibold);
+  }
+</style>

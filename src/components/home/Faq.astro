@@ -1,0 +1,154 @@
+---
+import Icon from '../ui/Icon.astro';
+import { faqs } from '../../content/home';
+import { site } from '../../content/site';
+import { routes } from '../../content/navigation';
+
+interface Props {
+  /** Section heading; pass null when the page H1 already names the list. */
+  title?: string | null;
+  /** Indexes into faqs.items to show a subset. */
+  only?: number[];
+  /** Link to the full FAQ page (off on the FAQ page itself). */
+  showAllLink?: boolean;
+  paper?: boolean;
+}
+
+const { title = faqs.title, only, showAllLink = true, paper = true } = Astro.props;
+
+// Questions that describe the careers route only appear once that route exists.
+const items = faqs.items
+  .filter((_, i) => !only || only.includes(i))
+  .filter((item) => !('requiresCareers' in item) || Boolean(site.careersUrl));
+---
+
+<section
+  id="faq"
+  class:list={['section faq', paper && 'section--paper', !title && 'faq--solo']}
+  aria-labelledby={title ? 'faq-title' : undefined}
+  aria-label={title ? undefined : faqs.title}
+>
+  <div class="container faq__grid">
+    {
+      title && (
+        <div class="faq__head">
+          <h2 id="faq-title" class="t-h2">{title}</h2>
+          {showAllLink && (
+            <a class="arrow-link faq__all" href={routes.faq}>
+              All questions
+              <Icon name="arrow-right" />
+            </a>
+          )}
+        </div>
+      )
+    }
+
+    <div class="faq__list">
+      {
+        items.map((item) => (
+          <details class="faq__item">
+            <summary>
+              <span class="faq__q">{item.q}</span>
+              <span class="faq__icon" aria-hidden="true">
+                <Icon name="plus" size={20} class="faq__plus" />
+                <Icon name="minus" size={20} class="faq__minus" />
+              </span>
+            </summary>
+            <div class="faq__a">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__grid {
+    display: grid;
+    gap: var(--space-10);
+  }
+
+  .faq__list {
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .faq--solo .faq__list {
+    max-width: 52rem;
+  }
+
+  .faq__all {
+    margin-top: var(--space-6);
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .faq__item summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: var(--space-6) 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.0625rem;
+    font-weight: var(--fw-semibold);
+    line-height: 1.45;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item summary:hover {
+    color: var(--color-action);
+  }
+
+  .faq__item summary:focus-visible {
+    outline-offset: 2px;
+  }
+
+  .faq__icon {
+    flex-shrink: 0;
+    display: inline-grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    margin-top: -0.2rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-control);
+    color: var(--color-action);
+    background: var(--color-page);
+  }
+
+  .faq__icon :global(.faq__minus),
+  .faq__item[open] .faq__icon :global(.faq__plus) {
+    display: none;
+  }
+
+  .faq__item[open] .faq__icon :global(.faq__minus) {
+    display: block;
+  }
+
+  .faq__a {
+    padding: 0 var(--space-12) var(--space-6) 0;
+    color: var(--color-ink-muted);
+    max-width: 44rem;
+  }
+
+  @media (min-width: 64rem) {
+    .faq--solo .faq__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .faq__grid {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+  }
+</style>

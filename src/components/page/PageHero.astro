@@ -1,0 +1,129 @@
+---
+/**
+ * Interior page header: navy band, breadcrumb trail, H1, lead and actions.
+ * Shorter and left-aligned so it reads as a section of the site, not a second homepage.
+ */
+import Button from '../ui/Button.astro';
+import type { NavLink } from '../../content/navigation';
+
+interface Props {
+  title: string;
+  lead?: string;
+  breadcrumbs?: NavLink[];
+  primary?: NavLink;
+  secondary?: NavLink;
+}
+
+const { title, lead, breadcrumbs = [], primary, secondary } = Astro.props;
+---
+
+<section class="page-hero on-navy" aria-labelledby="page-title">
+  <div class="container page-hero__inner">
+    {
+      breadcrumbs.length > 0 && (
+        <nav aria-label="Breadcrumb" class="page-hero__crumbs">
+          <ol role="list">
+            {breadcrumbs.map((crumb) => (
+              <li>
+                <a href={crumb.href}>{crumb.label}</a>
+              </li>
+            ))}
+            <li>
+              <span aria-current="page">{title}</span>
+            </li>
+          </ol>
+        </nav>
+      )
+    }
+    <h1 id="page-title" class="t-display page-hero__title">{title}</h1>
+    {lead && <p class="page-hero__lead">{lead}</p>}
+    {
+      (primary || secondary) && (
+        <div class="page-hero__actions">
+          {primary && (
+            <Button href={primary.href} variant="inverse" size="lg">
+              {primary.label}
+            </Button>
+          )}
+          {secondary && <a href={secondary.href}>{secondary.label}</a>}
+        </div>
+      )
+    }
+    <slot />
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    background: var(--color-navy);
+    color: var(--color-on-navy);
+  }
+
+  .page-hero__inner {
+    padding-top: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+    padding-bottom: clamp(3rem, 2rem + 4vw, 5.5rem);
+  }
+
+  .page-hero__crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-2);
+    font-size: var(--fs-label);
+    color: var(--color-on-navy-muted);
+  }
+
+  .page-hero__crumbs li + li::before {
+    content: '/';
+    margin-right: var(--space-2);
+    color: rgb(255 255 255 / 0.4);
+  }
+
+  .page-hero__crumbs a {
+    color: var(--color-on-navy-muted);
+    text-decoration-color: rgb(255 255 255 / 0.35);
+  }
+
+  .page-hero__crumbs a:hover {
+    color: var(--color-on-navy);
+  }
+
+  .page-hero__crumbs [aria-current] {
+    color: var(--color-on-navy);
+  }
+
+  .page-hero__title {
+    max-width: 18ch;
+    margin-top: var(--space-6);
+    color: var(--color-on-navy);
+  }
+
+  .page-hero__lead {
+    max-width: 42rem;
+    margin-top: var(--space-5);
+    color: var(--color-on-navy-muted);
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+  }
+
+  .page-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-5) var(--space-8);
+    margin-top: var(--space-8);
+  }
+
+  .page-hero__actions > a:not(.btn) {
+    color: var(--color-on-navy);
+    font-weight: var(--fw-semibold);
+    text-decoration-color: rgb(255 255 255 / 0.5);
+  }
+
+  .page-hero__actions > a:not(.btn):hover {
+    color: var(--color-on-navy-link);
+  }
+
+  .page-hero :global(.pending) {
+    margin-top: var(--space-8);
+  }
+</style>

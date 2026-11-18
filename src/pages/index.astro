@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Credentials from '../components/home/Credentials.astro';
+import Overview from '../components/home/Overview.astro';
+import Specialties from '../components/home/Specialties.astro';
+import Engagement from '../components/home/Engagement.astro';
+import Process from '../components/home/Process.astro';
+import JobSeekers from '../components/home/JobSeekers.astro';
+import Faq from '../components/home/Faq.astro';
+import Closing from '../components/home/Closing.astro';
+
+/*
+ * Held until real evidence exists (see PRODUCT.md): industries served,
+ * office/coverage search, client outcomes, client trust logos, insights articles.
+ * Partner programs (Credentials) are shown with a Pending marker until confirmed.
+ */
+---
+
+<BaseLayout title="IT Staffing Services" headerOverHero>
+  <Hero />
+  <Credentials />
+  <Overview />
+  <Specialties />
+  <Engagement />
+  <Process />
+  <JobSeekers />
+  <Faq />
+  <Closing />
+</BaseLayout>

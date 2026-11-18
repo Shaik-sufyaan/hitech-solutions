@@ -1,0 +1,116 @@
+---
+import Icon from '../ui/Icon.astro';
+import Pending from '../ui/Pending.astro';
+import { engagement } from '../../content/home';
+import { inSentence, modelHref } from '../../content/navigation';
+---
+
+<section class="section engagement" aria-labelledby="engagement-title">
+  <div class="container">
+    <div class="engagement__head">
+      <h2 id="engagement-title" class="t-h2">{engagement.title}</h2>
+      <p class="t-lead t-muted">{engagement.intro}</p>
+      <div><Pending label={engagement.pending} /></div>
+    </div>
+
+    <ul role="list" class="engagement__models">
+      {
+        engagement.models.map((model) => (
+          <li class="model">
+            <h3 class="t-h3">{model.title}</h3>
+            <p class="model__body">{model.body}</p>
+            <p class="model__fit">
+              <span class="model__fit-label">Suited to</span>
+              {model.bestFor}
+            </p>
+            <a class="arrow-link model__link" href={modelHref(model.title)}>
+              About {inSentence(model.title)}
+              <Icon name="arrow-right" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .engagement__head {
+    display: grid;
+    gap: var(--space-5);
+    max-width: 44rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .engagement__models {
+    display: grid;
+    margin-top: var(--space-12);
+  }
+
+  .model {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .model:last-child {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .model__body {
+    margin-top: var(--space-3);
+    color: var(--color-ink-muted);
+    max-width: 36rem;
+  }
+
+  .model__fit {
+    margin-top: var(--space-5);
+    font-size: var(--fs-small);
+  }
+
+  .model__fit-label {
+    display: block;
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+  }
+
+  .model__link {
+    margin-top: var(--space-6);
+  }
+
+  @media (min-width: 64rem) {
+    .engagement__models {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--color-line-strong);
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .model {
+      padding: var(--space-10) var(--space-10);
+      border-top: 0;
+    }
+
+    .model:last-child {
+      border-bottom: 0;
+    }
+
+    .model:first-child {
+      padding-left: 0;
+    }
+
+    .model:last-child {
+      padding-right: 0;
+    }
+
+    .model + .model {
+      border-left: 1px solid var(--color-line);
+    }
+
+    .model__link {
+      margin-top: auto;
+      padding-top: var(--space-6);
+    }
+  }
+</style>

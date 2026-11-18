@@ -1,0 +1,122 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/page/PageHero.astro';
+import LinkIndex from '../components/page/LinkIndex.astro';
+import Pending from '../components/ui/Pending.astro';
+import Button from '../components/ui/Button.astro';
+import { pages, specialties, jobSeekers } from '../content/home';
+import { site } from '../content/site';
+import { routes } from '../content/navigation';
+import laptop from '../assets/images/candidates-laptop.jpg';
+---
+
+<BaseLayout title={pages.jobSeekers.title} description={pages.jobSeekers.lead}>
+  <PageHero
+    title={pages.jobSeekers.title}
+    lead={pages.jobSeekers.lead}
+    breadcrumbs={[{ label: 'Home', href: '/' }]}
+    primary={site.careersUrl ? { label: jobSeekers.ctaLabel, href: site.careersUrl } : undefined}
+  >
+    {
+      !site.careersUrl && (
+        <Pending
+          tone="dark"
+          label="Careers or job-board link. The Explore opportunities button and how-to-apply details appear here once it is supplied."
+        />
+      )
+    }
+  </PageHero>
+
+  <section class="section seekers" aria-labelledby="seekers-title">
+    <div class="container seekers__grid">
+      <div>
+        <h2 id="seekers-title" class="t-h2">Find your next technology role.</h2>
+        <div class="prose seekers__body">
+          <p>
+            Hitech Solutions recruits for employers who need technology professionals, across the areas listed below.
+          </p>
+        </div>
+        {
+          site.careersUrl && (
+            <Button href={site.careersUrl} variant="outline" size="lg" class="seekers__cta">
+              {jobSeekers.ctaLabel}
+            </Button>
+          )
+        }
+        <p class="seekers__employer">
+          Hiring instead? <a href={routes.hireTalent}>Hire IT talent</a>
+        </p>
+      </div>
+      <figure class="seekers__photo">
+        <Picture
+          src={laptop}
+          formats={['avif', 'webp']}
+          widths={[400, 640, 900, 1200]}
+          sizes="(min-width: 64rem) 40vw, 100vw"
+          alt="A technology professional working on a laptop at a desk."
+        />
+      </figure>
+    </div>
+  </section>
+
+  <LinkIndex
+    id="areas"
+    paper
+    title="Areas we recruit for"
+    intro="If your experience is in one of these areas, our recruiters may have roles that suit you."
+    items={specialties.groups.map((g) => ({
+      title: g.title,
+      body: g.roles.join(', '),
+    }))}
+  />
+</BaseLayout>
+
+<style>
+  .seekers__grid {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .seekers__body {
+    margin-top: var(--space-6);
+    color: var(--color-ink-muted);
+  }
+
+  .seekers :global(.seekers__cta) {
+    margin-top: var(--space-8);
+  }
+
+  .seekers__employer {
+    margin-top: var(--space-8);
+    color: var(--color-ink-muted);
+    font-size: var(--fs-small);
+  }
+
+  .seekers__employer a {
+    font-weight: var(--fw-semibold);
+  }
+
+  .seekers__photo {
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-media);
+    aspect-ratio: 4 / 3;
+    background: var(--color-paper);
+  }
+
+  .seekers__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 55% 40%;
+  }
+
+  @media (min-width: 64rem) {
+    .seekers__grid {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+  }
+</style>

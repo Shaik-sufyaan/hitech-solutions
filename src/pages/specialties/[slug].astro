@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/page/PageHero.astro';
+import LinkIndex from '../../components/page/LinkIndex.astro';
+import Closing from '../../components/home/Closing.astro';
+import Pending from '../../components/ui/Pending.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { engagement, specialties } from '../../content/home';
+import { site } from '../../content/site';
+import { inSentence, modelHref, roleHref, routes, slugify, specialtyHref } from '../../content/navigation';
+import { roleDetails } from '../../content/roles';
+
+export function getStaticPaths() {
+  return specialties.groups.map((group) => ({
+    params: { slug: slugify(group.title) },
+    props: { group },
+  }));
+}
+
+const { group } = Astro.props;
+const requestHref = `${site.requestTalentHref}?role=${encodeURIComponent(group.title)}`;
+const others = specialties.groups.filter((g) => g.title !== group.title);
+---
+
+<BaseLayout title={group.title} description={group.body}>
+  <PageHero
+    title={group.title}
+    lead={group.body}
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Specialties', href: routes.specialties },
+    ]}
+    primary={{ label: 'Discuss a role', href: requestHref }}
+  >
+    <Pending tone="dark" label={specialties.pending} />
+  </PageHero>
+
+  <section class="section specialty-detail" aria-label={`${group.title} roles and hiring options`}>
+    <div class="container specialty-detail__grid">
+      <div>
+        <h2 class="t-h2">Example roles</h2>
+        <p class="t-muted specialty-detail__intro">See what each role involves and the skills to include in your brief.</p>
+        <ul role="list" class="specialty-detail__roles">
+          {
+            group.roles.map((role) => (
+              <li>
+                <a href={roleHref(group.title, role)}>
+                  <span class="specialty-detail__role">
+                    <span>{role}</span>
+                    <span class="specialty-detail__role-summary">{roleDetails[role]?.summary}</span>
+                  </span>
+                  <Icon name="arrow-right" size={18} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="t-h2">Ways to hire</h2>
+        <p class="t-muted specialty-detail__intro">The arrangement depends on the work and how long you need the skills.</p>
+        <ul role="list" class="specialty-detail__models">
+          {
+            engagement.models.map((model) => (
+              <li>
+                <a href={modelHref(model.title)}>{model.title}</a>
+                <p class="t-muted">{model.bestFor}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <LinkIndex
+    id="other-specialties"
+    paper
+    title="Other specialties"
+    items={others.map((g) => ({ title: g.title, body: g.body, href: specialtyHref(g.title) }))}
+  />
+
+  <Closing
+    title={`Hiring for ${inSentence(group.title)}?`}
+    body="Tell us the role and the skills that matter. We will confirm the brief with you before the search begins."
+    cta={{ label: 'Discuss a role', href: requestHref }}
+    showCandidate={false}
+  />
+</BaseLayout>
+
+<style>
+  .specialty-detail__grid {
+    display: grid;
+    gap: var(--space-16);
+  }
+
+  .specialty-detail__intro {
+    margin-top: var(--space-4);
+  }
+
+  .specialty-detail__roles,
+  .specialty-detail__models {
+    margin-top: var(--space-8);
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .specialty-detail__roles li,
+  .specialty-detail__models li {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .specialty-detail__roles a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-5) 0;
+    color: var(--color-ink);
+    font-size: 1.125rem;
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+  }
+
+  .specialty-detail__roles a :global(svg) {
+    color: var(--color-action);
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+
+  .specialty-detail__roles a:hover {
+    color: var(--color-action);
+  }
+
+  .specialty-detail__role {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .specialty-detail__role-summary {
+    color: var(--color-ink-muted);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-regular);
+    line-height: 1.5;
+  }
+
+  .specialty-detail__roles a:hover :global(svg) {
+    transform: translateX(3px);
+  }
+
+  .specialty-detail__models li {
+    padding: var(--space-5) 0;
+  }
+
+  .specialty-detail__models a {
+    font-size: 1.125rem;
+    font-weight: var(--fw-semibold);
+  }
+
+  .specialty-detail__models p {
+    margin-top: var(--space-1);
+  }
+
+  @media (min-width: 64rem) {
+    .specialty-detail__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(3rem, 6vw, 6rem);
+    }
+  }
+</style>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/page/PageHero.astro';
+import Faq from '../components/home/Faq.astro';
+import Closing from '../components/home/Closing.astro';
+import { pages } from '../content/home';
+---
+
+<BaseLayout title={pages.faq.title} description={pages.faq.lead}>
+  <PageHero title={pages.faq.title} lead={pages.faq.lead} breadcrumbs={[{ label: 'Home', href: '/' }]} />
+  <Faq title={null} paper={false} />
+  <Closing />
+</BaseLayout>

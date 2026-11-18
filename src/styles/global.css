@@ -1,0 +1,221 @@
+@import './tokens.css';
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
+  scrollbar-color: var(--color-line-strong) var(--color-paper);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  caret-color: var(--color-action);
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+/* Astro <Picture> wraps images; let the wrapper fill its frame. */
+figure > picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  font-weight: var(--fw-regular);
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+::selection {
+  background: var(--color-action-tint);
+  color: var(--color-ink);
+}
+
+/* Links */
+a {
+  color: var(--color-action);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--dur-fast) var(--ease-out), text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-action-hover);
+}
+
+/* Focus: always visible for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-control);
+}
+
+.on-navy :focus-visible {
+  outline-color: var(--color-focus-on-navy);
+}
+
+/* Layout primitives */
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.section--paper {
+  background: var(--color-paper);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Shared type roles */
+.t-display {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.t-h2 {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-heading);
+}
+
+.t-h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+.t-lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+}
+
+.t-muted {
+  color: var(--color-ink-muted);
+}
+
+.prose > * + * {
+  margin-top: var(--space-5);
+}
+
+.prose {
+  max-width: 38rem;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+  outline-color: var(--color-focus-on-navy);
+}
+
+/* Text link with arrow */
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+}
+
+.arrow-link svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.arrow-link:hover {
+  text-decoration: underline;
+}
+
+.arrow-link:hover svg {
+  transform: translateX(3px);
+}

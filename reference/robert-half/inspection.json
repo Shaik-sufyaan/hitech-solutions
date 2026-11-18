@@ -1,0 +1,1048 @@
+{
+  "title": "IT Recruiters & Tech Staffing | Robert Half",
+  "height": 10262,
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "heading-01",
+      "y": 142,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-02",
+      "y": 802,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-03",
+      "y": 1654,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-04",
+      "y": 1983,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-05",
+      "y": 1983,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-06",
+      "y": 1983,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-07",
+      "y": 1983,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-08",
+      "y": 1983,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-09",
+      "y": 1983,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-10",
+      "y": 1983,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-11",
+      "y": 2713,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-12",
+      "y": 3258,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-13",
+      "y": 3638,
+      "parent": "col-12 col-md-6 col-lg-4 row-child hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-14",
+      "y": 3638,
+      "parent": "col-12 col-md-6 col-lg-4 row-child hydrated"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-15",
+      "y": 3638,
+      "parent": "col-12 col-md-6 col-lg-4 row-child hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-16",
+      "y": 3946,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-17",
+      "y": 4132,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-18",
+      "y": 4266,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-19",
+      "y": 4400,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-20",
+      "y": 4818,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-21",
+      "y": 5540,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-22",
+      "y": 6555,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-23",
+      "y": 6963,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-24",
+      "y": 7758,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-25",
+      "y": 8407,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-26",
+      "y": 9035,
+      "parent": "hydrated"
+    },
+    {
+      "tag": "H2",
+      "text": "heading-27",
+      "y": 0,
+      "parent": "ot-pc-scrollbar"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-28",
+      "y": 0,
+      "parent": "ot-sdk-row ot-cat-grp"
+    },
+    {
+      "tag": "H3",
+      "text": "heading-29",
+      "y": 0,
+      "parent": ""
+    }
+  ],
+  "images": [
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq1-nav-findjobs?$Squircle1-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 307,
+      "height": 307,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq1-nav-hiretalent?$Squircle1-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 307,
+      "height": 307,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq1-nav-exploreconsultingsolutions?$Squircle1-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 307,
+      "height": 307,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq1-nav-discoverinsights?$Squircle1-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 307,
+      "height": 307,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq2-2617787477-pg25?$Squircle2-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 480,
+      "height": 480,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq1-as234092554?$Squircle1-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 307,
+      "height": 307,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq3-2551283963?$Squircle3-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 672,
+      "height": 672,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/rt1-as1302266380-pg25?$Rectangle1-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 840,
+      "height": 600,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq3-as911096347?$Squircle3-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 672,
+      "height": 672,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/var1-2461184801-1?$Variable1-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 720,
+      "height": 681,
+      "visible": true,
+      "rect": {
+        "x": 732,
+        "y": 4817.9375,
+        "width": 628,
+        "height": 593.96875
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/rt2-2207118957-Tech?$Rectangle2-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 570,
+      "height": 342,
+      "visible": true,
+      "rect": {
+        "x": 151,
+        "y": 7077.71875,
+        "width": 400,
+        "height": 240
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/rt2-2783636539?$Rectangle2-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 570,
+      "height": 342,
+      "visible": true,
+      "rect": {
+        "x": 575,
+        "y": 7077.71875,
+        "width": 400,
+        "height": 240
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/rt2-2557731869?$Rectangle2-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 570,
+      "height": 342,
+      "visible": true,
+      "rect": {
+        "x": 999,
+        "y": 7077.71875,
+        "width": 400,
+        "height": 240
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/rt2-1694859376?$Rectangle2-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 570,
+      "height": 342,
+      "visible": true,
+      "rect": {
+        "x": 1423,
+        "y": 7077.71875,
+        "width": 400,
+        "height": 240
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/dfst26-blog-images-tech-0126-us-en?$Variable1-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 720,
+      "height": 289,
+      "visible": true,
+      "rect": {
+        "x": 1847,
+        "y": 7077.71875,
+        "width": 400,
+        "height": 240
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/sq2-as717679604?$Squircle2-Large-1x$&fmt=webp-alpha",
+      "alt": "",
+      "width": 480,
+      "height": 480,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://cdn.cookielaw.org/logos/84d54614-589b-4dad-9735-b7274fe31d97/0194cc6f-50f9-7933-a5db-561f5de65aa2/31097c3b-9a40-43f8-8331-2951c4a611a9/Robert_Half_logo.png",
+      "alt": "Company Logo",
+      "width": 140,
+      "height": 20,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://cdn.cookielaw.org/logos/static/powered_by_logo.svg",
+      "alt": "Powered by Onetrust",
+      "width": 568,
+      "height": 53,
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/roberthalfintl/rt2-as159912333?%24Rectangle2-Large-1x%24=&fmt=webp-alpha",
+      "width": 570,
+      "height": 342
+    }
+  ],
+  "videos": [
+    {
+      "tag": "IFRAME",
+      "src": "https://messaging.us-1.poly.ai/app/index.html",
+      "poster": null
+    },
+    {
+      "tag": "IFRAME",
+      "src": "",
+      "poster": null
+    },
+    {
+      "tag": "IFRAME",
+      "src": "",
+      "poster": null
+    }
+  ],
+  "typography": [
+    {
+      "tag": "A",
+      "font": "\"Times New Roman\"",
+      "size": "16px",
+      "weight": "100",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H1",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Medium\", OpenSansMedium, \"Open Sans Medium\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "18px",
+      "weight": "100",
+      "color": "rgb(3, 57, 65)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "18px",
+      "weight": "100",
+      "color": "rgb(197, 233, 235)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "22px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Medium\", OpenSansMedium, \"Open Sans Medium\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "18px",
+      "weight": "100",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "22px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Medium\", OpenSansMedium, \"Open Sans Medium\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "16px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Medium\", OpenSansMedium, \"Open Sans Medium\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "16px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "H3",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Medium\", OpenSansMedium, \"Open Sans Medium\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "16px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Medium\", OpenSansMedium, \"Open Sans Medium\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "18px",
+      "weight": "100",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "34px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "34px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "34px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "18px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans SemiBold\", OpenSansSemiBold, \"Open Sans SemiBold\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "22px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "H2",
+      "font": "\"Noto Sans Display Light\", \"Noto Sans Light\", OpenSansLight, \"Open Sans Light\", \"Noto Sans\", NotoSansJP-Light, NotoSansSC-Light, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "color": "rgb(21, 26, 30)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Medium\", OpenSansMedium, \"Open Sans Medium\", \"Noto Sans\", NotoSansJP-Medium, NotoSansSC-Medium, sans-serif",
+      "size": "18px",
+      "weight": "100",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "18px",
+      "weight": "100",
+      "color": "rgb(11, 110, 118)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "12px",
+      "weight": "100",
+      "color": "rgb(197, 233, 235)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "12px",
+      "weight": "100",
+      "color": "rgb(197, 233, 235)"
+    },
+    {
+      "tag": "A",
+      "font": "\"Noto Sans Regular\", OpenSansRegular, \"Open Sans Regular\", \"Noto Sans\", NotoSansJP-Regular, NotoSansSC-Regular, sans-serif",
+      "size": "12px",
+      "weight": "100",
+      "color": "rgb(197, 233, 235)"
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Arial",
+      "size": "13.3333px",
+      "weight": "400",
+      "color": "rgb(0, 0, 0)"
+    }
+  ],
+  "sections": [],
+  "backgrounds": [
+    {
+      "tag": "DIV",
+      "background": "url(\"https://cdn.cookielaw.org/logos/static/ot_persistent_cookie_icon.png\")",
+      "rect": {
+        "x": 14.390625,
+        "y": 940,
+        "width": 50,
+        "height": 50
+      }
+    }
+  ]
+}

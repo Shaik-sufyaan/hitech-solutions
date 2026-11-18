@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/page/PageHero.astro';
+import LinkIndex from '../../components/page/LinkIndex.astro';
+import Overview from '../../components/home/Overview.astro';
+import Engagement from '../../components/home/Engagement.astro';
+import Closing from '../../components/home/Closing.astro';
+import { pages, specialties } from '../../content/home';
+import { site } from '../../content/site';
+import { routes, specialtyHref } from '../../content/navigation';
+---
+
+<BaseLayout title={pages.hireTalent.title} description={pages.hireTalent.lead}>
+  <PageHero
+    title={pages.hireTalent.title}
+    lead={pages.hireTalent.lead}
+    breadcrumbs={[{ label: 'Home', href: '/' }]}
+    primary={{ label: 'Request talent', href: site.requestTalentHref }}
+    secondary={{ label: 'How we work', href: routes.howWeWork }}
+  />
+  <Overview />
+  <Engagement />
+  <LinkIndex
+    id="specialties"
+    paper
+    title="Specialties we recruit for"
+    items={specialties.groups.map((g) => ({ title: g.title, body: g.body, href: specialtyHref(g.title) }))}
+  />
+  <Closing showCandidate={false} />
+</BaseLayout>

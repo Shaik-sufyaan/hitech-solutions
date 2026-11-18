@@ -1,0 +1,107 @@
+---
+import Wordmark from './Wordmark.astro';
+import { site, candidateHref } from '../../content/site';
+import { routes } from '../../content/navigation';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer on-navy">
+  <div class="container site-footer__top">
+    <div class="site-footer__brand">
+      <Wordmark tone="light" />
+      <p>IT staffing for employers and technology professionals.</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <ul role="list" class="site-footer__cols">
+        <li>
+          <h2 class="site-footer__heading">Employers</h2>
+          <ul role="list">
+            <li><a href={routes.hireTalent}>Hire talent</a></li>
+            <li><a href={routes.specialties}>Specialties</a></li>
+            <li><a href={routes.howWeWork}>How we work</a></li>
+            <li><a href={site.requestTalentHref}>Request talent</a></li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="site-footer__heading">Job seekers</h2>
+          <ul role="list">
+            <li><a href={routes.jobSeekers}>Job seekers</a></li>
+            {site.careersUrl && <li><a href={candidateHref}>Explore opportunities</a></li>}
+            <li><a href={routes.faq}>FAQ</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="site-footer__legal">
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <!-- TODO(business): add Privacy notice and Terms once the documents exist. -->
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+    background: var(--color-navy);
+    color: var(--color-on-navy-muted);
+    font-size: var(--fs-small);
+  }
+
+  .site-footer__top {
+    display: grid;
+    gap: var(--space-12);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-12);
+  }
+
+  .site-footer__brand p {
+    margin-top: var(--space-4);
+    max-width: 22rem;
+  }
+
+  .site-footer__cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: var(--space-8);
+  }
+
+  .site-footer__heading {
+    margin-bottom: var(--space-4);
+    color: var(--color-on-navy);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.01em;
+  }
+
+  .site-footer__cols ul li + li {
+    margin-top: var(--space-3);
+  }
+
+  .site-footer a {
+    color: var(--color-on-navy-muted);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    color: var(--color-on-navy);
+    text-decoration: underline;
+  }
+
+  .site-footer__legal {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-8);
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+    font-size: var(--fs-label);
+  }
+
+  @media (min-width: 64rem) {
+    .site-footer__top {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+  }
+</style>

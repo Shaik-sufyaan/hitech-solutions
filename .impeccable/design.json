@@ -1,0 +1,537 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T21:12:22+00:00",
+  "title": "Design System: Hitech Solutions",
+  "extensions": {
+    "provisional": {
+      "palette": true,
+      "wordmark": true,
+      "swapPoints": [
+        "src/styles/tokens.css",
+        "src/components/site/Wordmark.astro"
+      ],
+      "note": "No brand kit exists; replace values in these two files only."
+    },
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#14212d",
+        "oklch": "oklch(24.2% 0.029 247)",
+        "tonalRamp": [
+          "#090c0e",
+          "#20262c",
+          "#3a434c",
+          "#566370",
+          "#768492",
+          "#9ba7b1",
+          "#c2cad2",
+          "#eaeff4"
+        ],
+        "provisional": true
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#4b5966",
+        "oklch": "oklch(45.7% 0.028 246)",
+        "tonalRamp": [
+          "#090c0e",
+          "#20262b",
+          "#3a434c",
+          "#56636f",
+          "#778491",
+          "#9ca6b1",
+          "#c2cad1",
+          "#ebeff3"
+        ],
+        "provisional": true
+      },
+      "navy": {
+        "role": "neutral",
+        "displayName": "Ink Navy Field",
+        "canonical": "#13212e",
+        "oklch": "oklch(24.2% 0.032 247)",
+        "tonalRamp": [
+          "#080c0f",
+          "#1f262c",
+          "#39434d",
+          "#556371",
+          "#758493",
+          "#9ba7b2",
+          "#c2cad3",
+          "#eaeff4"
+        ],
+        "provisional": true
+      },
+      "navy-raised": {
+        "role": "neutral",
+        "displayName": "Raised Navy",
+        "canonical": "#1c2e3e",
+        "oklch": "oklch(29.3% 0.038 246)",
+        "tonalRamp": [
+          "#080c0f",
+          "#1e262e",
+          "#37444f",
+          "#526374",
+          "#728596",
+          "#98a7b5",
+          "#c0cbd5",
+          "#e9eff5"
+        ],
+        "provisional": true
+      },
+      "on-navy": {
+        "role": "neutral",
+        "displayName": "On-Navy White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "provisional": true
+      },
+      "on-navy-muted": {
+        "role": "neutral",
+        "displayName": "On-Navy Muted",
+        "canonical": "#c3ceda",
+        "oklch": "oklch(84.7% 0.021 250)",
+        "tonalRamp": [
+          "#090b0d",
+          "#22252a",
+          "#3c4349",
+          "#5a626c",
+          "#7a838d",
+          "#9fa6ae",
+          "#c4cacf",
+          "#eceff2"
+        ],
+        "provisional": true
+      },
+      "on-navy-link": {
+        "role": "neutral",
+        "displayName": "On-Navy Link Hover",
+        "canonical": "#b8cdf5",
+        "oklch": "oklch(84.6% 0.061 263)",
+        "tonalRamp": [
+          "#080b12",
+          "#1e2533",
+          "#364259",
+          "#516181",
+          "#7183a4",
+          "#98a5c0",
+          "#bfcadd",
+          "#e9effa"
+        ],
+        "provisional": true
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "White Page",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "provisional": true
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "#f3f5f7",
+        "oklch": "oklch(96.9% 0.003 248)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#242527",
+          "#414244",
+          "#606163",
+          "#818284",
+          "#a3a5a7",
+          "#c7c9cb",
+          "#edeff1"
+        ],
+        "provisional": true
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Slate Rule",
+        "canonical": "#d8dee4",
+        "oklch": "oklch(89.8% 0.010 248)",
+        "tonalRamp": [
+          "#080c0f",
+          "#21262a",
+          "#3e4347",
+          "#5d6267",
+          "#7e8388",
+          "#a0a6ab",
+          "#c4cad0",
+          "#e9eff5"
+        ],
+        "provisional": true
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Slate Rule",
+        "canonical": "#b9c3cd",
+        "oklch": "oklch(81.2% 0.018 248)",
+        "tonalRamp": [
+          "#060c12",
+          "#1e262d",
+          "#3b434b",
+          "#59626b",
+          "#7a848d",
+          "#9da6b0",
+          "#c0cad5",
+          "#e5f0fa"
+        ],
+        "provisional": true
+      },
+      "action": {
+        "role": "primary",
+        "displayName": "Corporate Action Blue",
+        "canonical": "#1f4fa8",
+        "oklch": "oklch(44.9% 0.153 261)",
+        "tonalRamp": [
+          "#030a1c",
+          "#0f2348",
+          "#203f79",
+          "#325eae",
+          "#5280d4",
+          "#80a5e7",
+          "#afcafa",
+          "#dfefff"
+        ],
+        "provisional": true
+      },
+      "action-hover": {
+        "role": "primary",
+        "displayName": "Pressed Action Blue",
+        "canonical": "#173d84",
+        "oklch": "oklch(37.8% 0.127 261)",
+        "tonalRamp": [
+          "#040b1a",
+          "#142442",
+          "#274170",
+          "#3b5fa1",
+          "#5b82c6",
+          "#86a6dc",
+          "#b3caf2",
+          "#e2efff"
+        ],
+        "provisional": true
+      },
+      "action-tint": {
+        "role": "primary",
+        "displayName": "Action Tint",
+        "canonical": "#e8eef9",
+        "oklch": "oklch(94.8% 0.016 263)",
+        "tonalRamp": [
+          "#080b12",
+          "#21252d",
+          "#3d424b",
+          "#5c616b",
+          "#7d838c",
+          "#a0a5b0",
+          "#c4c9d4",
+          "#e9effa"
+        ],
+        "provisional": true
+      },
+      "focus": {
+        "role": "primary",
+        "displayName": "Focus Ring",
+        "canonical": "#1f4fa8",
+        "oklch": "oklch(44.9% 0.153 261)",
+        "tonalRamp": [
+          "#030a1c",
+          "#0f2348",
+          "#203f79",
+          "#325eae",
+          "#5280d4",
+          "#80a5e7",
+          "#afcafa",
+          "#dfefff"
+        ],
+        "provisional": true
+      },
+      "error": {
+        "role": "semantic",
+        "displayName": "Error Red",
+        "canonical": "#b42318",
+        "oklch": "oklch(50.0% 0.182 30)",
+        "tonalRamp": [
+          "#1c0301",
+          "#470d08",
+          "#771d14",
+          "#aa2e22",
+          "#d25344",
+          "#e98576",
+          "#fdb4a8",
+          "#ffe3db"
+        ],
+        "provisional": true
+      },
+      "success": {
+        "role": "semantic",
+        "displayName": "Confirmation Green",
+        "canonical": "#17663a",
+        "oklch": "oklch(45.2% 0.103 154)",
+        "tonalRamp": [
+          "#030f06",
+          "#0e2c1a",
+          "#1f4d30",
+          "#307048",
+          "#539368",
+          "#82b391",
+          "#b1d3bb",
+          "#e1f4e6"
+        ],
+        "provisional": true
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statement only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every section heading."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Specialty, model, step and legend titles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero support copy and section introductions."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; prose capped at 38rem."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Candidate lines, role lists, footer."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "In-context sentence-case labels, footer headings, Pending tag."
+      }
+    },
+    "shadows": [
+      {
+        "name": "menu",
+        "value": "0 12px 28px -8px rgb(19 33 46 / 0.22), 0 2px 6px rgb(19 33 46 / 0.08)",
+        "purpose": "Mobile menu drawer only; the system is otherwise flat."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "All functional state transitions."
+      },
+      {
+        "name": "dur-fast",
+        "value": "150ms",
+        "purpose": "Color, border and arrow-nudge hover feedback; 0ms under reduced motion."
+      },
+      {
+        "name": "dur-base",
+        "value": "220ms",
+        "purpose": "Nav underline draw; 0ms under reduced motion."
+      }
+    ],
+    "focus": [
+      {
+        "name": "focus-ring",
+        "value": "2px solid #1f4fa8, offset 3px, 2px corner",
+        "purpose": "Every interactive element on light surfaces."
+      },
+      {
+        "name": "focus-ring-on-navy",
+        "value": "2px solid #ffffff",
+        "purpose": "Inside .on-navy regions (hero, closing, footer)."
+      }
+    ],
+    "layout": {
+      "container": "80rem",
+      "headerHeight": "4.75rem (4rem below 48rem)",
+      "splitGap": "clamp(3rem, 6vw, 6rem)"
+    },
+    "breakpoints": [
+      {
+        "name": "header-cta",
+        "value": "30rem"
+      },
+      {
+        "name": "form-rows",
+        "value": "40rem"
+      },
+      {
+        "name": "tablet",
+        "value": "48rem"
+      },
+      {
+        "name": "desktop",
+        "value": "64rem"
+      },
+      {
+        "name": "hero-framed",
+        "value": "75rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default action on light surfaces; color-only hover.",
+      "html": "<a href=\"#\" class=\"ds-btn ds-btn-primary\">Request talent</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:3rem;padding:0 1.5rem;border:1px solid transparent;border-radius:var(--radius-control,2px);font-family:var(--font-sans);font-size:1rem;font-weight:600;line-height:1.2;letter-spacing:0.005em;text-decoration:none;white-space:nowrap;transition:background-color 150ms cubic-bezier(0.22,1,0.36,1),border-color 150ms cubic-bezier(0.22,1,0.36,1),color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-btn:focus-visible{outline:2px solid var(--color-focus);outline-offset:3px;}.ds-btn-primary{background:var(--color-action,#1f4fa8);color:#fff;}.ds-btn-primary:hover{background:var(--color-action-hover,#173d84);}"
+    },
+    {
+      "name": "Inverse Button",
+      "kind": "button",
+      "refersTo": "button-inverse",
+      "description": "The only button on the navy field.",
+      "html": "<div style=\"background:#13212e;padding:24px\"><a href=\"#\" class=\"ds-btn-inverse\">Find IT talent</a></div>",
+      "css": ".ds-btn-inverse{display:inline-flex;align-items:center;min-height:3rem;padding:0 1.5rem;border-radius:var(--radius-control,2px);background:#fff;color:var(--color-navy,#13212e);font-family:var(--font-sans);font-weight:600;text-decoration:none;transition:background-color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-btn-inverse:hover{background:var(--color-action-tint,#e8eef9);}.ds-btn-inverse:focus-visible{outline:2px solid #fff;outline-offset:3px;}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Quiet bordered action on light surfaces.",
+      "html": "<a href=\"#\" class=\"ds-btn-outline\">Contact us</a>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;min-height:3rem;padding:0 1.5rem;border:1px solid var(--color-line-strong,#b9c3cd);border-radius:var(--radius-control,2px);background:transparent;color:var(--color-ink,#14212d);font-family:var(--font-sans);font-weight:600;text-decoration:none;transition:border-color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-btn-outline:hover{border-color:var(--color-ink,#14212d);}.ds-btn-outline:focus-visible{outline:2px solid var(--color-focus);outline-offset:3px;}"
+    },
+    {
+      "name": "Arrow Link",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Default secondary action: semibold blue text, arrow nudges on hover.",
+      "html": "<a href=\"#\" class=\"ds-arrow-link\">See how the process works <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-arrow-link{display:inline-flex;align-items:center;gap:8px;color:var(--color-action,#1f4fa8);font-family:var(--font-sans);font-weight:600;text-decoration:none;text-underline-offset:0.2em;}.ds-arrow-link svg{transition:transform 150ms cubic-bezier(0.22,1,0.36,1);}.ds-arrow-link:hover{color:var(--color-action-hover,#173d84);text-decoration:underline;}.ds-arrow-link:hover svg{transform:translateX(3px);}.ds-arrow-link:focus-visible{outline:2px solid var(--color-focus);outline-offset:3px;}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Request-form field with label and hint.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-label\" for=\"ds-i\">Work email</label><input id=\"ds-i\" class=\"ds-input\" type=\"email\" placeholder=\"name@company.com\"></div>",
+      "css": ".ds-field{font-family:var(--font-sans);color:var(--color-ink,#14212d);max-width:24rem;}.ds-label{display:block;margin-bottom:8px;font-size:0.9375rem;font-weight:600;}.ds-input{display:block;width:100%;min-height:3rem;padding:12px 16px;border:1px solid var(--color-line-strong,#b9c3cd);border-radius:var(--radius-control,2px);background:var(--color-page,#fff);color:inherit;font:inherit;font-size:1rem;line-height:1.4;transition:border-color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-input:hover{border-color:var(--color-ink-muted,#4b5966);}.ds-input:focus-visible{outline:2px solid var(--color-focus,#1f4fa8);outline-offset:1px;border-color:var(--color-focus,#1f4fa8);}.ds-input[aria-invalid=true]{border-color:var(--color-error,#b42318);}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "White sticky bar; hover draws a 2px blue underline at the header edge.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-wordmark\"><b>Hitech</b><i></i>Solutions</span><a href=\"#\">Hire talent</a><a href=\"#\">Specialties</a><a href=\"#\">How we work</a><a href=\"#\">FAQ</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:4px;height:76px;padding:0 24px;background:var(--color-page,#fff);border-bottom:1px solid var(--color-line,#d8dee4);font-family:var(--font-sans);}.ds-wordmark{display:inline-flex;align-items:center;gap:0.55rem;margin-right:24px;font-size:1.3125rem;color:var(--color-navy,#13212e);}.ds-wordmark b{font-weight:700;letter-spacing:-0.02em;}.ds-wordmark i{width:1px;height:1.05em;background:currentColor;opacity:0.35;}.ds-nav a{position:relative;display:inline-flex;align-items:center;height:76px;padding:0 12px;color:var(--color-ink,#14212d);font-size:0.9688rem;font-weight:500;text-decoration:none;}.ds-nav a::after{content:'';position:absolute;left:12px;right:12px;bottom:-1px;height:2px;background:var(--color-action,#1f4fa8);transform:scaleX(0);transform-origin:left;transition:transform 220ms cubic-bezier(0.22,1,0.36,1);}.ds-nav a:hover{color:var(--color-action,#1f4fa8);}.ds-nav a:hover::after{transform:scaleX(1);}.ds-nav a:focus-visible{outline:2px solid var(--color-focus,#1f4fa8);outline-offset:-6px;}"
+    },
+    {
+      "name": "Numbered Steps",
+      "kind": "custom",
+      "refersTo": "step-number",
+      "description": "Navy-outlined square numerals joined by a 1px vertical rule.",
+      "html": "<ol class=\"ds-steps\"><li><span class=\"ds-num\">1</span><div><strong>Define the need</strong><p>Tell us the role and timeline.</p></div></li><li><span class=\"ds-num\">2</span><div><strong>Review a shortlist</strong><p>Candidates matched to the brief.</p></div></li></ol>",
+      "css": ".ds-steps{list-style:none;padding:0;margin:0;font-family:var(--font-sans);color:var(--color-ink,#14212d);}.ds-steps li{position:relative;display:grid;grid-template-columns:2.5rem 1fr;gap:20px;padding-bottom:32px;}.ds-steps li:last-child{padding-bottom:0;}.ds-steps li:not(:last-child)::before{content:'';position:absolute;left:calc(1.25rem - 0.5px);top:2.75rem;bottom:0.25rem;width:1px;background:var(--color-line-strong,#b9c3cd);}.ds-num{display:inline-grid;place-items:center;width:2.5rem;height:2.5rem;border:1px solid var(--color-navy,#13212e);border-radius:var(--radius-control,2px);color:var(--color-navy,#13212e);font-weight:600;font-variant-numeric:tabular-nums;}.ds-steps strong{display:block;padding-top:0.45rem;font-size:1.25rem;font-weight:600;}.ds-steps p{margin:8px 0 0;color:var(--color-ink-muted,#4b5966);}"
+    },
+    {
+      "name": "FAQ Disclosure",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Rule-divided details rows with a square plus/minus box.",
+      "html": "<details class=\"ds-faq\"><summary>How does the process start?<span class=\"ds-faq-icon\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg></span></summary><p>Tell us about the role and we agree a brief.</p></details>",
+      "css": ".ds-faq{border-top:1px solid var(--color-line-strong,#b9c3cd);border-bottom:1px solid var(--color-line,#d8dee4);font-family:var(--font-sans);color:var(--color-ink,#14212d);}.ds-faq summary{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:24px 0;cursor:pointer;list-style:none;font-size:1.0625rem;font-weight:600;line-height:1.45;transition:color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-faq summary::-webkit-details-marker{display:none;}.ds-faq summary:hover{color:var(--color-action,#1f4fa8);}.ds-faq summary:focus-visible{outline:2px solid var(--color-focus,#1f4fa8);outline-offset:2px;}.ds-faq-icon{display:inline-grid;place-items:center;flex-shrink:0;width:2rem;height:2rem;border:1px solid var(--color-line-strong,#b9c3cd);border-radius:var(--radius-control,2px);color:var(--color-action,#1f4fa8);}.ds-faq p{margin:0;padding:0 48px 24px 0;color:var(--color-ink-muted,#4b5966);}"
+    },
+    {
+      "name": "Pending Marker",
+      "kind": "custom",
+      "refersTo": "pending",
+      "description": "Visible marker for missing business input; zero instances required at launch.",
+      "html": "<p class=\"ds-pending\"><span class=\"ds-pending-tag\">Pending</span><span>Careers or job-board link.</span></p>",
+      "css": ".ds-pending{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin:0;padding:8px 12px;border:1px dashed var(--color-line-strong,#b9c3cd);border-radius:var(--radius-control,2px);font-family:var(--font-sans);font-size:0.875rem;line-height:1.4;color:var(--color-ink-muted,#4b5966);}.ds-pending-tag{font-weight:600;color:var(--color-ink,#14212d);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Established Ledger",
+    "overview": "An established staffing firm earns trust through order. The system is a corporate ledger set in light type: an ink-navy field opens and closes every page, white and cool-paper bands carry the reading in between, and content is organised by thin slate rules rather than boxes. Density is moderate and even; every section is a simple split or stacked list with generous, consistent spacing and precise left alignment. Nothing moves unless the visitor asks it to.\n\nThe world was pinned by the user: restrained, corporate, reference-structured (the structure of a large staffing site, never its branding). Its binding rejections are part of the system: no decorative motion, gradients, glassmorphism, glows, blobs, particles, parallax or carousels; no bubbly radii; no card grid as the default container. Motion exists only for hover, focus, the mobile menu and disclosure, and collapses to zero under reduced motion.\n\n**The palette and the wordmark are PROVISIONAL.** No brand kit exists. The only swap points are `src/styles/tokens.css` (every color, type and shape value) and `src/components/site/Wordmark.astro` (the typographic \"Hitech | Solutions\" mark, to be replaced by the supplied vector logo). Components reference tokens only, so a brand kit lands in those two files.",
+    "keyCharacteristics": [
+      "Navy field top and bottom (hero, closing, footer); white and paper bands between.",
+      "Light (300) display and section headlines against semibold (600) labels and titles: one family, contrast by weight.",
+      "Hairline 1px rules divide lists, columns and FAQ items; containers are rare.",
+      "Square shoulders: 2px on controls, 4px on photographs, nothing rounder.",
+      "One action blue for buttons, links and focus; it is the only saturated color.",
+      "Rectangular, naturally lit, licensed photography; never masked, never presented as Hitech staff."
+    ],
+    "rules": [
+      {
+        "name": "The One Blue Rule",
+        "body": "Corporate Action Blue is the only saturated hue on any screen and it always means \"you can act here\". It never fills a section, a panel or a decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Navy Bookends Rule",
+        "body": "The navy field appears only as the opening hero and the closing band plus footer. Middle sections alternate white and Cool Paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light-Over-Semibold Rule",
+        "body": "Headings above 24px are light (300); anything that labels or names is semibold (600). Bold (700) belongs to the provisional wordmark only.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence-Case Rule",
+        "body": "No uppercase tracking labels and no eyebrow line above headlines. Labels sit inside the content they name.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rule-Not-Box Rule",
+        "body": "Group content with a strong 1px top rule and 1px dividers between items. A card or panel is the exception, reserved for the form.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Page Rule",
+        "body": "Surfaces never lift on hover and never cast shadows at rest. If something must separate, use a rule or a band.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** change palette and wordmark only in `src/styles/tokens.css` and `src/components/site/Wordmark.astro`; both are provisional until a brand kit arrives.",
+      "**Do** keep Corporate Action Blue as the only saturated color, used for actions, links and focus.",
+      "**Do** separate content with 1px Slate Rule dividers and a Strong Slate Rule top rule.",
+      "**Do** set section headings light (300) and labels semibold (600), in sentence case.",
+      "**Do** keep corners at 2px for controls and 4px for photographs and the form panel.",
+      "**Do** use rectangular, licensed, naturally lit photographs with provenance recorded in `src/assets/images/CREDITS.md` and embedded in the file.",
+      "**Do** limit motion to hover, focus, menu and disclosure, with durations driven by tokens that drop to 0ms under reduced motion.",
+      "**Do** show missing business input with the Pending marker rather than inventing content."
+    ],
+    "donts": [
+      "**Don't** add decorative motion, animated counters, parallax, scroll hijacking, autoplay carousels or hero video.",
+      "**Don't** use decorative gradients, glassmorphism, neon glows, floating circles, blobs or particles.",
+      "**Don't** round containers beyond 4px or mask photographs into shapes.",
+      "**Don't** make a card grid the default container for a section.",
+      "**Don't** lift, scale or shadow elements on hover.",
+      "**Don't** add uppercase eyebrow or kicker labels above headings.",
+      "**Don't** present generic stock people as Hitech staff or clients, or invent metrics, logos, certifications or testimonials."
+    ]
+  }
+}

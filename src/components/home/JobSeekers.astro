@@ -1,0 +1,89 @@
+---
+import { Picture } from 'astro:assets';
+import Button from '../ui/Button.astro';
+import Pending from '../ui/Pending.astro';
+import { jobSeekers } from '../../content/home';
+import { site } from '../../content/site';
+import Icon from '../ui/Icon.astro';
+import { routes } from '../../content/navigation';
+import laptop from '../../assets/images/candidates-laptop.jpg';
+---
+
+<section id="job-seekers" class="section job-seekers" aria-labelledby="job-seekers-title">
+  <div class="container job-seekers__grid">
+    <div class="job-seekers__copy">
+      <h2 id="job-seekers-title" class="t-h2">{jobSeekers.title}</h2>
+      <div class="prose job-seekers__body">
+        {jobSeekers.body.map((p) => <p>{p}</p>)}
+      </div>
+      <a class="arrow-link job-seekers__more" href={routes.jobSeekers}>
+        More for job seekers
+        <Icon name="arrow-right" />
+      </a>
+      <div class="job-seekers__action">
+        {
+          site.careersUrl ? (
+            <Button href={site.careersUrl} variant="outline" size="lg">
+              {jobSeekers.ctaLabel}
+            </Button>
+          ) : (
+            <Pending label="Careers or job-board link. The Explore opportunities button appears here once it is supplied." />
+          )
+        }
+      </div>
+    </div>
+
+    <figure class="job-seekers__photo">
+      <Picture
+        src={laptop}
+        formats={['avif', 'webp']}
+        widths={[400, 640, 900, 1200]}
+        sizes="(min-width: 64rem) 40vw, 100vw"
+        alt="A technology professional working on a laptop at a desk."
+      />
+    </figure>
+  </div>
+</section>
+
+<style>
+  .job-seekers__grid {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .job-seekers__body {
+    margin-top: var(--space-6);
+    color: var(--color-ink-muted);
+  }
+
+  .job-seekers__more {
+    margin-top: var(--space-6);
+  }
+
+  .job-seekers__action {
+    margin-top: var(--space-8);
+  }
+
+  .job-seekers__photo {
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-media);
+    aspect-ratio: 4 / 3;
+    background: var(--color-paper);
+  }
+
+  .job-seekers__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 55% 40%;
+  }
+
+  @media (min-width: 64rem) {
+    .job-seekers__grid {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+  }
+</style>

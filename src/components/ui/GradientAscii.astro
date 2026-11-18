@@ -1,0 +1,53 @@
+---
+/*
+ * Animated ASCII-over-gradient background (port of React Bits <GradientASCII />).
+ * Fills its positioned parent. Props match the React component; see
+ * src/scripts/gradient-ascii.ts for defaults. Purely decorative: aria-hidden,
+ * honours prefers-reduced-motion, and renders nothing without WebGL2.
+ */
+import type { GradientAsciiOptions } from '../../scripts/gradient-ascii';
+
+interface Props extends GradientAsciiOptions {
+  class?: string;
+}
+
+const { class: className, ...options } = Astro.props;
+---
+
+<div
+  class:list={['gradient-ascii-container', className]}
+  data-gradient-ascii={JSON.stringify(options)}
+  aria-hidden="true"
+>
+</div>
+
+<script>
+  import { mountGradientAscii, type GradientAsciiOptions } from '../../scripts/gradient-ascii';
+
+  document.querySelectorAll<HTMLElement>('[data-gradient-ascii]').forEach((container) => {
+    let options: GradientAsciiOptions = {};
+    try {
+      options = JSON.parse(container.dataset.gradientAscii || '{}');
+    } catch {
+      /* fall back to defaults */
+    }
+    mountGradientAscii(container, options);
+  });
+</script>
+
+<style>
+  .gradient-ascii-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .gradient-ascii-container :global(.gradient-ascii-canvas) {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import Button from '../ui/Button.astro';
+import { closing } from '../../content/home';
+import { site, candidateHref } from '../../content/site';
+
+interface Props {
+  title?: string;
+  body?: string;
+  cta?: { label: string; href: string };
+  showCandidate?: boolean;
+}
+
+const {
+  title = closing.title,
+  body = closing.body,
+  cta = { label: closing.primaryCta, href: site.requestTalentHref },
+  showCandidate = true,
+} = Astro.props;
+---
+
+<section id="contact" class="section closing on-navy" aria-labelledby="closing-title">
+  <div class="container closing__inner">
+    <h2 id="closing-title" class="t-h2">{title}</h2>
+    <p class="t-lead closing__body">{body}</p>
+    <Button href={cta.href} variant="inverse" size="lg" class="closing__cta">{cta.label}</Button>
+    {
+      showCandidate && (
+        <p class="closing__candidate">
+          {closing.candidatePrompt}{' '}
+          <a href={candidateHref}>{closing.candidateCta}</a>
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .closing {
+    background: var(--color-navy);
+    color: var(--color-on-navy);
+  }
+
+  .closing__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .closing__inner .t-h2 {
+    max-width: 24ch;
+  }
+
+  .closing__body {
+    color: var(--color-on-navy-muted);
+    max-width: 38rem;
+    margin-top: var(--space-5);
+  }
+
+  .closing__inner :global(.closing__cta) {
+    margin-top: var(--space-8);
+  }
+
+  .closing__candidate {
+    margin-top: var(--space-5);
+    color: var(--color-on-navy-muted);
+    font-size: var(--fs-small);
+  }
+
+  .closing__candidate a {
+    color: var(--color-on-navy);
+    font-weight: var(--fw-semibold);
+    text-decoration-color: rgb(255 255 255 / 0.5);
+  }
+
+  .closing__candidate a:hover {
+    color: var(--color-on-navy-link);
+  }
+</style>

@@ -1,0 +1,93 @@
+/*
+ * Hitech Solutions design tokens.
+ * PROVISIONAL palette and wordmark: no brand kit exists yet. When one arrives,
+ * change values here; components only reference these custom properties.
+ */
+:root {
+  /* Color: ink navy field, white page, cool paper bands, one action blue. */
+  --color-ink: #14212d;          /* body text on light */
+  --color-ink-muted: #4b5966;    /* secondary text on light (7.2:1 on white) */
+  --color-navy: #13212e;         /* hero and footer field */
+  --color-navy-raised: #1c2e3e;  /* panels on navy */
+  --color-on-navy: #ffffff;
+  --color-on-navy-muted: #c3ceda; /* 10:1 on navy */
+  --color-on-navy-link: #b8cdf5;
+  --color-page: #ffffff;
+  --color-paper: #f3f5f7;        /* quiet section bands */
+  --color-menu: #eaf0f6;         /* dropdown menu surface (cool light slate) */
+  --color-menu-line: #cfd8e2;    /* rules inside the menu */
+  --color-line: #d8dee4;         /* 1px rules and borders */
+  --color-line-strong: #b9c3cd;
+  --color-action: #1f4fa8;       /* primary action, links (7.3:1 on white) */
+  --color-action-hover: #173d84;
+  --color-action-tint: #e8eef9;
+  --color-focus: #1f4fa8;
+  --color-focus-on-navy: #ffffff;
+  --color-error: #b42318;
+  --color-success: #17663a;
+
+  /* Type */
+  --font-sans: 'Libre Franklin Variable', 'Libre Franklin', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  --fs-display: clamp(2.375rem, 1.55rem + 2.75vw, 3.75rem);   /* 38 → 60 */
+  --fs-h2: clamp(1.875rem, 1.4rem + 1.55vw, 2.75rem);         /* 30 → 44 */
+  --fs-h3: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);       /* 19 → 22 */
+  --fs-lead: clamp(1.125rem, 1.04rem + 0.3vw, 1.25rem);       /* 18 → 20 */
+  --fs-body: clamp(1rem, 0.96rem + 0.15vw, 1.0625rem);        /* 16 → 17 */
+  --fs-small: 0.9375rem;                                      /* 15 */
+  --fs-label: 0.875rem;                                       /* 14 */
+
+  --lh-display: 1.14;
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+  --tracking-display: -0.022em;
+  --tracking-heading: -0.012em;
+
+  /* Space: 4px base */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-section: clamp(4rem, 2.6rem + 4.6vw, 7rem);       /* 64 → 112 */
+
+  /* Layout */
+  --container: 80rem;            /* 1280 */
+  --gutter: clamp(1.25rem, 0.6rem + 2.8vw, 3rem);           /* 20 → 48 */
+  --header-height: 4.75rem;      /* 76 */
+
+  /* Shape: square-shouldered */
+  --radius-control: 2px;
+  --radius-media: 4px;
+
+  /* Elevation (used sparingly: menus only) */
+  --shadow-menu: 0 12px 28px -8px rgb(19 33 46 / 0.22), 0 2px 6px rgb(19 33 46 / 0.08);
+
+  /* Motion: functional feedback only */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --header-height: 4rem;       /* 64 */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+  }
+}

@@ -1,0 +1,710 @@
+---
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import Wordmark from './Wordmark.astro';
+import { site } from '../../content/site';
+import { primaryNav } from '../../content/navigation';
+
+interface Props {
+  /** Transparent over the home hero at the top of the page; solid navy once scrolled. */
+  overHero?: boolean;
+}
+
+const { overHero = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => href !== '/' && (path === href || path.startsWith(`${href}/`));
+---
+
+<header class:list={['site-header', overHero && 'site-header--over-hero']} data-header>
+  <div class="container site-header__bar">
+    <a href="/" class="site-header__brand" aria-label={`${site.name}, home`}>
+      <Wordmark />
+    </a>
+
+    <nav class="site-header__nav" aria-label="Main" data-mega-nav>
+      <ul role="list" class="site-header__items">
+        {
+          primaryNav.map((item, index) =>
+            item.panel ? (
+              <li class="site-header__item">
+                <button
+                  type="button"
+                  class:list={['site-header__trigger', isCurrent(item.href) && 'is-current']}
+                  aria-expanded="false"
+                  aria-controls={`mega-${index}`}
+                  data-mega-trigger
+                >
+                  <span>{item.label}</span>
+                  <Icon name="chevron-down" size={18} class="site-header__chevron" />
+                  <Icon name="close" size={18} class="site-header__x" />
+                </button>
+
+                <div class="mega" id={`mega-${index}`} data-mega-panel hidden>
+                  <div class="container mega__inner">
+                    <div class="mega__intro">
+                      <p class="mega__title">{item.panel.title}</p>
+                      {item.panel.cta && (
+                        <a class="mega__cta" href={item.panel.cta.href}>
+                          {item.panel.cta.label}
+                          <Icon name="arrow-right" size={18} />
+                        </a>
+                      )}
+                    </div>
+
+                    <div
+                      class:list={['mega__columns', !item.panel.columns.some((c) => c.title) && 'mega__columns--plain']}
+                      style={`--mega-cols: ${Math.min(item.panel.columns.length, 3)}`}
+                    >
+                      {item.panel.columns.map((column) => (
+                        <div class="mega__column">
+                          {column.title &&
+                            (column.href ? (
+                              <a class="mega__heading mega__heading--link" href={column.href}>
+                                {column.title}
+                              </a>
+                            ) : (
+                              <p class="mega__heading">{column.title}</p>
+                            ))}
+                          <ul role="list" class="mega__links">
+                            {column.links.map((link) => (
+                              <li>
+                                <a href={link.href}>{link.label}</a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ) : (
+              <li class="site-header__item">
+                <a
+                  class:list={['site-header__link', isCurrent(item.href) && 'is-current']}
+                  href={item.href}
+                  aria-current={isCurrent(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ),
+          )
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <Button href={site.requestTalentHref} class="site-header__cta">Request talent</Button>
+      <button
+        class="site-header__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+      >
+        <span class="site-header__toggle-open"><Icon name="menu" size={24} /></span>
+        <span class="site-header__toggle-close"><Icon name="close" size={24} /></span>
+        <span class="visually-hidden" data-menu-label>Open menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" data-menu hidden>
+    <nav class="container" aria-label="Main (mobile)">
+      <ul role="list" class="mobile-menu__list">
+        {
+          primaryNav.map((item) =>
+            item.panel ? (
+              <li>
+                <details class="mobile-menu__group">
+                  <summary>
+                    {item.label}
+                    <Icon name="chevron-down" size={20} class="mobile-menu__chevron" />
+                  </summary>
+                  <div class="mobile-menu__panel">
+                    {item.panel.columns.map((column) => (
+                      <div class="mobile-menu__column">
+                        {column.title &&
+                          (column.href ? (
+                            <a class="mobile-menu__heading mobile-menu__heading--link" href={column.href}>
+                              {column.title}
+                            </a>
+                          ) : (
+                            <p class="mobile-menu__heading">{column.title}</p>
+                          ))}
+                        <ul role="list">
+                          {column.links.map((link) => (
+                            <li>
+                              <a href={link.href}>{link.label}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </li>
+            ) : (
+              <li>
+                <a class="mobile-menu__link" href={item.href}>
+                  {item.label}
+                </a>
+              </li>
+            ),
+          )
+        }
+      </ul>
+      <Button href={site.requestTalentHref} size="lg" class="mobile-menu__cta">Request talent</Button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+
+  /* ---------- Desktop menu panels (click to open, one at a time) ---------- */
+  const nav = header?.querySelector<HTMLElement>('[data-mega-nav]');
+  const triggers = [...(nav?.querySelectorAll<HTMLButtonElement>('[data-mega-trigger]') ?? [])];
+
+  const panelFor = (trigger: HTMLButtonElement) =>
+    document.getElementById(trigger.getAttribute('aria-controls') ?? '');
+
+  const setPanel = (trigger: HTMLButtonElement, open: boolean) => {
+    const panel = panelFor(trigger);
+    trigger.setAttribute('aria-expanded', String(open));
+    if (panel) panel.hidden = !open;
+  };
+
+  const openTrigger = () => triggers.find((t) => t.getAttribute('aria-expanded') === 'true');
+
+  const closePanels = (returnFocus = false) => {
+    const current = openTrigger();
+    triggers.forEach((t) => setPanel(t, false));
+    header?.classList.remove('has-panel');
+    if (current && returnFocus) current.focus();
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+      triggers.forEach((t) => setPanel(t, false));
+      setPanel(trigger, willOpen);
+      header?.classList.toggle('has-panel', willOpen);
+    });
+
+    panelFor(trigger)
+      ?.querySelectorAll('a')
+      .forEach((link) => link.addEventListener('click', () => closePanels()));
+  });
+
+  // Close on a click anywhere outside the navigation.
+  document.addEventListener('click', (event) => {
+    if (openTrigger() && nav && !nav.contains(event.target as Node)) closePanels();
+  });
+
+  // Close when keyboard focus leaves the navigation entirely.
+  nav?.addEventListener('focusout', (event) => {
+    const next = event.relatedTarget as Node | null;
+    if (next && !nav.contains(next)) closePanels();
+  });
+
+  /* ---------- Mobile drawer ---------- */
+  const toggle = header?.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = header?.querySelector<HTMLElement>('[data-menu]');
+  const label = header?.querySelector<HTMLElement>('[data-menu-label]');
+
+  const setDrawer = (open: boolean, returnFocus = false) => {
+    if (!header || !toggle || !menu || !label) return;
+    toggle.setAttribute('aria-expanded', String(open));
+    label.textContent = open ? 'Close menu' : 'Open menu';
+    menu.hidden = !open;
+    header.classList.toggle('is-open', open);
+    document.documentElement.classList.toggle('menu-open', open);
+    if (!open && returnFocus) toggle.focus();
+  };
+
+  toggle?.addEventListener('click', () => setDrawer(toggle.getAttribute('aria-expanded') !== 'true'));
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setDrawer(false)));
+
+  /* ---------- Shared ---------- */
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (openTrigger()) closePanels(true);
+    else if (toggle?.getAttribute('aria-expanded') === 'true') setDrawer(false, true);
+  });
+
+  const desktop = window.matchMedia('(min-width: 64rem)');
+  desktop.addEventListener('change', (event) => {
+    if (event.matches) setDrawer(false);
+    else closePanels();
+  });
+
+  /* ---------- Over-hero header: transparent at the very top, solid navy once scrolled ---------- */
+  if (header?.classList.contains('site-header--over-hero')) {
+    let queued = false;
+    const sync = () => {
+      queued = false;
+      header.classList.toggle('is-scrolled', window.scrollY > 4);
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!queued) {
+          queued = true;
+          requestAnimationFrame(sync);
+        }
+      },
+      { passive: true },
+    );
+    sync();
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-page);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .site-header__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    height: var(--header-height);
+  }
+
+  .site-header__brand {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  /* ---------- Desktop navigation ---------- */
+  .site-header__nav {
+    display: none;
+  }
+
+  .site-header__items {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  .site-header__link,
+  .site-header__trigger {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: var(--header-height);
+    padding: 0 var(--space-4);
+    border: 0;
+    background: transparent;
+    color: var(--color-ink);
+    font-size: 1rem;
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      color var(--dur-fast) var(--ease-out),
+      background-color var(--dur-fast) var(--ease-out);
+  }
+
+  /* Plain links keep the underline hover. */
+  .site-header__link::after {
+    content: '';
+    position: absolute;
+    left: var(--space-4);
+    right: var(--space-4);
+    bottom: -1px;
+    height: 2px;
+    background: var(--color-action);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .site-header__link:hover,
+  .site-header__trigger:hover {
+    color: var(--color-action);
+  }
+
+  .site-header__link:hover::after,
+  .site-header__link.is-current::after,
+  .site-header__trigger.is-current::after {
+    transform: scaleX(1);
+  }
+
+  .site-header__trigger::after {
+    content: '';
+    position: absolute;
+    left: var(--space-4);
+    right: var(--space-4);
+    bottom: -1px;
+    height: 2px;
+    background: var(--color-action);
+    transform: scaleX(0);
+  }
+
+  .site-header__trigger[aria-expanded='true']::after {
+    display: none;
+  }
+
+  .site-header__link:focus-visible,
+  .site-header__trigger:focus-visible {
+    outline-offset: -6px;
+  }
+
+  .site-header__trigger :global(.site-header__x) {
+    display: none;
+  }
+
+  /* Open trigger becomes a light tab joined to its panel. */
+  .site-header__trigger[aria-expanded='true'] {
+    margin-bottom: -1px;
+    height: calc(var(--header-height) + 1px);
+    background: var(--color-menu);
+    color: var(--color-ink);
+  }
+
+  .site-header__trigger[aria-expanded='true'] :global(.site-header__chevron) {
+    display: none;
+  }
+
+  .site-header__trigger[aria-expanded='true'] :global(.site-header__x) {
+    display: block;
+  }
+
+  /* ---------- Menu panel: compact, light ---------- */
+  .mega {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100dvh - var(--header-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--color-menu);
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-menu-line);
+    box-shadow: var(--shadow-menu);
+  }
+
+  .mega__inner {
+    display: grid;
+    grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+    gap: var(--space-10);
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-8);
+  }
+
+  .mega__intro {
+    padding-right: var(--space-8);
+    border-right: 1px solid var(--color-menu-line);
+  }
+
+  .mega__title {
+    color: var(--color-navy);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .mega__columns {
+    display: grid;
+    grid-template-columns: repeat(var(--mega-cols), minmax(10rem, 15rem));
+    gap: var(--space-6) var(--space-12);
+  }
+
+  /* Plain lists (no headings) line up with headed columns' first link. */
+  .mega__columns--plain {
+    padding-top: 0.15rem;
+  }
+
+  .mega__heading {
+    margin-bottom: var(--space-2);
+    color: var(--color-ink-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .mega a.mega__heading--link {
+    display: inline-block;
+    color: var(--color-navy);
+  }
+
+  .mega a.mega__heading--link:hover {
+    color: var(--color-action);
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+  }
+
+  .mega__links li + li {
+    margin-top: var(--space-1);
+  }
+
+  .mega a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .mega__links a {
+    display: inline-block;
+    padding: 0.2rem 0;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    text-underline-offset: 0.22em;
+  }
+
+  .mega__links a:hover {
+    color: var(--color-action);
+    text-decoration-line: underline;
+  }
+
+  .mega a.mega__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    color: var(--color-action);
+    font-size: 0.9375rem;
+    font-weight: var(--fw-semibold);
+  }
+
+  .mega__cta :global(svg) {
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+
+  .mega a.mega__cta:hover {
+    color: var(--color-action-hover);
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+  }
+
+  .mega__cta:hover :global(svg) {
+    transform: translateX(3px);
+  }
+
+  /* ---------- Actions and mobile toggle ---------- */
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-left: auto;
+  }
+
+  .site-header__toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-right: calc(var(--space-2) * -1);
+    border: 0;
+    border-radius: var(--radius-control);
+    background: transparent;
+    color: var(--color-navy);
+    cursor: pointer;
+  }
+
+  .site-header__toggle-close,
+  .is-open .site-header__toggle-open {
+    display: none;
+  }
+
+  .is-open .site-header__toggle-close {
+    display: block;
+  }
+
+  /* ---------- Mobile drawer ---------- */
+  .mobile-menu {
+    position: absolute;
+    inset: 100% 0 auto 0;
+    height: calc(100dvh - var(--header-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--color-page);
+    border-bottom: 1px solid var(--color-line);
+    box-shadow: var(--shadow-menu);
+    padding-bottom: var(--space-8);
+  }
+
+  .mobile-menu__link,
+  .mobile-menu__group summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-ink);
+    font-size: 1.125rem;
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu__group summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu__link:hover,
+  .mobile-menu__group summary:hover {
+    color: var(--color-action);
+  }
+
+  .mobile-menu__group[open] summary {
+    border-bottom-color: transparent;
+  }
+
+  .mobile-menu__group[open] :global(.mobile-menu__chevron) {
+    transform: rotate(180deg);
+  }
+
+  .mobile-menu__panel {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-5) var(--space-5) var(--space-6);
+    background: var(--color-menu);
+    color: var(--color-ink);
+  }
+
+  .mobile-menu__heading {
+    margin-bottom: var(--space-2);
+    color: var(--color-ink-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu__panel a.mobile-menu__heading--link {
+    display: inline-block;
+    padding: 0;
+    color: var(--color-navy);
+  }
+
+  .mobile-menu__panel li + li {
+    margin-top: var(--space-1);
+  }
+
+  .mobile-menu__panel a {
+    display: block;
+    padding: var(--space-1) 0;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .mobile-menu__panel a:hover {
+    text-decoration: underline;
+  }
+
+
+  .mobile-menu :global(.mobile-menu__cta) {
+    width: 100%;
+    margin-top: var(--space-6);
+  }
+
+  @media (max-width: 29.99rem) {
+    .site-header :global(.site-header__cta) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .site-header__nav {
+      display: block;
+      margin-left: auto;
+    }
+
+    .site-header__actions {
+      margin-left: var(--space-4);
+    }
+
+    .site-header__toggle,
+    .mobile-menu {
+      display: none;
+    }
+  }
+
+  @media (min-width: 64rem) and (max-width: 74.99rem) {
+    .site-header__bar {
+      gap: var(--space-4);
+    }
+
+    .site-header__link,
+    .site-header__trigger {
+      padding: 0 var(--space-3);
+      font-size: 0.9375rem;
+    }
+  }
+
+  /* ---------- Over-hero variant (home page) ----------
+   * Top of page: transparent over the animated hero, light text with a soft shadow.
+   * Scrolled, or with a menu open: solid navy. Text stays light throughout. */
+  .site-header--over-hero {
+    --color-focus: var(--color-focus-on-navy);
+    background: transparent;
+    border-bottom-color: rgb(255 255 255 / 0.14);
+    transition:
+      background-color var(--dur-base) var(--ease-out),
+      border-color var(--dur-base) var(--ease-out);
+  }
+
+  .site-header--over-hero.is-scrolled,
+  .site-header--over-hero.has-panel,
+  .site-header--over-hero.is-open {
+    background: var(--color-navy);
+    border-bottom-color: rgb(255 255 255 / 0.1);
+  }
+
+  .site-header--over-hero .site-header__brand :global(.wordmark),
+  .site-header--over-hero .site-header__toggle,
+  .site-header--over-hero .site-header__link,
+  .site-header--over-hero .site-header__trigger:not([aria-expanded='true']) {
+    color: var(--color-on-navy);
+  }
+
+  .site-header--over-hero .site-header__link:hover,
+  .site-header--over-hero .site-header__trigger:not([aria-expanded='true']):hover {
+    color: var(--color-on-navy-link);
+  }
+
+  .site-header--over-hero .site-header__link::after,
+  .site-header--over-hero .site-header__trigger::after {
+    background: var(--color-on-navy);
+  }
+
+  /* Lifts the text off the moving glyphs while the bar is transparent. */
+  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) .site-header__brand,
+  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) .site-header__link,
+  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) .site-header__trigger,
+  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) .site-header__toggle {
+    text-shadow: 0 1px 2px rgb(10 18 26 / 0.9), 0 0 12px rgb(10 18 26 / 0.75);
+  }
+
+  .site-header--over-hero:not(.is-scrolled, .has-panel, .is-open) :global(svg) {
+    filter: drop-shadow(0 1px 2px rgb(10 18 26 / 0.9));
+  }
+
+  /* The blue button vanishes on navy; a white outline keeps it secondary to the hero's white CTA. */
+  .site-header--over-hero .site-header__actions :global(.site-header__cta) {
+    background: rgb(19 33 46 / 0.55);
+    border-color: rgb(255 255 255 / 0.75);
+    color: var(--color-on-navy);
+  }
+
+  .site-header--over-hero .site-header__actions :global(.site-header__cta:hover) {
+    background: #fff;
+    border-color: #fff;
+    color: var(--color-navy);
+  }
+</style>

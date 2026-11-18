@@ -1,0 +1,171 @@
+---
+import Icon from '../ui/Icon.astro';
+import Pending from '../ui/Pending.astro';
+import { specialties } from '../../content/home';
+import { site } from '../../content/site';
+import { roleHref, slugify, specialtyHref, routes } from '../../content/navigation';
+---
+
+<section id="specialties" class="section section--paper specialties" aria-labelledby="specialties-title">
+  <div class="container">
+    <div class="specialties__head">
+      <h2 id="specialties-title" class="t-h2">{specialties.title}</h2>
+      <div class="specialties__intro">
+        <p class="t-lead t-muted">{specialties.intro}</p>
+        <Pending label={specialties.pending} />
+      </div>
+    </div>
+
+    <ul role="list" class="specialties__list">
+      {
+        specialties.groups.map((group) => (
+          <li class="specialty" id={`specialty-${slugify(group.title)}`}>
+            <h3 class="t-h3">
+              <a class="specialty__title" href={specialtyHref(group.title)}>{group.title}</a>
+            </h3>
+            <p class="specialty__body">{group.body}</p>
+            <p class="specialty__roles-label">Example roles</p>
+            <ul role="list" class="specialty__roles">
+              {group.roles.map((role) => (
+                <li>
+                  <a href={roleHref(group.title, role)}>{role}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="specialties__links">
+      <a class="arrow-link" href={routes.specialties}>
+        View all specialties
+        <Icon name="arrow-right" />
+      </a>
+      <a class="arrow-link" href={site.requestTalentHref}>
+        {specialties.ctaLabel}
+        <Icon name="arrow-right" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .specialties__head {
+    display: grid;
+    gap: var(--space-5);
+    max-width: 52rem;
+  }
+
+  .specialties__list {
+    display: grid;
+    margin-top: var(--space-12);
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .specialty {
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .specialty__body {
+    margin-top: var(--space-2);
+    color: var(--color-ink-muted);
+    max-width: 30rem;
+  }
+
+  .specialty__roles-label {
+    margin-top: var(--space-5);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+    color: var(--color-ink);
+  }
+
+  .specialty__roles {
+    margin-top: var(--space-2);
+    font-size: var(--fs-small);
+    color: var(--color-ink);
+  }
+
+  .specialty__roles li {
+    position: relative;
+    padding-left: var(--space-4);
+  }
+
+  .specialty__roles a {
+    color: var(--color-ink);
+    text-decoration-color: var(--color-line-strong);
+  }
+
+  .specialty__roles a:hover {
+    color: var(--color-action);
+    text-decoration-color: currentColor;
+  }
+
+  .specialties__intro {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+  }
+
+  .specialty__roles li + li {
+    margin-top: var(--space-1);
+  }
+
+  .specialty__roles li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 6px;
+    height: 1px;
+    background: var(--color-action);
+  }
+
+  .specialties__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-10);
+    margin-top: var(--space-10);
+  }
+
+  .specialty__title {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .specialty__title:hover {
+    color: var(--color-action);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  @media (min-width: 48rem) {
+    .specialties__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--space-10);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .specialties__head {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      max-width: none;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .specialties__intro {
+      padding-top: 0.5rem;
+    }
+
+    .specialties__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--space-12);
+    }
+
+    .specialty {
+      padding: var(--space-10) 0;
+    }
+  }
+</style>
