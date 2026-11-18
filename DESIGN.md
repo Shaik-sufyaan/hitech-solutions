@@ -227,6 +227,10 @@ components:
 
 # Design System: Hitech Solutions
 
+## At-a-glance revision (2026-11-18)
+
+The revised home statistics section supersedes the stat-card and ring-figure guidance below. Use an open desktop heading/figures split, with two navy headline values in Libre Franklin at weight 400 and 52–76px. Present the three percentages as aligned 44–60px figures in one Cool Paper panel with internal dividers; keep percent signs inline at half size. Stack the figures and dividers on mobile. Do not use ring charts, individual card borders or amber card caps here. Keep the provisional-values disclosure visible below the panel, marked by a small amber left rule. Values remain unverified until Hitech confirms them.
+
 ## Overview
 
 **Creative North Star: "The Established Ledger"**
