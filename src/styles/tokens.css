@@ -28,6 +28,7 @@
   --color-steel: #1a3550;        /* home Job seekers band */
   --color-on-dark-muted: #c9d5e1; /* secondary text on navy/steel (≥7:1) */
   --color-amber: #f2a33a;        /* accent marks only: bars, footer headings, links on dark */
+  --color-utility: #13212e;      /* header top bar (search, address, phone): the hero navy */
   --color-amber-hover: #f7bd6b;
   --color-error: #b42318;
   --color-success: #17663a;
@@ -70,7 +71,8 @@
   /* Layout */
   --container: 80rem;            /* 1280 */
   --gutter: clamp(1.25rem, 0.6rem + 2.8vw, 3rem);           /* 20 → 48 */
-  --header-height: 4.75rem;      /* 76 */
+  --header-height: 4.75rem;      /* 76: the navigation row (what stays pinned) */
+  --utility-height: 2.25rem;     /* 36: top bar above it, scrolls away */
   --credentials-height: 5.625rem; /* 90: partner strip under the home hero (incl. its 1px rule) */
 
   /* Shape: square-shouldered */

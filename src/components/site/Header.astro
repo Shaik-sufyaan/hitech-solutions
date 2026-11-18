@@ -2,6 +2,7 @@
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import Wordmark from './Wordmark.astro';
+import UtilityBar from './UtilityBar.astro';
 import { site } from '../../content/site';
 import { primaryNav } from '../../content/navigation';
 
@@ -16,6 +17,7 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
 ---
 
 <header class:list={['site-header', overHero && 'site-header--over-hero']} data-header>
+  <UtilityBar />
   <div class="container site-header__bar">
     <a href="/" class="site-header__brand" aria-label={`${site.name}, home`}>
       <Wordmark />
@@ -191,6 +193,7 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
       triggers.forEach((t) => setPanel(t, false));
       setPanel(trigger, willOpen);
       header?.classList.toggle('has-panel', willOpen);
+      if (willOpen) document.dispatchEvent(new CustomEvent('site-menu:open'));
     });
 
     panelFor(trigger)
@@ -214,10 +217,22 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
   const menu = header?.querySelector<HTMLElement>('[data-menu]');
   const label = header?.querySelector<HTMLElement>('[data-menu-label]');
 
+  // The drawer fills the screen below the header, whose height changes while the top bar is in view.
+  const fitDrawer = () => {
+    if (!header || !menu) return;
+    menu.style.height = `${Math.max(0, window.innerHeight - header.getBoundingClientRect().bottom)}px`;
+  };
+  window.addEventListener('scroll', () => { if (menu && !menu.hidden) fitDrawer(); }, { passive: true });
+  window.addEventListener('resize', () => { if (menu && !menu.hidden) fitDrawer(); });
+
   const setDrawer = (open: boolean, returnFocus = false) => {
     if (!header || !toggle || !menu || !label) return;
     toggle.setAttribute('aria-expanded', String(open));
     label.textContent = open ? 'Close menu' : 'Open menu';
+    if (open) {
+      fitDrawer();
+      document.dispatchEvent(new CustomEvent('site-menu:open'));
+    }
     menu.hidden = !open;
     header.classList.toggle('is-open', open);
     document.documentElement.classList.toggle('menu-open', open);
@@ -228,6 +243,12 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
   menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setDrawer(false)));
 
   /* ---------- Shared ---------- */
+  // Opening site search (top bar) closes the menus.
+  document.addEventListener('site-search:open', () => {
+    closePanels();
+    setDrawer(false);
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     if (openTrigger()) closePanels(true);
@@ -247,7 +268,8 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     --color-ink: #000000;
     --color-navy: #000000;
     position: sticky;
-    top: 0;
+    /* Pins at minus the top bar's height: the bar scrolls away, the navigation row stays. */
+    top: calc(-1 * var(--utility-height));
     z-index: 50;
     background: var(--color-page);
     border-bottom: 1px solid var(--color-line);

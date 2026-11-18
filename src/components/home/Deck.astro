@@ -35,11 +35,15 @@ import Process from './Process.astro';
   const PEEK = 14; // each later sheet pins this much lower, leaving the edge above it visible
   const BOTTOM = 16; // breathing room under a sheet taller than the screen
 
+  // Only the navigation row stays pinned; the header's top bar scrolls away.
+  const pinnedHeaderHeight = () =>
+    (header?.offsetHeight ?? 0) - (header?.querySelector<HTMLElement>('[data-utility]')?.offsetHeight ?? 0);
+
   let queued = false;
 
   // Sheets pin in a staircase; one taller than the screen pins only once its bottom is reached.
   const layout = () => {
-    const headerHeight = header?.offsetHeight ?? 0;
+    const headerHeight = pinnedHeaderHeight();
     panels.forEach((panel, index) => {
       if (!active.matches) {
         panel.style.removeProperty('--deck-top');
@@ -55,7 +59,7 @@ import Process from './Process.astro';
   // Shrink and dim each sheet in proportion to how far the next one has slid over it.
   const paint = () => {
     queued = false;
-    const headerHeight = header?.offsetHeight ?? 0;
+    const headerHeight = pinnedHeaderHeight();
     const travel = Math.max(1, window.innerHeight - headerHeight - GAP);
     panels.forEach((panel, index) => {
       const next = panels[index + 1];

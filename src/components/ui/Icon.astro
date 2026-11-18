@@ -4,7 +4,19 @@
  * Decorative by default (aria-hidden); pass a label to expose it.
  */
 interface Props {
-  name: 'arrow-right' | 'check' | 'menu' | 'close' | 'plus' | 'minus' | 'external' | 'chevron-down' | 'refresh';
+  name:
+    | 'arrow-right'
+    | 'check'
+    | 'menu'
+    | 'close'
+    | 'plus'
+    | 'minus'
+    | 'external'
+    | 'chevron-down'
+    | 'refresh'
+    | 'search'
+    | 'phone'
+    | 'map-pin';
   size?: number;
   label?: string;
   class?: string;
@@ -22,6 +34,10 @@ const paths: Record<Props['name'], string> = {
   'chevron-down': 'M6 9l6 6 6-6',
   refresh: 'M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5',
   external: 'M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4',
+  search: 'M10.5 17.5a7 7 0 1 1 0-14 7 7 0 0 1 0 14ZM20 20l-4.55-4.55',
+  phone:
+    'M5.5 4h3l1.5 4-2 1.25a10.5 10.5 0 0 0 5.25 5.25L14.5 12.5l4 1.5v3a1.5 1.5 0 0 1-1.5 1.5A13.5 13.5 0 0 1 4 5.5 1.5 1.5 0 0 1 5.5 4Z',
+  'map-pin': 'M12 20.5s-6.25-5.4-6.25-10.5a6.25 6.25 0 0 1 12.5 0c0 5.1-6.25 10.5-6.25 10.5ZM12 12.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z',
 };
 ---
 

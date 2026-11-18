@@ -1,0 +1,347 @@
+---
+/**
+ * Top bar above the main navigation (user request 2026-11-18, after an enterprise
+ * staffing reference): site search, office address and phone number on a slim navy strip.
+ * It sits inside the sticky header, which pins at minus the bar's height, so the bar
+ * scrolls away and the navigation row stays. Phones keep phone + search; the address
+ * shows from 48rem.
+ *
+ * The search panel drops under the whole header and searches the same page directory
+ * the Hitech Assistant uses (src/lib/assistant-directory.mjs); behaviour lives in
+ * src/scripts/site-search.ts.
+ */
+import Icon from '../ui/Icon.astro';
+import { site } from '../../content/site';
+---
+
+<div class="utility" data-utility>
+  <div class="container utility__inner">
+    <ul role="list" class="utility__items">
+      <li>
+        <button
+          type="button"
+          class="utility__item utility__search"
+          aria-expanded="false"
+          aria-controls="site-search"
+          data-search-toggle
+        >
+          <Icon name="search" size={16} />
+          <span>Search</span>
+        </button>
+      </li>
+      <li class="utility__address">
+        <span class="utility__item">
+          <Icon name="map-pin" size={16} />
+          <span><span class="visually-hidden">Office address: </span>{site.contact.address}</span>
+        </span>
+      </li>
+      <li class="utility__phone">
+        <a class="utility__item" href={site.contact.phone.href}>
+          <Icon name="phone" size={16} />
+          <span><span class="visually-hidden">Call </span>{site.contact.phone.label}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="site-search" id="site-search" role="search" data-search hidden>
+  <div class="container site-search__inner">
+    <form class="site-search__form" action="#" data-search-form>
+      <label class="visually-hidden" for="site-search-input">Search Hitech Solutions</label>
+      <Icon name="search" size={22} class="site-search__icon" />
+      <input
+        id="site-search-input"
+        class="site-search__input"
+        type="search"
+        placeholder="Search roles, specialties and pages"
+        autocomplete="off"
+        spellcheck="false"
+        aria-describedby="site-search-status"
+        data-search-input
+      />
+      <button type="button" class="site-search__close" aria-label="Close search" data-search-close>
+        <Icon name="close" size={20} />
+      </button>
+    </form>
+    <p class="site-search__heading" data-search-heading>Popular pages</p>
+    <ul role="list" class="site-search__results" data-search-results></ul>
+    <p class="site-search__status" id="site-search-status" role="status" data-search-status></p>
+  </div>
+</div>
+
+<script>
+  import '../../scripts/site-search';
+</script>
+
+<style>
+  /* ---------- Top bar ---------- */
+  .utility {
+    height: var(--utility-height);
+    background: var(--color-utility);
+    color: var(--color-on-dark-muted);
+    font-size: 0.8125rem;
+    line-height: 1;
+  }
+
+  .utility__inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+  }
+
+  .utility__items {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    height: 100%;
+  }
+
+  /* Phones: call on the left, search on the right. */
+  @media (max-width: 47.99rem) {
+    .utility__inner {
+      justify-content: stretch;
+    }
+
+    .utility__items {
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .utility__items > li:first-child {
+      order: 2;
+    }
+
+    /* Matches the specificity of `.utility__items > li` below so it actually hides. */
+    .utility__items > .utility__address {
+      display: none;
+    }
+  }
+
+  .utility__items > li {
+    display: flex;
+    height: 100%;
+  }
+
+  .utility__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .utility__item :global(svg) {
+    flex-shrink: 0;
+    color: var(--color-amber);
+  }
+
+  a.utility__item,
+  button.utility__item {
+    cursor: pointer;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  a.utility__item:hover,
+  button.utility__item:hover,
+  .utility__search[aria-expanded='true'] {
+    color: var(--color-on-navy);
+  }
+
+  a.utility__item:hover > span,
+  button.utility__item:hover > span {
+    text-decoration: underline;
+    text-decoration-color: var(--color-amber);
+    text-underline-offset: 0.25em;
+  }
+
+  .utility :focus-visible {
+    outline-color: var(--color-focus-on-navy);
+    outline-offset: 2px;
+  }
+
+  /* Divider between the address and the phone, as on the reference. */
+  @media (min-width: 48rem) {
+    .utility__phone {
+      position: relative;
+      padding-left: var(--space-6);
+    }
+
+    .utility__phone::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 1px;
+      height: 0.875rem;
+      background: rgb(255 255 255 / 0.2);
+      translate: 0 -50%;
+    }
+  }
+
+  /* ---------- Search panel ---------- */
+  .site-search {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100dvh - var(--header-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-top: 1px solid var(--color-line);
+    background: var(--color-page);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-menu);
+  }
+
+  .site-search__inner {
+    max-width: calc(52rem + var(--gutter) * 2);
+    padding-block: var(--space-6) var(--space-8);
+  }
+
+  .site-search__form {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    border-bottom: 2px solid var(--color-ink);
+  }
+
+  .site-search__form:focus-within {
+    border-bottom-color: var(--color-action);
+  }
+
+  .site-search__form :global(.site-search__icon) {
+    flex-shrink: 0;
+    color: var(--color-ink-muted);
+  }
+
+  .site-search__input {
+    flex: 1;
+    min-width: 0;
+    height: 3.5rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+    font-weight: var(--fw-light);
+    color: var(--color-ink);
+    caret-color: var(--color-action);
+  }
+
+  .site-search__input::placeholder {
+    color: var(--color-ink-muted);
+    opacity: 1;
+  }
+
+  .site-search__input:focus {
+    outline: none; /* the form's bottom rule turns action blue instead */
+  }
+
+  .site-search__input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .site-search__close {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: var(--radius-control);
+    background: none;
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+
+  .site-search__close:hover {
+    background: var(--color-paper);
+  }
+
+  .site-search__heading {
+    margin-top: var(--space-6);
+    color: var(--color-ink-muted);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+  }
+
+  .site-search__heading:empty {
+    display: none;
+  }
+
+  .site-search__results {
+    margin-top: var(--space-2);
+  }
+
+  .site-search__results :global(li + li) {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .site-search__results :global(a) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 3.5rem;
+    padding: var(--space-3) var(--space-2);
+    margin-inline: calc(-1 * var(--space-2));
+    border-radius: var(--radius-control);
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .site-search__results :global(a:hover),
+  .site-search__results :global(a:focus-visible),
+  .site-search__results :global(a.is-active) {
+    background: var(--color-action-tint);
+    color: var(--color-action-hover);
+  }
+
+  .site-search__results :global(.site-search__label) {
+    display: block;
+    font-weight: var(--fw-semibold);
+  }
+
+  .site-search__results :global(mark) {
+    background: none;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-amber);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .site-search__results :global(.site-search__crumb) {
+    display: block;
+    margin-top: 2px;
+    color: var(--color-ink-muted);
+    font-size: var(--fs-label);
+  }
+
+  .site-search__results :global(svg) {
+    flex-shrink: 0;
+    color: var(--color-action);
+  }
+
+  .site-search__status {
+    margin-top: var(--space-4);
+    color: var(--color-ink-muted);
+    font-size: var(--fs-small);
+  }
+
+  .site-search__status:empty {
+    display: none;
+  }
+
+  .site-search__status :global(a) {
+    font-weight: var(--fw-semibold);
+  }
+</style>

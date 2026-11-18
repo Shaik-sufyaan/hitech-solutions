@@ -26,6 +26,16 @@ export const site = {
    * that nothing was sent.
    */
   leadEndpoint: (import.meta.env.PUBLIC_LEAD_ENDPOINT as string | undefined) || null,
+
+  /**
+   * EXAMPLE contact details shown in the header's top bar (user asked for example
+   * information, 2026-11-18). Fictional: 555-01xx numbers are reserved for fiction.
+   * TODO(business): replace with Hitech's real phone number and office address.
+   */
+  contact: {
+    phone: { label: '(555) 010-0199', href: 'tel:+15550100199' },
+    address: '100 Corporate Drive, Suite 400, Dallas, TX 75201',
+  },
 } as const;
 
 export const candidateHref = site.careersUrl ?? site.jobSeekersFallbackHref;
