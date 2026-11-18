@@ -17,6 +17,13 @@ colors:
   action-hover: "#173d84"
   action-tint: "#e8eef9"
   focus: "#1f4fa8"
+  steel: "#1a3550"
+  teal: "#0a6474"
+  teal-deep: "#0b4a56"
+  on-dark-muted: "#c9d5e1"
+  on-teal-muted: "#d2eaee"
+  amber: "#f2a33a"
+  amber-hover: "#f7bd6b"
   error: "#b42318"
   success: "#17663a"
 typography:
@@ -139,28 +146,33 @@ components:
 
 **Creative North Star: "The Established Ledger"**
 
-An established staffing firm earns trust through order. The system is a corporate ledger set in light type: an ink-navy field opens and closes every page, white and cool-paper bands carry the reading in between, and content is organised by thin slate rules rather than boxes. Density is moderate and even; every section is a simple split or stacked list with generous, consistent spacing and precise left alignment. Nothing moves unless the visitor asks it to.
+An established staffing firm earns trust through order and deliberate contrast. An ink-navy hero opens the page; white and cool-paper sections handle long-form reading; navy, steel and teal middle bands create a clear narrative rhythm; and a richer navy footer closes the experience. Content remains precisely aligned and mostly rule-divided rather than boxed. On desktop, three approved dark panels use native sticky positioning to form a stacking deck; mobile and reduced-motion experiences remain ordinary document flow.
 
-The world was pinned by the user: restrained, corporate, reference-structured (the structure of a large staffing site, never its branding). Its binding rejections are part of the system: no decorative motion, gradients, glassmorphism, glows, blobs, particles, parallax or carousels; no bubbly radii; no card grid as the default container. Motion exists only for hover, focus, the mobile menu and disclosure, and collapses to zero under reduced motion.
+The world was pinned by the user: restrained, corporate, reference-structured (the structure of a large staffing site, never its branding). Its binding rejections are part of the system: no gradients, glassmorphism, glows, blobs, particles, parallax, scroll hijacking or carousels; no bubbly radii; no card grid as the default container. Motion is functional, with the explicitly approved hero treatment, partner strip and desktop stacking deck added to hover, focus, menu and disclosure behavior. Reduced motion removes nonessential animation and restores normal section flow.
 
 **The palette and the wordmark are PROVISIONAL.** No brand kit exists. The only swap points are `src/styles/tokens.css` (every color, type and shape value) and `src/components/site/Wordmark.astro` (the typographic "Hitech | Solutions" mark, to be replaced by the supplied vector logo). Components reference tokens only, so a brand kit lands in those two files.
 
 **Key Characteristics:**
-- Navy field top and bottom (hero, closing, footer); white and paper bands between.
+- Navy hero and footer, a teal closing band, and a navy/steel/teal stacking deck between white and paper sections.
 - Light (300) display and section headlines against semibold (600) labels and titles: one family, contrast by weight.
 - Hairline 1px rules divide lists, columns and FAQ items; containers are rare.
 - Square shoulders: 2px on controls, 4px on photographs, nothing rounder.
-- One action blue for buttons, links and focus; it is the only saturated color.
+- Action blue remains exclusive to controls and links; warm amber is a small informational accent on card caps, stat details and footer headings.
 - Rectangular, naturally lit, licensed photography; never masked, never presented as Hitech staff.
 
 ## Colors
 
-A controlled corporate palette: one deep ink-navy, one action blue, and cool grey neutrals. All values provisional pending a brand kit.
+A controlled corporate palette: deep ink-navy, steel and teal establish section rhythm; action blue remains dedicated to interaction; cool neutrals support reading; warm amber is reserved for small accents. All values remain provisional pending a brand kit.
 
 ### Primary
 - **Corporate Action Blue** (action): every primary button, inline link, the nav hover underline, list bullets, FAQ disclosure icons and the focus ring (focus shares the value). 7.3:1 on white.
 - **Pressed Action Blue** (action-hover): hover state of action-blue buttons and links.
 - **Action Tint** (action-tint): text selection and the hover fill of the white inverse button on navy. Never a section background.
+
+### Secondary and accent
+- **Steel** (steel): the second panel of the desktop stacking deck.
+- **Teal / Deep Teal** (teal, teal-deep): the closing call-to-action band and third stacking panel.
+- **Warm Amber** (amber, amber-hover): narrow stat-card caps, selected dark-surface details and footer headings. Never use amber as a large background.
 
 ### Neutral
 - **Ink Navy Field** (navy): hero, closing band and footer background; also the wordmark, step-number outlines and toggle icon on light.
@@ -177,9 +189,9 @@ A controlled corporate palette: one deep ink-navy, one action blue, and cool gre
 - **Error Red** (error) and **Confirmation Green** (success): form validation and submission status only.
 
 ### Named Rules
-**The One Blue Rule.** Corporate Action Blue is the only saturated hue on any screen and it always means "you can act here". It never fills a section, a panel or a decoration.
+**The Action Blue Rule.** Corporate Action Blue always means "you can act here." Teal may fill approved structural bands, while amber is a small noninteractive accent; neither replaces action blue for primary controls.
 
-**The Navy Bookends Rule.** The navy field appears only as the opening hero and the closing band plus footer. Middle sections alternate white and Cool Paper.
+**The Controlled Dark-Band Rule.** Dark fields are limited to the hero, three-panel stacking deck, teal closing band and footer. Reading-heavy sections remain white or Cool Paper.
 
 ## Typography
 
@@ -207,7 +219,7 @@ A controlled corporate palette: one deep ink-navy, one action blue, and cool gre
 
 A 1280px container (80rem) with a fluid gutter (20px to 48px). Sections breathe on a fluid block padding of 64px to 112px. Spacing runs on a 4px base (4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80).
 
-Sections are simple asymmetric splits on desktop (5/7, 6/5, 7/5, 4/7 fractions with a 48px to 96px gap) that stack to a single column below 64rem. Lists of peers (specialties, engagement models) sit in 2 then 3 columns divided by rules, not boxed. One element per split may be sticky on desktop (the overview photograph, the request-form intro).
+Sections use asymmetric desktop splits (5/7, 6/5, 7/5, 4/7 fractions with a 48px to 96px gap) and stack to a single column below 64rem. Lists of peers remain rule-divided rather than boxed. The home-page Specialties, Ways to hire and How hiring works panels use CSS `position: sticky` on desktop with native scrolling; they revert to normal sections below 64rem and when reduced motion is requested.
 
 Breakpoints: 30rem (header CTA hides below), 40rem (form field rows go two-up), 48rem (tablet: hero actions go inline, specialties two-up), 64rem (desktop nav, splits, three-up lists), 75rem (hero switches to the centered statement framed by two edge-bleeding photographs). Header is sticky, 76px tall (64px below 48rem).
 
@@ -215,7 +227,7 @@ Breakpoints: 30rem (header CTA hides below), 40rem (form field rows go two-up), 
 
 ## Elevation & Depth
 
-Flat. Depth comes from tonal banding (white, Cool Paper, navy) and hairline rules. Exactly one shadow exists, and it belongs to the open mobile menu, which overlays content.
+Primarily flat. Depth comes from tonal banding and hairline rules. Shadows are limited to the open mobile menu and the upward overlap edge between approved stacking panels.
 
 ### Shadow Vocabulary
 - **Menu** (`box-shadow: 0 12px 28px -8px rgb(19 33 46 / 0.22), 0 2px 6px rgb(19 33 46 / 0.08)`): the mobile menu drawer only.
@@ -250,7 +262,7 @@ Crisp, solid, unadorned.
 ### Navigation
 - **Desktop:** white sticky header with a 1px bottom rule; wordmark left, five medium-weight 15.5px text links, primary "Request talent" button right. Hover turns the link blue and draws a 2px blue underline from the left at the header's bottom edge (220ms).
 - **Mobile:** menu/close icon toggle opens a full-height white drawer of 18px links divided by rules, ending in a full-width large primary button; Escape closes and returns focus.
-- **Footer:** navy, wordmark plus one line, two link columns with semibold label headings, legal line above a white 12%-opacity rule.
+- **Footer:** rich navy, wordmark and supporting line, link and contact columns, amber headings, reserved Pending areas for locations/social links, and a legal line above a white 12%-opacity rule.
 
 ### Numbered Steps
 Sequence carries meaning: a 40px navy-outlined square (2px corner) holding a tabular semibold numeral, linked to the next step by a 1px vertical rule. A 28px variant lists next steps on the request page.
@@ -265,16 +277,16 @@ The visible marker for missing business input: an inline 14px box with a dashed 
 
 ### Do:
 - **Do** change palette and wordmark only in `src/styles/tokens.css` and `src/components/site/Wordmark.astro`; both are provisional until a brand kit arrives.
-- **Do** keep Corporate Action Blue as the only saturated color, used for actions, links and focus.
+- **Do** keep Corporate Action Blue exclusive to actions, links and focus; use teal for approved dark bands and amber only for small accents.
 - **Do** separate content with 1px Slate Rule dividers and a Strong Slate Rule top rule.
 - **Do** set section headings light (300) and labels semibold (600), in sentence case.
 - **Do** keep corners at 2px for controls and 4px for photographs and the form panel.
 - **Do** use rectangular, licensed, naturally lit photographs with provenance recorded in `src/assets/images/CREDITS.md` and embedded in the file.
-- **Do** limit motion to hover, focus, menu and disclosure, with durations driven by tokens that drop to 0ms under reduced motion.
+- **Do** keep the approved hero, partner strip and desktop stacking deck on native scrolling, and restore ordinary static flow under reduced motion.
 - **Do** show missing business input with the Pending marker rather than inventing content.
 
 ### Don't:
-- **Don't** add decorative motion, animated counters, parallax, scroll hijacking, autoplay carousels or hero video.
+- **Don't** add animated counters, parallax, scroll hijacking, autoplay carousels or hero video beyond the specifically approved motion treatments.
 - **Don't** use decorative gradients, glassmorphism, neon glows, floating circles, blobs or particles.
 - **Don't** round containers beyond 4px or mask photographs into shapes.
 - **Don't** make a card grid the default container for a section.

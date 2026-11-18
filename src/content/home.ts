@@ -22,7 +22,7 @@ export const hero = {
  */
 export const credentials = {
   label: 'Partner programs & certifications',
-  labelLines: ['Partner programs', '& certifications'],
+  labelLines: ['Partner programs', '&', 'certifications'],
   // `src` logos are provisional placeholders (see public/logos/README.md).
   // `text` is shown beside symbol-only marks so the brand is recognisable.
   items: [
@@ -155,6 +155,56 @@ export const process = {
     },
   ],
   ctaLabel: 'Start with a brief',
+};
+
+/*
+ * PENDING: "At a glance" figures. Labels only; every value stays null until Hitech
+ * supplies a verified number. Null renders as an em dash. Never estimate.
+ */
+export const glance = {
+  title: 'Hitech Solutions at a glance.',
+  pending: 'Figures to be supplied and verified by Hitech before launch.',
+  cards: [
+    { label: 'Years placing technology professionals', value: null as string | null },
+    { label: 'Technology professionals placed', value: null as string | null },
+  ],
+  /** Percentages, 0 to 100. */
+  rings: [
+    { label: 'Contractor retention', value: null as number | null },
+    { label: 'Client satisfaction', value: null as number | null },
+    { label: 'Offers accepted', value: null as number | null },
+  ],
+};
+
+/*
+ * PENDING: SAMPLE stories written at the user's request (2026-11-18) as layout
+ * placeholders. They describe no real client. Replace each with a real,
+ * client-approved story (and permission to name the client) before launch.
+ */
+export const stories = {
+  title: 'Client stories.',
+  pending: 'Sample stories for layout only. Replace each with a real, client-approved story before launch.',
+  label: 'Sample story. Replace before launch.',
+  items: [
+    {
+      image: 'datacenter' as const,
+      alt: 'Rows of server equipment in a dimly lit data centre.',
+      title: 'Staffing a cloud team for a data-centre move',
+      body: 'A growing services company needed cloud and network engineers on contract while it moved its workloads out of an ageing data centre.',
+    },
+    {
+      image: 'code' as const,
+      alt: 'A monitor showing lines of code in a dark room.',
+      title: 'Contract-to-hire developers for a product rebuild',
+      body: 'A software team rebuilding its core product added contract developers, with the option to bring the right people on permanently.',
+    },
+    {
+      image: 'facade' as const,
+      alt: 'The glass facade of a modern office building at dusk.',
+      title: 'Direct hire for a new regional IT office',
+      body: 'An organisation opening a regional office hired an IT manager and support specialists directly onto its own payroll.',
+    },
+  ],
 };
 
 export const jobSeekers = {

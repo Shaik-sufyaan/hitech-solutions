@@ -23,6 +23,14 @@
   --color-action-tint: #e8eef9;
   --color-focus: #1f4fa8;
   --color-focus-on-navy: #ffffff;
+  /* Dark mid-page bands and accent (approved 2026-11-18). */
+  --color-steel: #1a3550;        /* stacking panel 2 */
+  --color-teal: #0a6474;         /* closing band; white text 6.6:1 */
+  --color-teal-deep: #0b4a56;    /* stacking panel 3 */
+  --color-on-dark-muted: #c9d5e1; /* secondary text on navy/steel (≥7:1) */
+  --color-on-teal-muted: #d2eaee; /* secondary text on teal (≥5.4:1) */
+  --color-amber: #f2a33a;        /* accent marks only: bars, footer headings, links on dark */
+  --color-amber-hover: #f7bd6b;
   --color-error: #b42318;
   --color-success: #17663a;
 

@@ -1,0 +1,128 @@
+---
+/*
+ * Client stories. The three items are SAMPLE placeholders (see content/home.ts)
+ * and stay marked Pending until Hitech supplies real, client-approved stories.
+ */
+import { Picture } from 'astro:assets';
+import Pending from '../ui/Pending.astro';
+import { stories } from '../../content/home';
+import datacenter from '../../assets/images/story-datacenter.jpg';
+import code from '../../assets/images/story-code.jpg';
+import facade from '../../assets/images/story-facade.jpg';
+
+const images = { datacenter, code, facade };
+---
+
+<section class="section section--paper stories" aria-labelledby="stories-title">
+  <div class="container">
+    <div class="stories__head">
+      <h2 id="stories-title" class="t-h2">{stories.title}</h2>
+      <Pending label={stories.pending} />
+    </div>
+
+    <ul role="list" class="stories__list">
+      {
+        stories.items.map((story) => (
+          <li class="story">
+            <figure class="story__photo">
+              <Picture
+                src={images[story.image]}
+                formats={['avif', 'webp']}
+                widths={[400, 640, 900]}
+                sizes="(min-width: 64rem) 30vw, (min-width: 40rem) 45vw, 100vw"
+                alt={story.alt}
+              />
+            </figure>
+            <div class="story__body">
+              <h3 class="story__title">{story.title}</h3>
+              <p class="story__text">{story.body}</p>
+              <div class="story__foot">
+                <Pending label={stories.label} tone="dark" size="sm" />
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stories__head {
+    display: grid;
+    gap: var(--space-5);
+    justify-items: start;
+  }
+
+  .stories__list {
+    display: grid;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+
+  .story {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--radius-media);
+    background: var(--color-navy);
+    color: var(--color-on-navy);
+  }
+
+  .story__photo {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    background: var(--color-navy-raised);
+  }
+
+  .story__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: var(--space-6) var(--space-6) var(--space-8);
+    border-top: 3px solid var(--color-amber);
+  }
+
+  .story__title {
+    font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+    font-weight: var(--fw-light);
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .story__text {
+    margin-top: var(--space-4);
+    color: var(--color-on-dark-muted);
+    font-size: var(--fs-small);
+  }
+
+  /* Pending tag sits in the card foot, after the copy it qualifies. */
+  .story__foot {
+    margin-top: auto;
+    padding-top: var(--space-6);
+  }
+
+  @media (min-width: 40rem) and (max-width: 63.99rem) {
+    .stories__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .stories__head {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+    }
+
+    .stories__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

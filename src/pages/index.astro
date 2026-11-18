@@ -3,17 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import Credentials from '../components/home/Credentials.astro';
 import Overview from '../components/home/Overview.astro';
-import Specialties from '../components/home/Specialties.astro';
-import Engagement from '../components/home/Engagement.astro';
-import Process from '../components/home/Process.astro';
+import Deck from '../components/home/Deck.astro';
+import Glance from '../components/home/Glance.astro';
+import Stories from '../components/home/Stories.astro';
 import JobSeekers from '../components/home/JobSeekers.astro';
 import Faq from '../components/home/Faq.astro';
 import Closing from '../components/home/Closing.astro';
 
 /*
  * Held until real evidence exists (see PRODUCT.md): industries served,
- * office/coverage search, client outcomes, client trust logos, insights articles.
- * Partner programs (Credentials) are shown with a Pending marker until confirmed.
+ * office/coverage search, insights articles.
+ * Placeholders built at the user's request (2026-11-18), launch blockers until real:
+ * partner programs (Credentials), figures (Glance, Pending) and sample stories (Stories, Pending).
  */
 ---
 
@@ -21,10 +22,12 @@ import Closing from '../components/home/Closing.astro';
   <Hero />
   <Credentials />
   <Overview />
-  <Specialties />
-  <Engagement />
-  <Process />
-  <JobSeekers />
+  <Deck />
+  <Glance />
+  <Stories />
+  <div class="tone-dark tone-steel">
+    <JobSeekers />
+  </div>
   <Faq />
   <Closing />
 </BaseLayout>

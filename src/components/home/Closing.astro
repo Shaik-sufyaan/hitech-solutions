@@ -35,8 +35,9 @@ const {
 </section>
 
 <style>
+  /* Teal close: the one saturated band, sitting between the light page and the navy footer. */
   .closing {
-    background: var(--color-navy);
+    background: var(--color-teal);
     color: var(--color-on-navy);
   }
 
@@ -52,7 +53,7 @@ const {
   }
 
   .closing__body {
-    color: var(--color-on-navy-muted);
+    color: var(--color-on-teal-muted);
     max-width: 38rem;
     margin-top: var(--space-5);
   }
@@ -63,7 +64,7 @@ const {
 
   .closing__candidate {
     margin-top: var(--space-5);
-    color: var(--color-on-navy-muted);
+    color: var(--color-on-teal-muted);
     font-size: var(--fs-small);
   }
 
@@ -74,6 +75,7 @@ const {
   }
 
   .closing__candidate a:hover {
-    color: var(--color-on-navy-link);
+    color: var(--color-on-navy);
+    text-decoration-color: currentColor;
   }
 </style>

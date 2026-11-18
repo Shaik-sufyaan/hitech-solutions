@@ -1,6 +1,6 @@
 # Hitech Solutions website
 
-Static marketing site built with Astro, TypeScript and plain CSS. **Local preview only. Not published.**
+Static marketing site built with Astro, TypeScript and plain CSS. The project is configured for deployment on Vercel.
 
 ## Run it
 
@@ -10,6 +10,14 @@ npm run dev        # http://localhost:4321 (live reload)
 npm run build      # type-check + static build into dist/
 npm run preview    # serve the built site
 ```
+
+## Deploy to Vercel
+
+Import the GitHub repository into Vercel. The included `vercel.json` uses a reproducible `npm ci` install, runs the full type-check and production build, and publishes `dist/`.
+
+`PUBLIC_LEAD_ENDPOINT` is optional for preview deployments. Add it in the Vercel project's environment variables only after a secure employer-inquiry backend is available. Until then, the form validates locally and clearly tells visitors that no submission was sent.
+
+The site intentionally remains `noindex` while content is marked **Pending**. Remove the default `noindex` behavior in `src/layouts/BaseLayout.astro` only when the content and production domain are approved for public launch.
 
 ## Where things live
 

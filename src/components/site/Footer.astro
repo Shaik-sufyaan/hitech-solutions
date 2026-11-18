@@ -1,5 +1,6 @@
 ---
 import Wordmark from './Wordmark.astro';
+import Pending from '../ui/Pending.astro';
 import { site, candidateHref } from '../../content/site';
 import { routes } from '../../content/navigation';
 
@@ -29,8 +30,19 @@ const year = new Date().getFullYear();
           <ul role="list">
             <li><a href={routes.jobSeekers}>Job seekers</a></li>
             {site.careersUrl && <li><a href={candidateHref}>Explore opportunities</a></li>}
+          </ul>
+        </li>
+        <li>
+          <h2 class="site-footer__heading">Company</h2>
+          <ul role="list">
+            <li><a href={routes.howWeWork}>How we work</a></li>
             <li><a href={routes.faq}>FAQ</a></li>
           </ul>
+        </li>
+        <li class="site-footer__contact">
+          <h2 class="site-footer__heading">Contact</h2>
+          <!-- TODO(business): office address, phone, email and social profiles. -->
+          <Pending label="Office address, phone, email and social links." tone="dark" size="sm" />
         </li>
       </ul>
     </nav>
@@ -45,8 +57,9 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
+  /* Amber top rule picks up the accent used across the dark bands. */
   .site-footer {
-    border-top: 1px solid rgb(255 255 255 / 0.12);
+    border-top: 3px solid var(--color-amber);
     background: var(--color-navy);
     color: var(--color-on-navy-muted);
     font-size: var(--fs-small);
@@ -72,7 +85,7 @@ const year = new Date().getFullYear();
 
   .site-footer__heading {
     margin-bottom: var(--space-4);
-    color: var(--color-on-navy);
+    color: var(--color-amber);
     font-size: var(--fs-label);
     font-weight: var(--fw-semibold);
     letter-spacing: 0.01em;
@@ -90,6 +103,7 @@ const year = new Date().getFullYear();
   .site-footer a:hover {
     color: var(--color-on-navy);
     text-decoration: underline;
+    text-decoration-color: var(--color-amber);
   }
 
   .site-footer__legal {
@@ -101,7 +115,11 @@ const year = new Date().getFullYear();
 
   @media (min-width: 64rem) {
     .site-footer__top {
-      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    }
+
+    .site-footer__cols {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.4fr);
     }
   }
 </style>

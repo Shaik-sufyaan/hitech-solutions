@@ -11,3 +11,15 @@ All photographs below are stock images used under the [Unsplash License](https:/
 | overview-collaboration.jpg | Staffing overview | https://unsplash.com/photos/two-colleagues-collaborating-on-a-project-at-a-laptop-tRvuRPE8cr4 | Vitaly Gariev | 1800×1800 at x350 y0 |
 
 Retrieved 2026-11-16. Licence status verified on each source page at retrieval (Unsplash License, not Unsplash+).
+
+## Added 2026-11-18: home "Client stories" (sample placeholders)
+
+Chosen without people, so no generic person is shown beside a client story. Provenance is also embedded in each file's JPEG comment.
+
+| File | Placement | Source page | Photographer | Crop from 2400px master |
+|---|---|---|---|---|
+| story-datacenter.jpg | Client stories, card 1 | https://unsplash.com/photos/a-very-large-array-of-electronic-equipment-in-a-room-iYnpYeyu57k | Matthieu Beaumont | 2400×1800 at x0 y900 |
+| story-code.jpg | Client stories, card 2 | https://unsplash.com/photos/computer-monitor-displaying-code-in-a-dark-room-gEtJoCN1qpM | Harshit Katiyar | 2133×1600 at x0 y0 |
+| story-facade.jpg | Client stories, card 3 | https://unsplash.com/photos/glass-facade-of-a-modern-office-building-V5vF94h52r0 | Fabian Kleiser | 2400×1800 at x0 y700 |
+
+Retrieved 2026-11-18. Licence verified on each source page at retrieval (Unsplash License, not Unsplash+).

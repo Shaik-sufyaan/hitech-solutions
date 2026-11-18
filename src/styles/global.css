@@ -127,6 +127,50 @@ a:hover {
   background: var(--color-paper);
 }
 
+/*
+ * Dark tone scope: re-points the light-surface tokens so any section placed
+ * inside reads correctly on a dark band, with amber as the accent for links.
+ */
+.tone-dark {
+  --tone-bg: var(--color-navy);
+  --color-ink: var(--color-on-navy);
+  --color-ink-muted: var(--color-on-dark-muted);
+  --color-line: rgb(255 255 255 / 0.14);
+  --color-line-strong: rgb(255 255 255 / 0.3);
+  --color-paper: var(--tone-bg);
+  --color-page: var(--tone-bg);
+  --color-action: var(--color-amber);
+  --color-action-hover: var(--color-amber-hover);
+  --color-focus: var(--color-focus-on-navy);
+  background: var(--tone-bg);
+  color: var(--color-ink);
+}
+
+.tone-dark ::selection {
+  background: rgb(242 163 58 / 0.35);
+  color: #fff;
+}
+
+/* Primary buttons on dark become the white inverse button. */
+.tone-dark .btn.btn--primary {
+  background: #fff;
+  color: var(--color-navy);
+}
+
+.tone-dark .btn.btn--primary:hover {
+  background: var(--color-action-tint);
+  color: var(--color-navy);
+}
+
+.tone-steel {
+  --tone-bg: var(--color-steel);
+}
+
+.tone-teal {
+  --tone-bg: var(--color-teal-deep);
+  --color-ink-muted: var(--color-on-teal-muted);
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px;
