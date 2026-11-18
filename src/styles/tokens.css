@@ -14,6 +14,7 @@
   --color-on-navy-link: #b8cdf5;
   --color-page: #ffffff;
   --color-paper: #f3f5f7;        /* quiet section bands */
+  --color-deck-bed: #e3e8ed;     /* bed behind the home stacking sheets (desktop) */
   --color-menu: #eaf0f6;         /* dropdown menu surface (cool light slate) */
   --color-menu-line: #cfd8e2;    /* rules inside the menu */
   --color-line: #d8dee4;         /* 1px rules and borders */
@@ -24,11 +25,8 @@
   --color-focus: #1f4fa8;
   --color-focus-on-navy: #ffffff;
   /* Dark mid-page bands and accent (approved 2026-11-18). */
-  --color-steel: #1a3550;        /* stacking panel 2 */
-  --color-teal: #0a6474;         /* closing band; white text 6.6:1 */
-  --color-teal-deep: #0b4a56;    /* stacking panel 3 */
+  --color-steel: #1a3550;        /* home Job seekers band */
   --color-on-dark-muted: #c9d5e1; /* secondary text on navy/steel (≥7:1) */
-  --color-on-teal-muted: #d2eaee; /* secondary text on teal (≥5.4:1) */
   --color-amber: #f2a33a;        /* accent marks only: bars, footer headings, links on dark */
   --color-amber-hover: #f7bd6b;
   --color-error: #b42318;
@@ -77,6 +75,7 @@
   /* Shape: square-shouldered */
   --radius-control: 2px;
   --radius-media: 4px;
+  --radius-sheet: 10px;          /* home stacking sheets only: large cards need a visible corner to read as cards */
 
   /* Elevation (used sparingly: menus only) */
   --shadow-menu: 0 12px 28px -8px rgb(19 33 46 / 0.22), 0 2px 6px rgb(19 33 46 / 0.08);

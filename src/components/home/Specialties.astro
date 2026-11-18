@@ -1,9 +1,14 @@
 ---
+/*
+ * Home-page specialties, distilled (2026-11-18): six specialties as single
+ * clickable rows (name, one line, arrow). Example roles live on each
+ * specialty page, so the home page no longer repeats them.
+ */
 import Icon from '../ui/Icon.astro';
 import Pending from '../ui/Pending.astro';
 import { specialties } from '../../content/home';
 import { site } from '../../content/site';
-import { roleHref, slugify, specialtyHref, routes } from '../../content/navigation';
+import { specialtyHref, routes } from '../../content/navigation';
 ---
 
 <section id="specialties" class="section section--paper specialties" aria-labelledby="specialties-title">
@@ -19,19 +24,14 @@ import { roleHref, slugify, specialtyHref, routes } from '../../content/navigati
     <ul role="list" class="specialties__list">
       {
         specialties.groups.map((group) => (
-          <li class="specialty" id={`specialty-${slugify(group.title)}`}>
-            <h3 class="t-h3">
-              <a class="specialty__title" href={specialtyHref(group.title)}>{group.title}</a>
-            </h3>
-            <p class="specialty__body">{group.body}</p>
-            <p class="specialty__roles-label">Example roles</p>
-            <ul role="list" class="specialty__roles">
-              {group.roles.map((role) => (
-                <li>
-                  <a href={roleHref(group.title, role)}>{role}</a>
-                </li>
-              ))}
-            </ul>
+          <li>
+            <a class="specialty" href={specialtyHref(group.title)}>
+              <span class="specialty__text">
+                <span class="specialty__title">{group.title}</span>
+                <span class="specialty__body">{group.body}</span>
+              </span>
+              <Icon name="arrow-right" class="specialty__arrow" />
+            </a>
           </li>
         ))
       }
@@ -39,7 +39,7 @@ import { roleHref, slugify, specialtyHref, routes } from '../../content/navigati
 
     <div class="specialties__links">
       <a class="arrow-link" href={routes.specialties}>
-        View all specialties
+        View all specialties and roles
         <Icon name="arrow-right" />
       </a>
       <a class="arrow-link" href={site.requestTalentHref}>
@@ -57,87 +57,68 @@ import { roleHref, slugify, specialtyHref, routes } from '../../content/navigati
     max-width: 52rem;
   }
 
-  .specialties__list {
-    display: grid;
-    margin-top: var(--space-12);
-    border-top: 1px solid var(--color-line-strong);
-  }
-
-  .specialty {
-    padding: var(--space-8) 0;
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .specialty__body {
-    margin-top: var(--space-2);
-    color: var(--color-ink-muted);
-    max-width: 30rem;
-  }
-
-  .specialty__roles-label {
-    margin-top: var(--space-5);
-    font-size: var(--fs-label);
-    font-weight: var(--fw-semibold);
-    color: var(--color-ink);
-  }
-
-  .specialty__roles {
-    margin-top: var(--space-2);
-    font-size: var(--fs-small);
-    color: var(--color-ink);
-  }
-
-  .specialty__roles li {
-    position: relative;
-    padding-left: var(--space-4);
-  }
-
-  .specialty__roles a {
-    color: var(--color-ink);
-    text-decoration-color: var(--color-line-strong);
-  }
-
-  .specialty__roles a:hover {
-    color: var(--color-action);
-    text-decoration-color: currentColor;
-  }
-
   .specialties__intro {
     display: grid;
     gap: var(--space-4);
     justify-items: start;
   }
 
-  .specialty__roles li + li {
-    margin-top: var(--space-1);
+  .specialties__list {
+    display: grid;
+    margin-top: var(--space-10);
+    border-top: 1px solid var(--color-line-strong);
   }
 
-  .specialty__roles li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.72em;
-    width: 6px;
-    height: 1px;
-    background: var(--color-action);
+  /* Whole row is the link: name, one line, arrow. */
+  .specialty {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    height: 100%;
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .specialty__text {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .specialty__title {
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-semibold);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  .specialty__body {
+    color: var(--color-ink-muted);
+    font-size: var(--fs-small);
+    line-height: 1.5;
+  }
+
+  .specialty :global(.specialty__arrow) {
+    flex-shrink: 0;
+    color: var(--color-action);
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+
+  .specialty:hover .specialty__title {
+    color: var(--color-action);
+  }
+
+  .specialty:hover :global(.specialty__arrow) {
+    transform: translateX(4px);
   }
 
   .specialties__links {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4) var(--space-10);
-    margin-top: var(--space-10);
-  }
-
-  .specialty__title {
-    color: var(--color-ink);
-    text-decoration: none;
-  }
-
-  .specialty__title:hover {
-    color: var(--color-action);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
+    margin-top: var(--space-8);
   }
 
   @media (min-width: 48rem) {
@@ -162,10 +143,6 @@ import { roleHref, slugify, specialtyHref, routes } from '../../content/navigati
     .specialties__list {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       column-gap: var(--space-12);
-    }
-
-    .specialty {
-      padding: var(--space-10) 0;
     }
   }
 </style>

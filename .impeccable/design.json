@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-16T21:12:22+00:00",
+  "generatedAt": "2026-11-18T07:33:18+00:00",
   "title": "Design System: Hitech Solutions",
   "extensions": {
     "provisional": {
@@ -81,6 +81,41 @@
         ],
         "provisional": true
       },
+      "steel": {
+        "role": "secondary",
+        "displayName": "Steel",
+        "canonical": "#1a3550",
+        "oklch": "oklch(32.2% 0.059 250)",
+        "tonalRamp": [
+          "#080b0f",
+          "#1d262f",
+          "#334455",
+          "#4b647e",
+          "#6b85a0",
+          "#94a7bc",
+          "#bfcbd7",
+          "#eaeff4"
+        ],
+        "provisional": true,
+        "purpose": "Home Job seekers band only."
+      },
+      "teal": {
+        "role": "secondary",
+        "displayName": "Request Teal",
+        "canonical": "#0a6474",
+        "oklch": "oklch(46.4% 0.079 214)",
+        "tonalRamp": [
+          "#060c0e",
+          "#13292e",
+          "#1f4952",
+          "#2a6b79",
+          "#4e8d9c",
+          "#82adb8",
+          "#b5ced5",
+          "#e6f1f3"
+        ],
+        "provisional": true
+      },
       "on-navy": {
         "role": "neutral",
         "displayName": "On-Navy White",
@@ -132,6 +167,40 @@
         ],
         "provisional": true
       },
+      "on-dark-muted": {
+        "role": "neutral",
+        "displayName": "On-Dark Muted",
+        "canonical": "#c9d5e1",
+        "oklch": "oklch(86.8% 0.021 248)",
+        "tonalRamp": [
+          "#0a0b0c",
+          "#222529",
+          "#3d4349",
+          "#59626b",
+          "#7a848d",
+          "#9fa6ad",
+          "#c5cace",
+          "#edeff0"
+        ],
+        "provisional": true
+      },
+      "on-teal-muted": {
+        "role": "neutral",
+        "displayName": "On-Teal Muted",
+        "canonical": "#d2eaee",
+        "oklch": "oklch(92.1% 0.026 209)",
+        "tonalRamp": [
+          "#090c0c",
+          "#202627",
+          "#384547",
+          "#536568",
+          "#73868a",
+          "#9aa8aa",
+          "#c2cbcc",
+          "#eceff0"
+        ],
+        "provisional": true
+      },
       "page": {
         "role": "neutral",
         "displayName": "White Page",
@@ -163,6 +232,40 @@
           "#a3a5a7",
           "#c7c9cb",
           "#edeff1"
+        ],
+        "provisional": true
+      },
+      "menu": {
+        "role": "neutral",
+        "displayName": "Menu Slate",
+        "canonical": "#eaf0f6",
+        "oklch": "oklch(95.2% 0.010 248)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242527",
+          "#3f4245",
+          "#5d6266",
+          "#7e8388",
+          "#a2a5a9",
+          "#c7c9cb",
+          "#eeeeef"
+        ],
+        "provisional": true
+      },
+      "menu-line": {
+        "role": "neutral",
+        "displayName": "Menu Rule",
+        "canonical": "#cfd8e2",
+        "oklch": "oklch(87.8% 0.017 251)",
+        "tonalRamp": [
+          "#0a0b0c",
+          "#232528",
+          "#3e4247",
+          "#5b626a",
+          "#7c838b",
+          "#a0a6ac",
+          "#c6c9cd",
+          "#edeef0"
         ],
         "provisional": true
       },
@@ -268,6 +371,40 @@
         ],
         "provisional": true
       },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Warm Amber",
+        "canonical": "#f2a33a",
+        "oklch": "oklch(77.6% 0.148 69)",
+        "tonalRamp": [
+          "#110903",
+          "#362003",
+          "#603700",
+          "#8f5000",
+          "#b3720c",
+          "#ca9b64",
+          "#e1c4a4",
+          "#f9ecdf"
+        ],
+        "provisional": true
+      },
+      "amber-hover": {
+        "role": "tertiary",
+        "displayName": "Light Amber",
+        "canonical": "#f7bd6b",
+        "oklch": "oklch(83.5% 0.120 74)",
+        "tonalRamp": [
+          "#100a04",
+          "#32220a",
+          "#593b09",
+          "#845700",
+          "#a77831",
+          "#c19f70",
+          "#dbc6aa",
+          "#f6ede2"
+        ],
+        "provisional": true
+      },
       "error": {
         "role": "semantic",
         "displayName": "Error Red",
@@ -310,7 +447,15 @@
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Every section heading."
+        "purpose": "Every section heading, light and dark."
+      },
+      "card-title": {
+        "displayName": "Card Title",
+        "purpose": "Client-story headings."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Stat-card values (ring values at 44px)."
       },
       "title": {
         "displayName": "Title",
@@ -318,7 +463,7 @@
       },
       "lead": {
         "displayName": "Lead",
-        "purpose": "Hero support copy and section introductions."
+        "purpose": "Hero support copy, section introductions, closing body."
       },
       "body": {
         "displayName": "Body",
@@ -326,18 +471,33 @@
       },
       "body-small": {
         "displayName": "Body Small",
-        "purpose": "Candidate lines, role lists, footer."
+        "purpose": "Story summaries, stat labels, role lists, footer."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "In-context sentence-case labels, footer headings, Pending tag."
+        "purpose": "Sentence-case labels, footer headings, Pending tag."
+      },
+      "menu-category": {
+        "displayName": "Menu Category",
+        "purpose": "Uppercase tracked label in navigation menus and the partner strip only."
       }
     },
     "shadows": [
       {
         "name": "menu",
         "value": "0 12px 28px -8px rgb(19 33 46 / 0.22), 0 2px 6px rgb(19 33 46 / 0.08)",
-        "purpose": "Mobile menu drawer only; the system is otherwise flat."
+        "purpose": "Desktop mega-menu and mobile menu drawer."
+      },
+      {
+        "name": "deck-overlap",
+        "value": "0 -16px 36px -14px rgb(19 33 46 / 0.22)",
+        "clip": "clip-path: inset(-96px 0 -2px 0)",
+        "purpose": "Incoming light stacking-deck panel casts a soft navy shadow upward onto the covered panel only; the last panel paints a 2px fill of its band color below its edge."
+      },
+      {
+        "name": "over-hero-text",
+        "value": "text-shadow: 0 1px 2px rgb(10 18 26 / 0.9), 0 0 12px rgb(10 18 26 / 0.75)",
+        "purpose": "Header text while transparent over the animated hero; removed when solid."
       }
     ],
     "motion": [
@@ -354,7 +514,22 @@
       {
         "name": "dur-base",
         "value": "220ms",
-        "purpose": "Nav underline draw; 0ms under reduced motion."
+        "purpose": "Nav underline draw and header background change; 0ms under reduced motion."
+      },
+      {
+        "name": "hero-field",
+        "value": "WebGL2 GradientASCII, horizon shape, 18px cells, density 0.8",
+        "purpose": "Approved hero background; pauses off-screen and on hidden tab; no flicker, pointer or click response under reduced motion."
+      },
+      {
+        "name": "partner-loop",
+        "value": "40px/s continuous, 0 on hover",
+        "purpose": "Partner logo strip; stopped under reduced motion."
+      },
+      {
+        "name": "stacking-deck",
+        "value": "position: sticky on native scroll, 64rem+ only",
+        "purpose": "Three light panels (paper, white, paper) pin while the next slides over; plain sections below 64rem and under reduced motion."
       }
     ],
     "focus": [
@@ -364,38 +539,101 @@
         "purpose": "Every interactive element on light surfaces."
       },
       {
-        "name": "focus-ring-on-navy",
+        "name": "focus-ring-on-dark",
         "value": "2px solid #ffffff",
-        "purpose": "Inside .on-navy regions (hero, closing, footer)."
+        "purpose": "Inside on-navy regions and the dark tone scope (hero, page heroes, job seekers, closing, footer, header over hero)."
       }
     ],
-    "layout": {
-      "container": "80rem",
-      "headerHeight": "4.75rem (4rem below 48rem)",
-      "splitGap": "clamp(3rem, 6vw, 6rem)"
-    },
     "breakpoints": [
       {
         "name": "header-cta",
         "value": "30rem"
       },
       {
-        "name": "form-rows",
+        "name": "two-up",
         "value": "40rem"
       },
       {
         "name": "tablet",
-        "value": "48rem"
+        "value": "48rem",
+        "purpose": "Hero actions inline, partner label centered, specialty rows two-up."
       },
       {
-        "name": "desktop",
+        "name": "desktop-and-deck",
         "value": "64rem"
       },
       {
         "name": "hero-framed",
         "value": "75rem"
       }
-    ]
+    ],
+    "overlays": [
+      {
+        "name": "deck-cover-dim",
+        "value": "navy #13212e at opacity calc(var(--cover) * 0.14)",
+        "purpose": "Covered deck panel dims in proportion to how far the next panel has slid over it."
+      },
+      {
+        "name": "hero-scrim",
+        "value": "navy rgb(19 33 46) linear 0 to 0.8 (mobile); radial ellipse 48rem x 21rem, 0.86 to 0 (75rem+)",
+        "purpose": "Legibility over the GradientASCII field; the only gradients in the system."
+      }
+    ],
+    "toneScopes": {
+      "tone-dark": {
+        "bg": "navy",
+        "repoints": {
+          "ink": "on-navy",
+          "ink-muted": "on-dark-muted",
+          "line": "rgb(255 255 255 / 0.14)",
+          "line-strong": "rgb(255 255 255 / 0.3)",
+          "page": "tone bg",
+          "paper": "tone bg",
+          "action": "amber",
+          "action-hover": "amber-hover",
+          "focus": "#ffffff"
+        },
+        "buttonPrimary": "renders as white inverse button"
+      },
+      "tone-steel": {
+        "bg": "steel",
+        "requires": "tone-dark",
+        "usedBy": "home Job seekers band"
+      }
+    },
+    "bandSequence": [
+      "hero: navy (animated)",
+      "partner strip: page",
+      "overview: page",
+      "deck: paper (specialties) / page (ways to hire) / paper (process)",
+      "at a glance: page",
+      "client stories: paper with navy cards",
+      "job seekers: steel",
+      "faq: paper",
+      "closing: teal",
+      "footer: navy"
+    ],
+    "layout": {
+      "container": "80rem",
+      "headerHeight": "4.75rem (4rem below 48rem)",
+      "splitGap": "clamp(3rem, 6vw, 6rem)",
+      "deckPanelMinHeight": "calc(100svh - var(--header-height))"
+    },
+    "deckPanels": [
+      {
+        "name": "specialties",
+        "bg": "paper"
+      },
+      {
+        "name": "ways-to-hire",
+        "bg": "page"
+      },
+      {
+        "name": "process",
+        "bg": "paper"
+      }
+    ],
+    "innerPages": "Navy page hero, light reading sections, teal closing band, navy footer."
   },
   "components": [
     {
@@ -410,7 +648,7 @@
       "name": "Inverse Button",
       "kind": "button",
       "refersTo": "button-inverse",
-      "description": "The only button on the navy field.",
+      "description": "Hero and closing CTA, and every primary button inside a dark tone scope.",
       "html": "<div style=\"background:#13212e;padding:24px\"><a href=\"#\" class=\"ds-btn-inverse\">Find IT talent</a></div>",
       "css": ".ds-btn-inverse{display:inline-flex;align-items:center;min-height:3rem;padding:0 1.5rem;border-radius:var(--radius-control,2px);background:#fff;color:var(--color-navy,#13212e);font-family:var(--font-sans);font-weight:600;text-decoration:none;transition:background-color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-btn-inverse:hover{background:var(--color-action-tint,#e8eef9);}.ds-btn-inverse:focus-visible{outline:2px solid #fff;outline-offset:3px;}"
     },
@@ -450,9 +688,17 @@
       "name": "Numbered Steps",
       "kind": "custom",
       "refersTo": "step-number",
-      "description": "Navy-outlined square numerals joined by a 1px vertical rule.",
+      "description": "Outlined navy square numerals on white joined by a 1px rule.",
       "html": "<ol class=\"ds-steps\"><li><span class=\"ds-num\">1</span><div><strong>Define the need</strong><p>Tell us the role and timeline.</p></div></li><li><span class=\"ds-num\">2</span><div><strong>Review a shortlist</strong><p>Candidates matched to the brief.</p></div></li></ol>",
       "css": ".ds-steps{list-style:none;padding:0;margin:0;font-family:var(--font-sans);color:var(--color-ink,#14212d);}.ds-steps li{position:relative;display:grid;grid-template-columns:2.5rem 1fr;gap:20px;padding-bottom:32px;}.ds-steps li:last-child{padding-bottom:0;}.ds-steps li:not(:last-child)::before{content:'';position:absolute;left:calc(1.25rem - 0.5px);top:2.75rem;bottom:0.25rem;width:1px;background:var(--color-line-strong,#b9c3cd);}.ds-num{display:inline-grid;place-items:center;width:2.5rem;height:2.5rem;border:1px solid var(--color-navy,#13212e);border-radius:var(--radius-control,2px);color:var(--color-navy,#13212e);font-weight:600;font-variant-numeric:tabular-nums;}.ds-steps strong{display:block;padding-top:0.45rem;font-size:1.25rem;font-weight:600;}.ds-steps p{margin:8px 0 0;color:var(--color-ink-muted,#4b5966);}"
+    },
+    {
+      "name": "Specialty Row",
+      "kind": "custom",
+      "refersTo": "specialty-row",
+      "description": "Whole-row link on the home Specialties list: semibold name, one muted line, action arrow; rule-divided, no box.",
+      "html": "<ul class=\"ds-spec\"><li><a href=\"#\" class=\"ds-spec-row\"><span class=\"ds-spec-text\"><span class=\"ds-spec-title\">Cloud and infrastructure</span><span class=\"ds-spec-body\">Design, migrate and operate reliable environments.</span></span><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li><li><a href=\"#\" class=\"ds-spec-row\"><span class=\"ds-spec-text\"><span class=\"ds-spec-title\">Software engineering</span><span class=\"ds-spec-body\">Build and maintain the applications your business runs on.</span></span><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li></ul>",
+      "css": ".ds-spec{list-style:none;margin:0;padding:0;max-width:28rem;border-top:1px solid var(--color-line-strong,#b9c3cd);font-family:var(--font-sans);}.ds-spec-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0;border-bottom:1px solid var(--color-line,#d8dee4);color:var(--color-ink,#14212d);text-decoration:none;}.ds-spec-text{display:grid;gap:4px;}.ds-spec-title{font-size:1.375rem;font-weight:600;line-height:1.3;letter-spacing:-0.005em;transition:color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-spec-body{color:var(--color-ink-muted,#4b5966);font-size:0.9375rem;line-height:1.5;}.ds-spec-row svg{flex-shrink:0;color:var(--color-action,#1f4fa8);transition:transform 150ms cubic-bezier(0.22,1,0.36,1);}.ds-spec-row:hover .ds-spec-title{color:var(--color-action,#1f4fa8);}.ds-spec-row:hover svg{transform:translateX(4px);}.ds-spec-row:focus-visible{outline:2px solid var(--color-focus,#1f4fa8);outline-offset:3px;}"
     },
     {
       "name": "FAQ Disclosure",
@@ -463,75 +709,130 @@
       "css": ".ds-faq{border-top:1px solid var(--color-line-strong,#b9c3cd);border-bottom:1px solid var(--color-line,#d8dee4);font-family:var(--font-sans);color:var(--color-ink,#14212d);}.ds-faq summary{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:24px 0;cursor:pointer;list-style:none;font-size:1.0625rem;font-weight:600;line-height:1.45;transition:color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-faq summary::-webkit-details-marker{display:none;}.ds-faq summary:hover{color:var(--color-action,#1f4fa8);}.ds-faq summary:focus-visible{outline:2px solid var(--color-focus,#1f4fa8);outline-offset:2px;}.ds-faq-icon{display:inline-grid;place-items:center;flex-shrink:0;width:2rem;height:2rem;border:1px solid var(--color-line-strong,#b9c3cd);border-radius:var(--radius-control,2px);color:var(--color-action,#1f4fa8);}.ds-faq p{margin:0;padding:0 48px 24px 0;color:var(--color-ink-muted,#4b5966);}"
     },
     {
+      "name": "Stat Card",
+      "kind": "card",
+      "refersTo": "stat-card",
+      "description": "Flat white figure card with a 6px amber cap; 'Pending' fills an empty figure slot.",
+      "html": "<ul class=\"ds-stats\"><li class=\"ds-stat\"><p class=\"ds-stat-value\"><span class=\"ds-empty\">Pending</span></p><p class=\"ds-stat-label\">Placements to date</p></li><li class=\"ds-stat\"><p class=\"ds-stat-value\"><span class=\"ds-empty\">Pending</span></p><p class=\"ds-stat-label\">Years in IT staffing</p></li></ul>",
+      "css": ".ds-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0;font-family:var(--font-sans);}.ds-stat{padding:32px;border:1px solid var(--color-line,#d8dee4);border-top:6px solid var(--color-amber,#f2a33a);border-radius:var(--radius-media,4px);background:var(--color-page,#fff);}.ds-stat p{margin:0;}.ds-stat-value{color:var(--color-ink,#14212d);font-size:3rem;font-weight:300;line-height:1.05;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;}.ds-empty{color:var(--color-ink-muted,#4b5966);font-size:1.125rem;font-weight:600;letter-spacing:0;}.ds-stat-label{margin-top:4px;color:var(--color-ink-muted,#4b5966);font-size:0.9375rem;}"
+    },
+    {
+      "name": "Story Card",
+      "kind": "card",
+      "refersTo": "story-card",
+      "description": "Navy client-story card: flush 4:3 photo, 3px amber top rule, light title, Pending tag in the foot.",
+      "html": "<article class=\"ds-story\"><div class=\"ds-story-photo\"></div><div class=\"ds-story-body\"><h3>Cloud migration team in six weeks</h3><p>Sample summary of a placement, shown until a real client story is supplied.</p><div class=\"ds-story-foot\"><span class=\"ds-pend-sm\"><b>Pending</b>Sample story</span></div></div></article>",
+      "css": ".ds-story{display:flex;flex-direction:column;max-width:22rem;overflow:hidden;border-radius:var(--radius-media,4px);background:var(--color-navy,#13212e);color:#fff;font-family:var(--font-sans);}.ds-story-photo{aspect-ratio:4/3;background:var(--color-navy-raised,#1c2e3e);}.ds-story-body{display:flex;flex:1;flex-direction:column;padding:24px 24px 32px;border-top:3px solid var(--color-amber,#f2a33a);}.ds-story h3{margin:0;font-size:1.75rem;font-weight:300;line-height:1.22;letter-spacing:-0.01em;}.ds-story p{margin:16px 0 0;color:var(--color-on-dark-muted,#c9d5e1);font-size:0.9375rem;line-height:1.6;}.ds-story-foot{margin-top:auto;padding-top:24px;}.ds-pend-sm{display:inline-flex;gap:8px;padding:2px 8px;border:1px dashed rgb(255 255 255/0.3);border-radius:var(--radius-control,2px);color:var(--color-on-navy-muted,#c3ceda);font-size:0.75rem;line-height:1.4;}.ds-pend-sm b{font-weight:600;color:#fff;}"
+    },
+    {
+      "name": "Dark Tone Band",
+      "kind": "custom",
+      "refersTo": "job-seekers-band",
+      "description": "The home Job seekers band inside the steel tone scope: amber links, white inverse primary, white-alpha rules.",
+      "html": "<section class=\"ds-tone\"><h2>Looking for your next technology role?</h2><p>Hitech Solutions also works with technology professionals who are looking for their next role.</p><a class=\"ds-tone-link\" href=\"#\">More for job seekers</a><a class=\"ds-tone-btn\" href=\"#\">Explore opportunities</a></section>",
+      "css": ".ds-tone{display:grid;justify-items:start;gap:16px;padding:48px 32px;background:var(--color-steel,#1a3550);color:#fff;font-family:var(--font-sans);border-top:1px solid rgb(255 255 255/0.3);}.ds-tone h2{margin:0;font-size:2.75rem;font-weight:300;line-height:1.2;letter-spacing:-0.012em;}.ds-tone p{margin:0;color:var(--color-on-dark-muted,#c9d5e1);}.ds-tone-link{color:var(--color-amber,#f2a33a);font-weight:600;text-decoration:none;transition:color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-tone-link:hover{color:var(--color-amber-hover,#f7bd6b);text-decoration:underline;}.ds-tone-btn{display:inline-flex;align-items:center;min-height:3.375rem;padding:0 2rem;border-radius:var(--radius-control,2px);background:#fff;color:var(--color-navy,#13212e);font-weight:600;font-size:1.0625rem;text-decoration:none;transition:background-color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-tone-btn:hover{background:var(--color-action-tint,#e8eef9);}.ds-tone a:focus-visible{outline:2px solid #fff;outline-offset:3px;}"
+    },
+    {
+      "name": "Closing Band",
+      "kind": "custom",
+      "refersTo": "closing-band",
+      "description": "Teal request band on every page: white headline, on-teal muted body, white inverse CTA; no amber text.",
+      "html": "<section class=\"ds-closing\"><h2>Tell us about the role you need to fill</h2><p>Share the brief and we will come back with next steps.</p><a href=\"#\" class=\"ds-closing-btn\">Request talent</a></section>",
+      "css": ".ds-closing{display:flex;flex-direction:column;align-items:center;gap:20px;padding:64px 24px;text-align:center;background:var(--color-teal,#0a6474);color:#fff;font-family:var(--font-sans);}.ds-closing h2{margin:0;max-width:24ch;font-size:2.75rem;font-weight:300;line-height:1.2;letter-spacing:-0.012em;}.ds-closing p{margin:0;max-width:38rem;color:var(--color-on-teal-muted,#d2eaee);font-size:1.25rem;line-height:1.55;}.ds-closing-btn{display:inline-flex;align-items:center;min-height:3.375rem;margin-top:12px;padding:0 2rem;border-radius:var(--radius-control,2px);background:#fff;color:var(--color-navy,#13212e);font-weight:600;text-decoration:none;transition:background-color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-closing-btn:hover{background:var(--color-action-tint,#e8eef9);}.ds-closing-btn:focus-visible{outline:2px solid #fff;outline-offset:3px;}"
+    },
+    {
+      "name": "Footer",
+      "kind": "nav",
+      "refersTo": "footer",
+      "description": "Navy footer: 3px amber top rule, amber column headings, muted links hovering white with amber underline.",
+      "html": "<footer class=\"ds-foot\"><div><h2>Employers</h2><a href=\"#\">Request talent</a><a href=\"#\">Specialties</a></div><div><h2>Contact</h2><span class=\"ds-foot-pend\"><b>Pending</b>Office address, phone, email</span></div></footer>",
+      "css": ".ds-foot{display:grid;grid-template-columns:repeat(2,minmax(10rem,1fr));gap:32px;padding:48px 32px;border-top:3px solid var(--color-amber,#f2a33a);background:var(--color-navy,#13212e);color:var(--color-on-navy-muted,#c3ceda);font-family:var(--font-sans);font-size:0.9375rem;}.ds-foot div{display:grid;align-content:start;gap:12px;}.ds-foot h2{margin:0 0 4px;color:var(--color-amber,#f2a33a);font-size:0.875rem;font-weight:600;letter-spacing:0.01em;}.ds-foot a{color:var(--color-on-navy-muted,#c3ceda);text-decoration:none;transition:color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-foot a:hover{color:#fff;text-decoration:underline;text-decoration-color:var(--color-amber,#f2a33a);}.ds-foot a:focus-visible{outline:2px solid #fff;outline-offset:3px;}.ds-foot-pend{display:inline-flex;flex-wrap:wrap;gap:8px;padding:2px 8px;border:1px dashed rgb(255 255 255/0.3);border-radius:var(--radius-control,2px);font-size:0.75rem;}.ds-foot-pend b{font-weight:600;color:#fff;}"
+    },
+    {
       "name": "Pending Marker",
       "kind": "custom",
       "refersTo": "pending",
-      "description": "Visible marker for missing business input; zero instances required at launch.",
-      "html": "<p class=\"ds-pending\"><span class=\"ds-pending-tag\">Pending</span><span>Careers or job-board link.</span></p>",
-      "css": ".ds-pending{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin:0;padding:8px 12px;border:1px dashed var(--color-line-strong,#b9c3cd);border-radius:var(--radius-control,2px);font-family:var(--font-sans);font-size:0.875rem;line-height:1.4;color:var(--color-ink-muted,#4b5966);}.ds-pending-tag{font-weight:600;color:var(--color-ink,#14212d);}"
+      "description": "Dashed note box for missing business input (md and sm, light and dark), the card-foot tag, and the word Pending in empty figure slots; zero instances at launch.",
+      "html": "<div class=\"ds-pend-row\"><p class=\"ds-pending\"><span class=\"ds-pending-tag\">Pending</span><span>Careers or job-board link.</span></p><p class=\"ds-pending ds-pending-sm\"><span class=\"ds-pending-tag\">Pending</span><span>Sample story</span></p></div><div class=\"ds-pend-row ds-pend-dark\"><p class=\"ds-pending\"><span class=\"ds-pending-tag\">Pending</span><span>Office address, phone and email.</span></p></div>",
+      "css": ".ds-pend-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:16px;font-family:var(--font-sans);}.ds-pending{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin:0;padding:8px 12px;border:1px dashed var(--color-line-strong,#b9c3cd);border-radius:var(--radius-control,2px);font-size:0.875rem;line-height:1.4;color:var(--color-ink-muted,#4b5966);}.ds-pending-tag{font-weight:600;color:var(--color-ink,#14212d);}.ds-pending-sm{gap:8px;padding:2px 8px;font-size:0.75rem;}.ds-pend-dark{background:var(--color-navy,#13212e);}.ds-pend-dark .ds-pending{border-color:rgb(255 255 255/0.3);color:var(--color-on-navy-muted,#c3ceda);}.ds-pend-dark .ds-pending-tag{color:#fff;}"
     }
   ],
   "narrative": {
     "northStar": "The Established Ledger",
-    "overview": "An established staffing firm earns trust through order. The system is a corporate ledger set in light type: an ink-navy field opens and closes every page, white and cool-paper bands carry the reading in between, and content is organised by thin slate rules rather than boxes. Density is moderate and even; every section is a simple split or stacked list with generous, consistent spacing and precise left alignment. Nothing moves unless the visitor asks it to.\n\nThe world was pinned by the user: restrained, corporate, reference-structured (the structure of a large staffing site, never its branding). Its binding rejections are part of the system: no decorative motion, gradients, glassmorphism, glows, blobs, particles, parallax or carousels; no bubbly radii; no card grid as the default container. Motion exists only for hover, focus, the mobile menu and disclosure, and collapses to zero under reduced motion.\n\n**The palette and the wordmark are PROVISIONAL.** No brand kit exists. The only swap points are `src/styles/tokens.css` (every color, type and shape value) and `src/components/site/Wordmark.astro` (the typographic \"Hitech | Solutions\" mark, to be replaced by the supplied vector logo). Components reference tokens only, so a brand kit lands in those two files.",
+    "overview": "An established staffing firm earns trust through order and deliberate contrast. The home page opens on an animated ink-navy field, then reads through an open run of white and cool-paper bands, including the three-panel stacking deck (paper, white, paper) in the middle. Dark tones arrive later and each has one job: navy client-story cards carry the proof, a steel band speaks to job seekers, one teal band asks for the request, and a navy footer closes. Content stays precisely aligned and mostly rule-divided; the two card families that exist (figures and client stories) are flat and square-shouldered.\n\nThe world was pinned by the user: restrained, corporate, reference-structured (the structure of a large staffing site, never its branding), and unmistakably technical. Its binding rejections are part of the system: no glows, blobs, particles, parallax, scroll hijacking, gradient text, glassmorphism or autoplay carousels of content; no bubbly radii; no eyebrow labels above headings; no invented proof. Dark navy, steel and teal deck panels were built and rejected (\"dull\", \"compressed and closed\"); the middle of the page stays light. Motion is approved in exactly three places (the hero's GradientASCII field, the partner logo strip, the desktop stacking deck) plus functional feedback for hover, focus, menus and disclosure. Reduced motion stills all three and restores normal section flow.\n\n**The palette and the wordmark are PROVISIONAL.** No brand kit exists. The swap points are `src/styles/tokens.css` (every color, type and shape value) and `src/components/site/Wordmark.astro` (the typographic \"Hitech | Solutions\" mark, to be replaced by the supplied vector logo). Components reference tokens, so a brand kit lands in those two files.",
     "keyCharacteristics": [
-      "Navy field top and bottom (hero, closing, footer); white and paper bands between.",
-      "Light (300) display and section headlines against semibold (600) labels and titles: one family, contrast by weight.",
-      "Hairline 1px rules divide lists, columns and FAQ items; containers are rare.",
-      "Square shoulders: 2px on controls, 4px on photographs, nothing rounder.",
-      "One action blue for buttons, links and focus; it is the only saturated color.",
-      "Rectangular, naturally lit, licensed photography; never masked, never presented as Hitech staff."
+      "Navy hero, page heroes and footer; a light middle (white and paper, with a paper/white/paper stacking deck); navy story cards, a steel job-seekers band and a teal closing band supply the contrast.",
+      "Light (300) display, section and card headlines against semibold (600) labels and titles: one family, contrast by weight.",
+      "Hairline 1px rules divide lists, rows, columns and FAQ items; cards are limited to figures, client stories and the form.",
+      "Square shoulders: 2px on controls, 4px on photographs and cards, nothing rounder.",
+      "Action blue for actions on light; warm amber for small marks and for links on dark.",
+      "Rectangular, naturally lit, licensed photography with recorded provenance; never masked, never presented as Hitech staff or clients."
     ],
     "rules": [
       {
-        "name": "The One Blue Rule",
-        "body": "Corporate Action Blue is the only saturated hue on any screen and it always means \"you can act here\". It never fills a section, a panel or a decoration.",
+        "name": "The Action Blue Rule",
+        "body": "On light surfaces, Corporate Action Blue always means \"you can act here.\" Teal and steel fill single structural bands; amber marks details. Neither replaces action blue for controls on light.",
         "section": "colors"
       },
       {
-        "name": "The Navy Bookends Rule",
-        "body": "The navy field appears only as the opening hero and the closing band plus footer. Middle sections alternate white and Cool Paper.",
+        "name": "The Tone Scope Rule",
+        "body": "A section goes dark by wrapping it in the dark tone scope (navy by default, steel variant), which re-points ink, muted, rule, page, paper, action and focus tokens. Components are never restyled per band: they read the scope. Inside it, action becomes amber and primary buttons become the white inverse button.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Middle Rule",
+        "body": "The run between the overview and the client stories, stacking deck included, stays on white and Cool Paper. Contrast comes after it, from story cards, the steel band, the teal close and the footer, never from darkening the deck.",
+        "section": "colors"
+      },
+      {
+        "name": "The Amber Mark Rule",
+        "body": "Amber is a mark, never a field: caps, top rules, headings and links on dark. It never fills a band or a button, and amber text never sits on the request-teal closing band (3.3:1); text there is white or on-teal muted.",
         "section": "colors"
       },
       {
         "name": "The Light-Over-Semibold Rule",
-        "body": "Headings above 24px are light (300); anything that labels or names is semibold (600). Bold (700) belongs to the provisional wordmark only.",
+        "body": "Headings above 24px are light (300), including figures and card titles; anything that labels or names is semibold (600). Bold (700) belongs to the provisional wordmark only.",
         "section": "typography"
       },
       {
         "name": "The Sentence-Case Rule",
-        "body": "No uppercase tracking labels and no eyebrow line above headlines. Labels sit inside the content they name.",
+        "body": "Headings, labels and buttons are sentence case, and no eyebrow or kicker line sits above a heading. The one uppercase register is the 12px tracked category label inside navigation menus and the partner strip.",
         "section": "typography"
       },
       {
         "name": "The Rule-Not-Box Rule",
-        "body": "Group content with a strong 1px top rule and 1px dividers between items. A card or panel is the exception, reserved for the form.",
+        "body": "Group peers with a strong 1px top rule and 1px dividers. Cards exist only for figures, client stories and the request form.",
         "section": "layout"
       },
       {
-        "name": "The Flat Page Rule",
-        "body": "Surfaces never lift on hover and never cast shadows at rest. If something must separate, use a rule or a band.",
+        "name": "The One Job Shadow Rule",
+        "body": "A shadow is allowed only where something physically overlaps (a menu over the page, a panel over a panel) or where text must read over motion. Cards, buttons and photographs never cast shadows, at rest or on hover.",
         "section": "elevation"
       }
     ],
     "dos": [
       "**Do** change palette and wordmark only in `src/styles/tokens.css` and `src/components/site/Wordmark.astro`; both are provisional until a brand kit arrives.",
-      "**Do** keep Corporate Action Blue as the only saturated color, used for actions, links and focus.",
-      "**Do** separate content with 1px Slate Rule dividers and a Strong Slate Rule top rule.",
-      "**Do** set section headings light (300) and labels semibold (600), in sentence case.",
-      "**Do** keep corners at 2px for controls and 4px for photographs and the form panel.",
+      "**Do** make a band dark by wrapping it in the dark tone scope (navy, or the steel variant) and let components read the re-pointed tokens.",
+      "**Do** keep the stacking deck and the reading bands around it on white and Cool Paper; carry contrast with story cards, the steel band, the teal close and the footer.",
+      "**Do** keep action blue for actions on light; on dark, use amber links and the white inverse button.",
+      "**Do** use amber only as marks: 6px stat caps, 3px top rules, footer headings and links on dark.",
+      "**Do** separate peers with 1px Slate Rule dividers and a Strong Slate Rule top rule; keep cards to figures, stories and the form.",
+      "**Do** set headings above 24px light (300) and labels semibold (600), in sentence case.",
+      "**Do** keep corners at 2px for controls and 4px for photographs and cards.",
       "**Do** use rectangular, licensed, naturally lit photographs with provenance recorded in `src/assets/images/CREDITS.md` and embedded in the file.",
-      "**Do** limit motion to hover, focus, menu and disclosure, with durations driven by tokens that drop to 0ms under reduced motion.",
-      "**Do** show missing business input with the Pending marker rather than inventing content."
+      "**Do** keep the hero field, partner strip and stacking deck on native scrolling, and still them under reduced motion.",
+      "**Do** show missing business input with a Pending note box, card-foot tag or \"Pending\" figure slot rather than inventing content."
     ],
     "donts": [
-      "**Don't** add decorative motion, animated counters, parallax, scroll hijacking, autoplay carousels or hero video.",
-      "**Don't** use decorative gradients, glassmorphism, neon glows, floating circles, blobs or particles.",
-      "**Don't** round containers beyond 4px or mask photographs into shapes.",
+      "**Don't** add glows, blobs, particles, floating circles, gradient text, glassmorphism or decorative gradients; navy legibility scrims over the hero field are the only gradients.",
+      "**Don't** add parallax, scroll hijacking, animated counters or motion beyond the hero field, partner strip and stacking deck.",
+      "**Don't** turn the deck panels dark (navy, steel or teal); that version was built and rejected as dull and closed.",
+      "**Don't** put amber text on the request-teal closing band, or use amber as a fill.",
+      "**Don't** round anything beyond 4px or mask photographs into shapes.",
       "**Don't** make a card grid the default container for a section.",
       "**Don't** lift, scale or shadow elements on hover.",
-      "**Don't** add uppercase eyebrow or kicker labels above headings.",
-      "**Don't** present generic stock people as Hitech staff or clients, or invent metrics, logos, certifications or testimonials."
+      "**Don't** add eyebrow or kicker labels above headings.",
+      "**Don't** present stock people as Hitech staff or clients, or invent metrics, logos, client stories, certifications or testimonials."
     ]
   }
 }

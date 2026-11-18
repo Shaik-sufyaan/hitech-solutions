@@ -166,10 +166,6 @@ a:hover {
   --tone-bg: var(--color-steel);
 }
 
-.tone-teal {
-  --tone-bg: var(--color-teal-deep);
-  --color-ink-muted: var(--color-on-teal-muted);
-}
 
 .visually-hidden {
   position: absolute !important;

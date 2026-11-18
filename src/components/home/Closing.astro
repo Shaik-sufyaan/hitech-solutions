@@ -35,9 +35,11 @@ const {
 </section>
 
 <style>
-  /* Teal close: the one saturated band, sitting between the light page and the navy footer. */
+  /* Navy close mirrors the hero, so the page opens and ends on the same field;
+     the footer's amber top rule separates the two navy blocks. (Teal was tried and
+     rejected by the user on 2026-11-18 as clashing with the theme.) */
   .closing {
-    background: var(--color-teal);
+    background: var(--color-navy);
     color: var(--color-on-navy);
   }
 
@@ -53,7 +55,7 @@ const {
   }
 
   .closing__body {
-    color: var(--color-on-teal-muted);
+    color: var(--color-on-navy-muted);
     max-width: 38rem;
     margin-top: var(--space-5);
   }
@@ -64,7 +66,7 @@ const {
 
   .closing__candidate {
     margin-top: var(--space-5);
-    color: var(--color-on-teal-muted);
+    color: var(--color-on-navy-muted);
     font-size: var(--fs-small);
   }
 
@@ -75,7 +77,7 @@ const {
   }
 
   .closing__candidate a:hover {
-    color: var(--color-on-navy);
+    color: var(--color-on-navy-link);
     text-decoration-color: currentColor;
   }
 </style>

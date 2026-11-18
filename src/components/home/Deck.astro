@@ -1,9 +1,12 @@
 ---
 /*
  * Stacking deck (home page): Specialties, Ways to hire and Process as three
- * professionally dark panels. On desktop with motion allowed, each panel pins
- * (CSS sticky on native scroll) while the next slides over it, and the covered
- * panel dims. On mobile or with reduced motion they are ordinary sections.
+ * light sheets (grey / white / grey; dark panels were rejected by the user on
+ * 2026-11-18). On desktop with motion allowed, each sheet is an inset card on a
+ * slightly darker bed; it pins (CSS sticky on native scroll) a little lower than
+ * the one before so every covered sheet keeps a visible top edge, and the covered
+ * sheet shrinks and dims slightly as the next arrives. On mobile or with reduced
+ * motion they are ordinary full-width sections.
  */
 import Specialties from './Specialties.astro';
 import Engagement from './Engagement.astro';
@@ -11,14 +14,14 @@ import Process from './Process.astro';
 ---
 
 <div class="deck" data-deck>
-  <div class="deck__panel tone-dark" data-deck-panel>
+  <div class="deck__panel deck__panel--paper" data-deck-panel>
     <Specialties />
   </div>
-  <div class="deck__panel tone-dark tone-steel" data-deck-panel>
+  <div class="deck__panel" data-deck-panel>
     <Engagement />
   </div>
-  <div class="deck__panel tone-dark tone-teal" data-deck-panel>
-    <Process paper={false} />
+  <div class="deck__panel deck__panel--paper" data-deck-panel>
+    <Process />
   </div>
 </div>
 
@@ -28,27 +31,32 @@ import Process from './Process.astro';
   const header = document.querySelector<HTMLElement>('[data-header]');
   const active = window.matchMedia('(min-width: 64rem) and (prefers-reduced-motion: no-preference)');
 
+  const GAP = 16; // space between the header and the first sheet
+  const PEEK = 14; // each later sheet pins this much lower, leaving the edge above it visible
+  const BOTTOM = 16; // breathing room under a sheet taller than the screen
+
   let queued = false;
 
-  // A panel taller than the screen pins only once its bottom is reached, so nothing is ever hidden.
+  // Sheets pin in a staircase; one taller than the screen pins only once its bottom is reached.
   const layout = () => {
     const headerHeight = header?.offsetHeight ?? 0;
-    for (const panel of panels) {
+    panels.forEach((panel, index) => {
       if (!active.matches) {
         panel.style.removeProperty('--deck-top');
-        continue;
+        return;
       }
-      const top = Math.min(headerHeight, window.innerHeight - panel.offsetHeight);
+      const stair = headerHeight + GAP + index * PEEK;
+      const top = Math.min(stair, window.innerHeight - panel.offsetHeight - BOTTOM);
       panel.style.setProperty('--deck-top', `${Math.round(top)}px`);
-    }
+    });
     paint();
   };
 
-  // Dim each panel in proportion to how far the next one has slid over it.
+  // Shrink and dim each sheet in proportion to how far the next one has slid over it.
   const paint = () => {
     queued = false;
     const headerHeight = header?.offsetHeight ?? 0;
-    const travel = Math.max(1, window.innerHeight - headerHeight);
+    const travel = Math.max(1, window.innerHeight - headerHeight - GAP);
     panels.forEach((panel, index) => {
       const next = panels[index + 1];
       if (!active.matches || !next) {
@@ -79,50 +87,62 @@ import Process from './Process.astro';
 </script>
 
 <style>
-  /* Dark-panel adjustments for components designed on light surfaces. */
-  .deck :global(.step__number) {
-    border-color: var(--color-amber);
-    background: transparent;
-    color: var(--color-on-navy);
+  /* Sheets are opaque so the one underneath never shows through. */
+  .deck__panel {
+    --tone-bg: var(--color-page);
+    background: var(--tone-bg);
   }
 
-  .deck :global(.process__photo) {
-    background: rgb(255 255 255 / 0.06);
+  .deck__panel--paper {
+    --tone-bg: var(--color-paper);
   }
 
   @media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
+    /* The bed: a shade darker than the sheets, so every sheet's edge reads. */
+    .deck {
+      padding: var(--space-4) var(--deck-inset) var(--space-8);
+      background: var(--color-deck-bed);
+      --deck-inset: clamp(0.75rem, 1.6vw, 1.75rem);
+    }
+
     .deck__panel {
       position: sticky;
       top: var(--deck-top, var(--header-height));
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: calc(100svh - var(--header-height));
+      min-height: calc(100svh - var(--header-height) - 4rem);
+      overflow: clip;
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-sheet);
+      box-shadow:
+        0 -14px 32px -18px rgb(19 33 46 / 0.28),
+        0 1px 2px rgb(19 33 46 / 0.06);
+      transform: scale(calc(1 - var(--cover, 0) * 0.04));
+      transform-origin: 50% 0;
     }
 
-    /* The incoming panel casts a soft shadow onto the one it covers. */
     .deck__panel + .deck__panel {
-      box-shadow: 0 -18px 40px -12px rgb(4 10 17 / 0.55);
-      clip-path: inset(-96px 0 -2px 0); /* shadow falls upward only, never onto the next section */
+      margin-top: var(--space-4);
     }
 
-    /* Subpixel seam guard: the last panel paints 2px past its edge so covered panels never peek through. */
-    .deck__panel:last-child::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -2px;
-      height: 2px;
-      background: var(--tone-bg);
+    /* Inside a sheet, sections breathe a little less than full-bleed bands, and less
+       again on short screens so each sheet can pin below the header with its edge showing. */
+    .deck__panel > :global(.section) {
+      padding-block: clamp(2rem, 8vh - 1.25rem, 4.75rem);
+    }
+
+    .deck__panel :global(.engagement__models),
+    .deck__panel :global(.specialties__list) {
+      margin-top: clamp(1.5rem, 5vh - 0.5rem, 3rem);
     }
 
     .deck__panel::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: #050b12;
-      opacity: calc(var(--cover, 0) * 0.6);
+      background: var(--color-navy);
+      opacity: calc(var(--cover, 0) * 0.1);
       pointer-events: none;
     }
   }
