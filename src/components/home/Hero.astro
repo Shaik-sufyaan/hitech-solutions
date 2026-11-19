@@ -5,6 +5,7 @@
  * slide shows the time left, and there is a pause button. Rotation pauses on
  * hover, keyboard focus and a hidden tab, and never runs under reduced motion.
  */
+import '@fontsource-variable/open-sans';
 import { Picture } from 'astro:assets';
 import Button from '../ui/Button.astro';
 import { hero } from '../../content/home';
@@ -14,6 +15,15 @@ import hiring from '../../assets/images/hero-slide-hiring.jpg';
 
 const photos = { experience, specialists, hiring } as const;
 const count = hero.slides.length;
+
+/** '**Bold** light|next line' → lines of { text, bold } runs (see home.ts). */
+const titleLines = (title: string) =>
+  title.split('|').map((line) =>
+    line
+      .split(/(\*\*.+?\*\*)/)
+      .filter(Boolean)
+      .map((run) => (run.startsWith('**') ? { text: run.slice(2, -2), bold: true } : { text: run, bold: false })),
+  );
 ---
 
 <section
@@ -47,11 +57,20 @@ const count = hero.slides.length;
           />
           <div class="hero__shade" aria-hidden="true"></div>
           <div class="container hero__copy">
-            {i === 0 ? (
-              <h1 class="hero__title">{slide.title}</h1>
-            ) : (
-              <h2 class="hero__title">{slide.title}</h2>
-            )}
+            {(() => {
+              const Tag = i === 0 ? 'h1' : 'h2';
+              return (
+                <Tag class="hero__title">
+                  {titleLines(slide.title).map((runs) => (
+                    <>
+                      <span class="hero__line">
+                        {runs.map((run) => (run.bold ? <b>{run.text}</b> : run.text))}
+                      </span>{' '}
+                    </>
+                  ))}
+                </Tag>
+              );
+            })()}
             <p class="hero__body">{slide.body}</p>
             <Button href={slide.cta.href} variant="inverse" size="lg" class="hero__cta">
               {slide.cta.label}
@@ -252,23 +271,34 @@ const count = hero.slides.length;
     padding-bottom: calc(var(--space-20) + var(--space-8));
   }
 
+  /* Open Sans, Light with Bold key phrases (user's reference, 2026-11-19). Hero only. */
+  .hero__title,
+  .hero__body {
+    font-family: 'Open Sans Variable', 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+  }
+
   .hero__title {
     max-width: 19ch;
     color: #fff;
-    font-size: clamp(2rem, 1.35rem + 2.9vw, 4rem);
-    font-weight: 700;
-    line-height: 1.07;
-    letter-spacing: -0.026em;
+    font-size: clamp(2.125rem, 1.2rem + 2.7vw, 3.75rem);
+    font-weight: 300;
+    line-height: 1.16;
+    letter-spacing: -0.012em;
     text-wrap: balance;
+  }
+
+  .hero__title b {
+    font-weight: 700;
+    letter-spacing: -0.018em;
   }
 
   .hero__body {
     max-width: 34rem;
-    margin-top: var(--space-5);
+    margin-top: var(--space-6);
     color: #fff;
-    font-size: var(--fs-lead);
-    font-weight: 500;
-    line-height: 1.5;
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.6;
     text-wrap: pretty;
   }
 
@@ -507,9 +537,14 @@ const count = hero.slides.length;
     }
   }
 
+  /* Tablet and up: the authored line breaks (bold / light / bold), as in the reference. */
   @media (min-width: 48rem) {
     .hero__title {
-      max-width: 17ch;
+      max-width: none;
+    }
+
+    .hero__line {
+      display: block;
     }
   }
 

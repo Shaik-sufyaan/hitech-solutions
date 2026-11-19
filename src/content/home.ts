@@ -10,6 +10,9 @@
  * user; Hitech must confirm the figure before launch (it matches the at-a-glance card).
  * Photos are AI-generated scenes supplied by the user (see CREDITS.md); the people in
  * them are not Hitech staff or clients.
+ *
+ * Titles: **bold** marks the Open Sans Bold words (the rest is Light);
+ * | marks a desktop line break.
  */
 export const hero = {
   label: 'Hitech Solutions at a glance',
@@ -17,7 +20,7 @@ export const hero = {
     {
       id: 'experience',
       tab: '30 years',
-      title: '30 years of connecting companies with the IT talent they need.',
+      title: '**30 years of connecting**|companies with the|**IT talent they need.**',
       body: 'Tell us the skills, the timeline and the team. We find technology professionals who fit the work and the people around it.',
       cta: { label: 'Find IT talent', href: '/request-talent' },
       photo: 'experience',
@@ -26,7 +29,7 @@ export const hero = {
     {
       id: 'specialists',
       tab: 'Specialists',
-      title: 'Specialists for the systems you can’t afford to get wrong.',
+      title: '**Specialists** for the|systems you can’t|**afford to get wrong.**',
       body: 'Cloud, cybersecurity, data and software professionals, screened against your brief before you meet them.',
       cta: { label: 'Explore our specialties', href: '/specialties' },
       photo: 'specialists',
@@ -35,7 +38,7 @@ export const hero = {
     {
       id: 'hiring',
       tab: 'Ways to hire',
-      title: 'Hire for a project, a trial run or the long term.',
+      title: '**Hire for a project,**|a trial run or|**the long term.**',
       body: 'Contract, contract-to-hire or direct hire, with one Hitech contact from shortlist to first day.',
       cta: { label: 'See ways to hire', href: '/hire-talent' },
       photo: 'hiring',
