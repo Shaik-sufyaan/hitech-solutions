@@ -1,350 +1,550 @@
 ---
+/**
+ * Home hero: three full-bleed photo slides under the transparent header
+ * (user-requested 2026-11-19). Slides cross-fade every 7s; a labelled tab per
+ * slide shows the time left, and there is a pause button. Rotation pauses on
+ * hover, keyboard focus and a hidden tab, and never runs under reduced motion.
+ */
 import { Picture } from 'astro:assets';
 import Button from '../ui/Button.astro';
-import GradientAscii from '../ui/GradientAscii.astro';
 import { hero } from '../../content/home';
-import { site, candidateHref } from '../../content/site';
-import developer from '../../assets/images/hero-developer.jpg';
-import specialist from '../../assets/images/hero-specialist.jpg';
+import experience from '../../assets/images/hero-slide-experience.jpg';
+import specialists from '../../assets/images/hero-slide-specialists.jpg';
+import hiring from '../../assets/images/hero-slide-hiring.jpg';
+
+const photos = { experience, specialists, hiring } as const;
+const count = hero.slides.length;
 ---
 
-<section class="hero on-navy" aria-labelledby="hero-title">
-  <div class="hero__backdrop">
-    <GradientAscii
-      colors={['#1e3fd8', '#f6f8ff', '#a5d8ff', '#38bdf8']}
-      shape="horizon"
-      characters=" =+xX0S8#@"
-      cellSize={18}
-      density={0.8}
-    />
-    <div class="hero__scrim"></div>
+<section
+  class="hero"
+  aria-roledescription="carousel"
+  aria-label={hero.label}
+  data-hero
+>
+  <div class="hero__slides" aria-live="off" data-hero-live>
+    {
+      hero.slides.map((slide, i) => (
+        <div
+          class:list={['hero__slide', `hero__slide--${slide.id}`, i === 0 && 'is-active']}
+          id={`hero-slide-${slide.id}`}
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`${i + 1} of ${count}`}
+          inert={i !== 0}
+          data-hero-slide
+        >
+          <Picture
+            class="hero__img"
+            src={photos[slide.photo as keyof typeof photos]}
+            formats={['avif', 'webp']}
+            widths={[1641]}
+            sizes="1641px"
+            quality={90}
+            alt={slide.alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            fetchpriority={i === 0 ? 'high' : undefined}
+          />
+          <div class="hero__shade" aria-hidden="true"></div>
+          <div class="container hero__copy">
+            {i === 0 ? (
+              <h1 class="hero__title">{slide.title}</h1>
+            ) : (
+              <h2 class="hero__title">{slide.title}</h2>
+            )}
+            <p class="hero__body">{slide.body}</p>
+            <Button href={slide.cta.href} variant="inverse" size="lg" class="hero__cta">
+              {slide.cta.label}
+            </Button>
+          </div>
+        </div>
+      ))
+    }
   </div>
-  <figure class="hero__photo hero__photo--left" aria-hidden="true">
-    <Picture
-      src={developer}
-      formats={['avif', 'webp']}
-      widths={[400, 640, 960, 1280]}
-      sizes="(min-width: 75rem) 20vw, 100vw"
-      alt=""
-      loading="eager"
-      fetchpriority="high"
-    />
-  </figure>
-  <figure class="hero__photo hero__photo--right" aria-hidden="true">
-    <Picture
-      src={specialist}
-      formats={['avif', 'webp']}
-      widths={[320, 480, 640, 800]}
-      sizes="(min-width: 75rem) 18vw, 1px"
-      alt=""
-      loading="eager"
-    />
-  </figure>
 
-  <div class="container hero__inner">
-    <h1 id="hero-title" class="t-display hero__title">
-      {hero.titleLines.map((line) => <span class="hero__line">{line} </span>)}
-    </h1>
-    <p class="hero__body">{hero.body}</p>
-    <p class="hero__experience">
-      <span class="hero__experience-value">{hero.experience.value}</span>
-      <span class="hero__experience-rule" aria-hidden="true"></span>
-      <span class="hero__experience-label">{hero.experience.label}</span>
-    </p>
-    <div class="hero__actions">
-      <Button href={site.requestTalentHref} variant="inverse" size="lg">{hero.primaryCta}</Button>
-      <p class="hero__candidate">
-        {hero.candidatePrompt}{' '}
-        <a href={candidateHref}>{hero.candidateCta}</a>
-      </p>
-    </div>
+  <div class="container hero__controls">
+    <button type="button" class="hero__pause" aria-label="Pause slideshow" data-hero-pause>
+      <svg class="hero__pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 5v14M16 5v14" />
+      </svg>
+      <svg class="hero__play-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 4.5v15L19 12z" />
+      </svg>
+    </button>
+    <ul role="list" class="hero__tabs">
+      {
+        hero.slides.map((slide, i) => (
+          <li>
+            <button
+              type="button"
+              class="hero__tab"
+              aria-controls={`hero-slide-${slide.id}`}
+              aria-current={i === 0 ? 'true' : undefined}
+              data-hero-tab
+            >
+              <span class="visually-hidden">Slide {i + 1}: </span>
+              <span class="hero__tab-label">{slide.tab}</span>
+              <span class="hero__track" aria-hidden="true">
+                <span class="hero__fill" data-hero-fill />
+              </span>
+            </button>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </section>
 
+<script>
+  const root = document.querySelector<HTMLElement>('[data-hero]');
+
+  if (root) {
+    const slides = [...root.querySelectorAll<HTMLElement>('[data-hero-slide]')];
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-hero-tab]')];
+    const fills = [...root.querySelectorAll<HTMLElement>('[data-hero-fill]')];
+    const live = root.querySelector<HTMLElement>('[data-hero-live]');
+    const pause = root.querySelector<HTMLButtonElement>('[data-hero-pause]');
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let current = 0;
+    let stopped = still.matches; // the visitor's own pause, or reduced motion
+
+    const sync = () => {
+      root.classList.toggle('is-stopped', stopped);
+      pause?.setAttribute('aria-label', stopped ? 'Play slideshow' : 'Pause slideshow');
+      // Announce slide changes only once the visitor is in control.
+      live?.setAttribute('aria-live', stopped ? 'polite' : 'off');
+    };
+
+    const show = (next: number) => {
+      current = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const on = i === current;
+        slide.classList.toggle('is-active', on);
+        slide.inert = !on;
+      });
+      tabs.forEach((tab, i) => {
+        if (i === current) tab.setAttribute('aria-current', 'true');
+        else tab.removeAttribute('aria-current');
+      });
+      // Restart the active tab's countdown from zero.
+      fills.forEach((fill) => fill.classList.remove('is-running'));
+      void fills[current]?.offsetWidth;
+      fills[current]?.classList.add('is-running');
+    };
+
+    // The tab's progress bar is the timer: when it fills, move on.
+    fills.forEach((fill) =>
+      fill.addEventListener('animationend', () => {
+        if (!stopped) show(current + 1);
+      }),
+    );
+
+    tabs.forEach((tab, i) => tab.addEventListener('click', () => show(i)));
+
+    pause?.addEventListener('click', () => {
+      stopped = !stopped;
+      sync();
+      if (!stopped) show(current); // resume with a full interval on the slide in view
+    });
+
+    // Hidden tab: hold the countdown so the visitor returns to the slide they left.
+    document.addEventListener('visibilitychange', () => {
+      root.classList.toggle('is-hidden', document.hidden);
+    });
+
+    still.addEventListener('change', (event) => {
+      if (event.matches) {
+        stopped = true;
+        sync();
+      }
+    });
+
+    sync();
+    show(0);
+  }
+</script>
+
 <style>
   .hero {
+    --hero-interval: 7s;
+    --hero-shade: 19 33 46; /* navy, as RGB channels for the legibility scrims */
+    /* Everything above the hero: top bar, navigation row and its 1px rule. */
+    --hero-under-header: calc(var(--utility-height) + var(--header-height) + 1px);
     position: relative;
+    display: grid;
     overflow: hidden;
+    margin-top: calc(-1 * var(--hero-under-header));
+    min-height: clamp(36rem, 100svh, 52rem);
     background: var(--color-navy);
     color: var(--color-on-navy);
+    isolation: isolate;
   }
 
-  /* Animated background layer; photos and copy sit above it. */
-  .hero__backdrop {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+  .hero__slides {
+    display: grid;
+    grid-area: 1 / 1;
   }
 
-  /* Keeps the copy legible over the brightest part of the glow. */
-  .hero__scrim {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      rgb(19 33 46 / 0) 0%,
-      rgb(19 33 46 / 0.55) 32%,
-      rgb(19 33 46 / 0.8) 55%,
-      rgb(19 33 46 / 0.8) 100%
-    );
-  }
-
-  .hero__photo,
-  .hero__inner {
+  /* All slides share one cell, so the hero is as tall as its longest copy. */
+  .hero__slide {
     position: relative;
+    display: grid;
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 900ms var(--ease-out),
+      visibility 0s linear 900ms;
+  }
+
+  .hero__slide.is-active {
     z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 900ms var(--ease-out),
+      visibility 0s;
   }
 
-  /* Home page: the hero runs up under the transparent header (see BaseLayout headerOverHero). */
-  :global(html.header-over-hero) .hero {
-    --hero-under-header: calc(var(--header-height) + 1px);
-    margin-top: calc(-1 * var(--hero-under-header));
-    padding-top: var(--hero-under-header);
-  }
-
-  /* Shade behind the nav row so its links read clearly over the brightest glyphs. */
-  :global(html.header-over-hero) .hero__backdrop::after {
-    content: '';
+  /*
+   * Phones: the photo fills the top of the hero and fades into navy behind the copy.
+   * Covering the whole tall screen would zoom the wide 1641x640 source ~4x; this keeps it near 2x.
+   */
+  .hero__slide :global(picture),
+  .hero__shade {
     position: absolute;
     inset: 0 0 auto 0;
-    height: calc(var(--header-height) * 1.9);
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      rgb(19 33 46 / 0.82) 0%,
-      rgb(19 33 46 / 0.7) 45%,
-      rgb(19 33 46 / 0) 100%
-    );
+    height: clamp(18rem, 58svh, 32rem);
   }
 
-  .hero__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: var(--space-8);
-    padding-bottom: var(--space-16);
-  }
-
-  .hero__title {
-    max-width: 16ch;
-    color: var(--color-on-navy);
-  }
-
-  .hero__body {
-    max-width: 36rem;
-    margin-top: var(--space-5);
-    color: var(--color-on-navy-muted);
-    font-size: var(--fs-lead);
-    line-height: 1.55;
-  }
-
-  /* Experience line: a light figure and a semibold label split by a hairline, like the wordmark. */
-  .hero__experience {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
-    margin-top: var(--space-6);
-    color: var(--color-on-navy);
-  }
-
-  .hero__experience-value {
-    font-size: clamp(1.75rem, 1.5rem + 0.9vw, 2.25rem);
-    font-weight: var(--fw-light);
-    line-height: 1;
-    letter-spacing: var(--tracking-display);
-    font-variant-numeric: lining-nums tabular-nums;
-  }
-
-  .hero__experience-rule {
-    align-self: stretch;
-    width: 1px;
-    background: var(--color-amber);
-  }
-
-  .hero__experience-label {
-    color: var(--color-on-navy-muted);
-    font-size: var(--fs-label);
-    font-weight: var(--fw-semibold);
-    line-height: 1.3;
-    text-align: left;
-  }
-
-  .hero__actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-5);
-    margin-top: var(--space-8);
-  }
-
-  .hero__candidate {
-    color: var(--color-on-navy-muted);
-    font-size: var(--fs-small);
-  }
-
-  .hero__candidate a {
-    white-space: nowrap; /* "Explore opportunities" stays whole on narrow phones */
-    color: var(--color-on-navy);
-    font-weight: var(--fw-semibold);
-    text-decoration-color: rgb(255 255 255 / 0.5);
-  }
-
-  .hero__candidate a:hover {
-    color: var(--color-on-navy-link);
-    text-decoration-color: currentColor;
-  }
-
-  /* Photographs: plain rectangles, gently rounded, never masked into shapes. */
-  .hero__photo {
-    margin: 0;
-    overflow: hidden;
-    border-radius: var(--radius-media);
-    background: var(--color-navy-raised);
-  }
-
-  .hero__photo :global(img) {
+  .hero__slide :global(.hero__img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  /* Mobile and tablet: one working photograph leads, copy follows, CTA stays in view. */
-  .hero__photo--right {
+  /* Phones: subject at the top, copy over a navy fade at the foot. */
+  .hero__slide--experience :global(.hero__img) { object-position: 74% 50%; }
+  .hero__slide--specialists :global(.hero__img) { object-position: 48% 50%; }
+  .hero__slide--hiring :global(.hero__img) { object-position: 52% 50%; }
+
+  .hero__shade {
+    background:
+      linear-gradient(to bottom, rgb(var(--hero-shade) / 0.72) 0, rgb(var(--hero-shade) / 0) 11rem),
+      linear-gradient(
+        to top,
+        rgb(var(--hero-shade) / 1) 0%,
+        rgb(var(--hero-shade) / 0.86) 20%,
+        rgb(var(--hero-shade) / 0.3) 45%,
+        rgb(var(--hero-shade) / 0) 62%
+      );
+  }
+
+  .hero__copy {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: calc(var(--hero-under-header) + var(--space-16));
+    /* Room for the slide controls underneath. */
+    padding-bottom: calc(var(--space-20) + var(--space-8));
+  }
+
+  .hero__title {
+    max-width: 19ch;
+    color: #fff;
+    font-size: clamp(2rem, 1.35rem + 2.9vw, 4rem);
+    font-weight: 700;
+    line-height: 1.07;
+    letter-spacing: -0.026em;
+    text-wrap: balance;
+  }
+
+  .hero__body {
+    max-width: 34rem;
+    margin-top: var(--space-5);
+    color: #fff;
+    font-size: var(--fs-lead);
+    font-weight: 500;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .hero__copy :global(.hero__cta) {
+    margin-top: var(--space-8);
+  }
+
+  /* The incoming slide's copy settles into place as the photo fades in. */
+  .hero__title,
+  .hero__body,
+  .hero__copy :global(.hero__cta) {
+    opacity: 0;
+    translate: 0 1rem;
+    transition:
+      opacity 700ms var(--ease-out),
+      translate 700ms var(--ease-out);
+  }
+
+  .is-active .hero__title,
+  .is-active .hero__body,
+  .is-active :global(.hero__cta) {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .is-active .hero__title { transition-delay: 150ms; }
+  .is-active .hero__body { transition-delay: 250ms; }
+  .is-active :global(.hero__cta) { transition-delay: 350ms; }
+
+  /* ---------- Controls: pause, then one labelled countdown per slide ---------- */
+  .hero__controls {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-5);
+    grid-area: 1 / 1;
+    align-self: end;
+    width: 100%;
+    padding-bottom: var(--space-8);
+  }
+
+  .hero__pause {
+    display: inline-grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgb(255 255 255 / 0.45);
+    border-radius: var(--radius-control);
+    background: rgb(var(--hero-shade) / 0.35);
+    color: #fff;
+    cursor: pointer;
+    transition:
+      background-color var(--dur-fast) var(--ease-out),
+      border-color var(--dur-fast) var(--ease-out),
+      color var(--dur-fast) var(--ease-out);
+  }
+
+  .hero__pause:hover {
+    border-color: #fff;
+    background: #fff;
+    color: var(--color-navy);
+  }
+
+  .hero__pause svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .hero__pause-icon path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+  }
+
+  .hero__play-icon path {
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+  }
+
+  .hero__play-icon,
+  .is-stopped .hero__pause-icon {
     display: none;
   }
 
-  .hero__photo--left {
-    aspect-ratio: 16 / 9;
-    margin: var(--space-6) var(--gutter) 0;
+  .is-stopped .hero__play-icon {
+    display: block;
   }
 
-  .hero__photo--left :global(img) {
-    object-position: 45% 40%;
-    /* The source is a bright, high-key office shot; tone it down to sit on navy. */
-    filter: brightness(0.64) contrast(1.18) saturate(1.1);
+  .hero__tabs {
+    display: grid;
+    flex: 1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+    max-width: 33rem;
   }
 
+  .hero__tab {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: 2.75rem;
+    justify-content: flex-end;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: rgb(255 255 255 / 0.72);
+    font: inherit;
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+    line-height: 1.2;
+    text-align: left;
+    cursor: pointer;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .hero__tab:hover,
+  .hero__tab[aria-current='true'] {
+    color: #fff;
+  }
+
+  .hero__tab-label {
+    white-space: nowrap;
+  }
+
+  /* Smallest phones: the three labels need a little less room. */
+  @media (max-width: 23.99rem) {
+    .hero__controls,
+    .hero__tabs {
+      gap: var(--space-3);
+    }
+
+    .hero__tab {
+      font-size: 0.8125rem;
+    }
+  }
+
+  .hero__track {
+    position: relative;
+    display: block;
+    height: 3px;
+    overflow: hidden;
+    background: rgb(255 255 255 / 0.3);
+  }
+
+  .hero__fill {
+    position: absolute;
+    inset: 0;
+    background: var(--color-amber);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .hero__fill.is-running {
+    animation: hero-countdown var(--hero-interval) linear forwards;
+  }
+
+  /* Hover, keyboard focus, a hidden tab or the pause button all hold the countdown. */
+  .hero:has(:focus-visible) .hero__fill,
+  .hero.is-hidden .hero__fill {
+    animation-play-state: paused;
+  }
+
+  /* Mouse only: on touch screens :hover sticks after a tap and would stall the slides. */
+  @media (hover: hover) {
+    .hero:hover .hero__fill {
+      animation-play-state: paused;
+    }
+  }
+
+  /* Stopped (paused or reduced motion): the current slide's bar reads as fully selected. */
+  .hero.is-stopped .hero__fill {
+    animation: none;
+  }
+
+  .hero.is-stopped .hero__tab[aria-current='true'] .hero__fill {
+    transform: none;
+  }
+
+  @keyframes hero-countdown {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .hero :focus-visible {
+    outline-color: var(--color-focus-on-navy);
+  }
+
+  /* ---------- Tablet and up: copy on the left over a sideways fade ---------- */
   @media (min-width: 48rem) {
-    .hero__photo--left {
-      aspect-ratio: 5 / 2;
-    }
-
-    .hero__inner {
-      padding-top: var(--space-12);
-      padding-bottom: var(--space-20);
-    }
-
-    .hero__actions {
-      flex-direction: row;
-      align-items: center;
-      gap: var(--space-8);
-    }
-  }
-
-  /* Shorter phones: a slimmer photo keeps the headline and button on the first screen... */
-  @media (max-width: 47.99rem) and (max-height: 42rem) {
-    .hero__photo--left {
-      aspect-ratio: 5 / 2;
-    }
-
-    .hero__inner {
-      padding-top: var(--space-6);
-    }
-  }
-
-  /* ...and on the shortest (iPhone SE in Safari is ~550px tall) the photo gives way to the button. */
-  @media (max-width: 47.99rem) and (max-height: 38rem) {
-    .hero__photo--left {
-      display: none;
-    }
-  }
-
-  /* Phones held sideways: there is no height for a photo, so the copy and button lead. */
-  @media (max-width: 74.99rem) and (max-height: 30rem) and (orientation: landscape) {
-    .hero__photo--left {
-      display: none;
-    }
-
-    .hero__inner {
-      padding-top: var(--space-6);
-      padding-bottom: var(--space-12);
-    }
-  }
-
-  /* Desktop: centred statement framed by two working photographs at the edges. */
-  @media (min-width: 75rem) {
-    /* Hero plus the partner strip fill the first screen, so no gap shows beneath the strip. */
     .hero {
-      display: flex;
-      flex-direction: column;
+      min-height: clamp(36rem, calc(100svh - var(--credentials-height)), 54rem);
+    }
+
+    .hero__slide :global(picture),
+    .hero__shade {
+      inset: 0;
+      height: auto;
+    }
+
+    .hero__slide--experience :global(.hero__img) { object-position: 100% 50%; }
+    .hero__slide--specialists :global(.hero__img) { object-position: 30% 50%; }
+    .hero__slide--hiring :global(.hero__img) { object-position: 40% 50%; }
+
+    .hero__shade {
+      background:
+        linear-gradient(to bottom, rgb(var(--hero-shade) / 0.7) 0, rgb(var(--hero-shade) / 0) 12rem),
+        linear-gradient(to top, rgb(var(--hero-shade) / 0.6) 0, rgb(var(--hero-shade) / 0) 11rem),
+        linear-gradient(
+          to right,
+          rgb(var(--hero-shade) / 0.9) 0%,
+          rgb(var(--hero-shade) / 0.74) 32%,
+          rgb(var(--hero-shade) / 0.28) 56%,
+          rgb(var(--hero-shade) / 0) 72%
+        );
+    }
+
+    .hero__copy {
       justify-content: center;
-      min-height: clamp(36rem, calc(100svh - var(--credentials-height)), 66rem);
-    }
-
-    .hero__inner {
-      align-items: center;
-      max-width: 54rem;
-      padding-top: 6.5rem;
-      padding-bottom: 7rem;
-      text-align: center;
-    }
-
-    .hero__title {
-      max-width: none;
-    }
-
-    .hero__line {
-      display: block;
+      padding-top: calc(var(--hero-under-header) + var(--space-12));
+      padding-bottom: calc(var(--space-20) + var(--space-10));
     }
 
     .hero__body {
-      max-width: 40rem;
       margin-top: var(--space-6);
     }
 
-    .hero__actions {
-      flex-direction: column;
-      gap: var(--space-5);
-      margin-top: var(--space-10);
-      align-items: center;
+    .hero__controls {
+      padding-bottom: var(--space-10);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .hero__title {
+      max-width: 17ch;
+    }
+  }
+
+  /* Phones held sideways: no room for the countdown labels above the bars. */
+  @media (max-height: 30rem) and (orientation: landscape) {
+    .hero {
+      min-height: 100svh;
     }
 
-    .hero__photo {
-      position: absolute;
-      margin: 0;
+    .hero__copy {
+      padding-top: calc(var(--hero-under-header) + var(--space-6));
+      padding-bottom: calc(var(--space-16) + var(--space-4));
     }
 
-    .hero__scrim {
-      background: radial-gradient(
-        ellipse 48rem 21rem at 50% 44%,
-        rgb(19 33 46 / 0.86) 0%,
-        rgb(19 33 46 / 0.7) 50%,
-        rgb(19 33 46 / 0) 100%
-      );
+    .hero__body {
+      display: none;
     }
 
-    .hero__photo--left {
-      left: -2.5rem;
-      bottom: 4.5rem;
-      width: clamp(15rem, 19vw, 19rem);
-      aspect-ratio: 5 / 4;
+    .hero__copy :global(.hero__cta) {
+      margin-top: var(--space-5);
     }
 
-    .hero__photo--left :global(img) {
-      object-position: 50% 50%;
+    .hero__controls {
+      padding-bottom: var(--space-5);
     }
+  }
 
-    .hero__photo--right {
-      display: block;
-      top: calc(3.5rem + var(--hero-under-header, 0px));
-      right: -2rem;
-      width: clamp(14rem, 17vw, 17rem);
-      aspect-ratio: 4 / 5;
-    }
-
-    .hero__photo--right :global(img) {
-      object-position: 50% 30%;
+  @media (prefers-reduced-motion: reduce) {
+    .hero__slide,
+    .hero__slide.is-active,
+    .hero__title,
+    .hero__body,
+    .hero__copy :global(.hero__cta) {
+      transition: none;
+      translate: none;
     }
   }
 </style>

@@ -25,7 +25,7 @@ OWN-WORLD: Ink navy (#13212E) as the anchor; light grey (#F3F5F7) and white deck
 
 STORY: Within one viewport an employer sees what Hitech does and how to start; then reads how Hitech helps, scrolls through three stacked light panels (six specialty rows, how to hire, how it works), sees the firm at a glance and in client stories, and closes on one navy request band that mirrors the hero.
 
-FIRST VIEWPORT: Unchanged hero: transparent header over the animated navy ASCII field, centred two-line light headline, white "Find IT talent" button, edge-bleeding photographs, the partner strip sitting in the white space below.
+FIRST VIEWPORT (2026-11-19): a full-bleed three-slide photo hero (30 years / Specialists / Ways to hire) under a transparent top bar and navigation that turn white on scroll; each slide has a bold white left-aligned headline, a white lead and its own white button; labelled countdown tabs and a pause button bottom-left; the partner strip sits below.
 
 FORM: Pinned by the user; signature interaction: the desktop stacking deck (Specialties grey, Ways to hire white, Process grey), each panel an inset light sheet (10px corners, hairline border) on a slightly darker bed, pinning one step lower than the last so covered sheets keep a visible edge, shrinking and dimming slightly as the next arrives; plain sections on mobile and reduced motion. seed: none (pinned) — "after third section, when you scroll down it should stay still and sections should move up, like for 2-3 sections" / "some colorful or something like contrast, matching the hero section, not too dark but like professionally dark".
 

@@ -227,6 +227,16 @@ components:
 
 # Design System: Hitech Solutions
 
+## Photo hero revision (2026-11-19)
+
+Supersedes the Hero Field, the hero's experience line and "the top header stays white on every page and at every scroll position" below, for the home page only. At the user's request the home hero is a three-slide photo carousel (`Hero.astro`, copy in `home.ts` `hero.slides`) running full-bleed under the header. Each slide: a cover photo (full-bleed from 48rem; on phones it fills only the top 58svh and fades into the navy behind the copy, which halves the zoom of the wide 1641×640 sources), served at full source width with quality 90 (never a smaller srcset step, because a covering photo is drawn far wider than the viewport), navy legibility scrims (a top fade for the header, a left-to-right fade from 48rem, a bottom fade into navy on phones), then a left-aligned white headline in Libre Franklin **700** (32–64px, 1.07, -0.026em, max 17ch from 48rem), a white 500-weight lead and its own white inverse button. Slides: "30 years" → Find IT talent; "Specialists" → /specialties; "Ways to hire" → /hire-talent. This bold-white headline is a user-pinned exception to the Light-Over-Semibold Rule, for the hero only.
+
+Rotation: 7s per slide, 900ms cross-fade with the copy settling up 16px. Controls sit bottom-left: a 44px outlined pause/play square, then one labelled tab per slide over a 3px white-30% track whose amber fill is the countdown (the fill's `animationend` advances the slide). Hover (mouse only), keyboard focus and a hidden tab hold the countdown; reduced motion never auto-rotates. Inactive slides are `inert`; the live region is polite only once stopped.
+
+Header over the hero: the top bar and navigation row are transparent with white text, a white-20% hairline under each and a white outline "Request talent"; an inline script sets this before first paint (no JS keeps the white header). Scrolling past 8px, opening a menu, the drawer or search turns the whole header back to the standard white header.
+
+The GradientASCII field is no longer on the page (the component remains in `src/components/ui`).
+
 ## At-a-glance revision (2026-11-18)
 
 ### Latest local review: reference-led statistics and photography

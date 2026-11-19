@@ -1,5 +1,17 @@
 # Image provenance
 
+## Added 2026-11-19: home hero slides
+
+Supplied by the user from their own downloads (`Desktop/images`). The file names (`Gemini_Generated_Image_*`) show they were generated with Google Gemini; they are AI-generated scenes, not photographs of real Hitech staff, clients or offices, and must never be presented as such. Hitech should confirm it is content to use AI-generated imagery before launch. Source size is 1641×640, which is soft when stretched full-width on high-density screens; higher-resolution versions would sharpen the hero.
+
+| File | Placement | Source file | Edit |
+|---|---|---|---|
+| hero-slide-experience.jpg | Home hero, slide 1 ("30 years") | Gemini_Generated_Image_57qg4557qg4557qg.jpeg | Mirrored horizontally so the dark side sits under the left-aligned copy |
+| hero-slide-specialists.jpg | Home hero, slide 2 ("Specialists") | Gemini_Generated_Image_7ayrci7ayrci7ayr.jpeg | None |
+| hero-slide-hiring.jpg | Home hero, slide 3 ("Ways to hire") | Gemini_Generated_Image_wuyaa5wuyaa5wuya.jpeg | None |
+
+`hero-developer.jpg` and `hero-specialist.jpg` (listed below) are no longer used by the home hero.
+
 ## Added 2026-11-18: page-specific workplace photography
 
 These 40 distinct images are stored in `src/assets/photography/` and assigned in `src/content/photography.json`. Retrieved from Pexels at 1600px width; the build generates responsive WebP derivatives. Source listings identify them as free stock photos under the [Pexels License](https://www.pexels.com/license/). Subjects illustrate generic workplaces and are not represented as Hitech employees or clients. No source photo is assigned to more than one page. Existing home photographs are retained, with separate photographs replacing their former reuse on interior pages.

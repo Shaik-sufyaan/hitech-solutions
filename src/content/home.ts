@@ -4,16 +4,44 @@
  * Items marked CONFIRM describe services or process Hitech must verify.
  */
 
+/**
+ * Home hero: three photo slides that rotate (user-requested 2026-11-19), each with
+ * its own headline, line and link. Slide 1's "30 years" headline was chosen by the
+ * user; Hitech must confirm the figure before launch (it matches the at-a-glance card).
+ * Photos are AI-generated scenes supplied by the user (see CREDITS.md); the people in
+ * them are not Hitech staff or clients.
+ */
 export const hero = {
-  title: 'The right IT talent. Ready for what comes next.',
-  /** Desktop line breaks: one sentence per line. */
-  titleLines: ['The right IT talent.', 'Ready for what comes next.'],
-  body: 'Build your technology team with Hitech Solutions. Tell us the skills you need, the work ahead, and how you want to hire.',
-  primaryCta: 'Find IT talent',
-  candidatePrompt: 'Looking for a technology role?',
-  candidateCta: 'Explore opportunities',
-  /** Supplied by the user (2026-11-18); matches the "at a glance" years card. Confirm before launch. */
-  experience: { value: '30+', label: 'years of IT staffing experience' },
+  label: 'Hitech Solutions at a glance',
+  slides: [
+    {
+      id: 'experience',
+      tab: '30 years',
+      title: '30 years of connecting companies with the IT talent they need.',
+      body: 'Tell us the skills, the timeline and the team. We find technology professionals who fit the work and the people around it.',
+      cta: { label: 'Find IT talent', href: '/request-talent' },
+      photo: 'experience',
+      alt: 'A technology professional working on a laptop in a bright office.',
+    },
+    {
+      id: 'specialists',
+      tab: 'Specialists',
+      title: 'Specialists for the systems you can’t afford to get wrong.',
+      body: 'Cloud, cybersecurity, data and software professionals, screened against your brief before you meet them.',
+      cta: { label: 'Explore our specialties', href: '/specialties' },
+      photo: 'specialists',
+      alt: 'Two colleagues discussing a security architecture shown on a monitor.',
+    },
+    {
+      id: 'hiring',
+      tab: 'Ways to hire',
+      title: 'Hire for a project, a trial run or the long term.',
+      body: 'Contract, contract-to-hire or direct hire, with one Hitech contact from shortlist to first day.',
+      cta: { label: 'See ways to hire', href: '/hire-talent' },
+      photo: 'hiring',
+      alt: 'A professional at her desk reviewing a system diagram on the wall.',
+    },
+  ],
 };
 
 /**

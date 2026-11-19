@@ -7,7 +7,10 @@ import { site } from '../../content/site';
 import { primaryNav } from '../../content/navigation';
 
 interface Props {
-  /** Retained for layout compatibility; the header stays white on every page. */
+  /**
+   * Home page: top bar and navigation start transparent over the photo hero and
+   * turn white as soon as the visitor scrolls (or opens a menu or search).
+   */
   overHero?: boolean;
 }
 
@@ -161,6 +164,14 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     </nav>
   </div>
 </header>
+{
+  overHero && (
+    /* Before first paint, so the header never flashes white over the photo. Without JS it stays white. */
+    <script is:inline>
+      if (window.scrollY <= 8) document.querySelector('[data-header]').classList.add('is-clear');
+    </script>
+  )
+}
 
 <script>
   const header = document.querySelector<HTMLElement>('[data-header]');
@@ -260,6 +271,31 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     if (event.matches) setDrawer(false);
     else closePanels();
   });
+
+  /* ---------- Over the home hero: clear until the page scrolls ---------- */
+  if (header?.classList.contains('site-header--over-hero')) {
+    const search = header.querySelector<HTMLElement>('[data-search]');
+    const update = () => {
+      const solid = window.scrollY > 8 || (search ? !search.hidden : false);
+      header.classList.toggle('is-clear', !solid);
+    };
+    let queued = false;
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+          queued = false;
+          update();
+        });
+      },
+      { passive: true },
+    );
+    if (search) new MutationObserver(update).observe(search, { attributes: true, attributeFilter: ['hidden'] });
+    update();
+    header.classList.add('is-ready'); // colour transitions only after the first state is set
+  }
 
 </script>
 
@@ -675,5 +711,62 @@ const isCurrent = (href: string) => href !== '/' && (path === href || path.start
     background: var(--color-paper);
     color: #000000;
     border-color: #000000;
+  }
+
+  /* ---------- Home: clear over the photo hero, white once scrolled ---------- */
+  .site-header.is-ready {
+    transition:
+      background-color 250ms var(--ease-out),
+      border-color 250ms var(--ease-out);
+  }
+
+  .site-header.is-ready :global(.utility),
+  .site-header.is-ready .site-header__brand :global(.wordmark),
+  .site-header.is-ready .site-header__toggle {
+    transition:
+      background-color 250ms var(--ease-out),
+      box-shadow 250ms var(--ease-out),
+      color 250ms var(--ease-out);
+  }
+
+  .site-header.is-clear:not(.has-panel):not(.is-open) {
+    background: transparent;
+    border-bottom-color: rgb(255 255 255 / 0.2);
+    text-shadow: 0 1px 2px rgb(10 18 26 / 0.45);
+  }
+
+  .is-clear:not(.has-panel):not(.is-open) :global(.utility) {
+    background: transparent;
+    box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.14);
+    color: rgb(255 255 255 / 0.88);
+  }
+
+  .is-clear:not(.has-panel):not(.is-open) .site-header__brand :global(.wordmark),
+  .is-clear:not(.has-panel):not(.is-open) .site-header__link,
+  .is-clear:not(.has-panel):not(.is-open) .site-header__trigger,
+  .is-clear:not(.has-panel):not(.is-open) .site-header__toggle {
+    color: #ffffff;
+  }
+
+  .is-clear:not(.has-panel):not(.is-open) .site-header__link::after,
+  .is-clear:not(.has-panel):not(.is-open) .site-header__trigger::after {
+    background: var(--color-amber);
+  }
+
+  .is-clear:not(.has-panel):not(.is-open) .site-header__actions :global(.site-header__cta) {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgb(255 255 255 / 0.8);
+    text-shadow: none;
+  }
+
+  .is-clear:not(.has-panel):not(.is-open) .site-header__actions :global(.site-header__cta:hover) {
+    background: #ffffff;
+    color: var(--color-navy);
+    border-color: #ffffff;
+  }
+
+  .is-clear:not(.has-panel):not(.is-open) :focus-visible {
+    outline-color: var(--color-focus-on-navy);
   }
 </style>
