@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-11-18T07:33:18+00:00",
-  "title": "Design System: Hitech Solutions",
+  "title": "Design System: Hitec Solutions",
   "extensions": {
     "provisional": {
       "palette": true,
@@ -681,7 +681,7 @@
       "kind": "nav",
       "refersTo": "nav-link",
       "description": "White sticky bar; hover draws a 2px blue underline at the header edge.",
-      "html": "<nav class=\"ds-nav\"><span class=\"ds-wordmark\"><b>Hitech</b><i></i>Solutions</span><a href=\"#\">Hire talent</a><a href=\"#\">Specialties</a><a href=\"#\">How we work</a><a href=\"#\">FAQ</a></nav>",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-wordmark\"><b>Hitec</b><i></i>Solutions</span><a href=\"#\">Hire talent</a><a href=\"#\">Specialties</a><a href=\"#\">How we work</a><a href=\"#\">FAQ</a></nav>",
       "css": ".ds-nav{display:flex;align-items:center;gap:4px;height:76px;padding:0 24px;background:var(--color-page,#fff);border-bottom:1px solid var(--color-line,#d8dee4);font-family:var(--font-sans);}.ds-wordmark{display:inline-flex;align-items:center;gap:0.55rem;margin-right:24px;font-size:1.3125rem;color:var(--color-navy,#13212e);}.ds-wordmark b{font-weight:700;letter-spacing:-0.02em;}.ds-wordmark i{width:1px;height:1.05em;background:currentColor;opacity:0.35;}.ds-nav a{position:relative;display:inline-flex;align-items:center;height:76px;padding:0 12px;color:var(--color-ink,#14212d);font-size:0.9688rem;font-weight:500;text-decoration:none;}.ds-nav a::after{content:'';position:absolute;left:12px;right:12px;bottom:-1px;height:2px;background:var(--color-action,#1f4fa8);transform:scaleX(0);transform-origin:left;transition:transform 220ms cubic-bezier(0.22,1,0.36,1);}.ds-nav a:hover{color:var(--color-action,#1f4fa8);}.ds-nav a:hover::after{transform:scaleX(1);}.ds-nav a:focus-visible{outline:2px solid var(--color-focus,#1f4fa8);outline-offset:-6px;}"
     },
     {
@@ -729,7 +729,7 @@
       "kind": "custom",
       "refersTo": "job-seekers-band",
       "description": "The home Job seekers band inside the steel tone scope: amber links, white inverse primary, white-alpha rules.",
-      "html": "<section class=\"ds-tone\"><h2>Looking for your next technology role?</h2><p>Hitech Solutions also works with technology professionals who are looking for their next role.</p><a class=\"ds-tone-link\" href=\"#\">More for job seekers</a><a class=\"ds-tone-btn\" href=\"#\">Explore opportunities</a></section>",
+      "html": "<section class=\"ds-tone\"><h2>Looking for your next technology role?</h2><p>Hitec Solutions also works with technology professionals who are looking for their next role.</p><a class=\"ds-tone-link\" href=\"#\">More for job seekers</a><a class=\"ds-tone-btn\" href=\"#\">Explore opportunities</a></section>",
       "css": ".ds-tone{display:grid;justify-items:start;gap:16px;padding:48px 32px;background:var(--color-steel,#1a3550);color:#fff;font-family:var(--font-sans);border-top:1px solid rgb(255 255 255/0.3);}.ds-tone h2{margin:0;font-size:2.75rem;font-weight:300;line-height:1.2;letter-spacing:-0.012em;}.ds-tone p{margin:0;color:var(--color-on-dark-muted,#c9d5e1);}.ds-tone-link{color:var(--color-amber,#f2a33a);font-weight:600;text-decoration:none;transition:color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-tone-link:hover{color:var(--color-amber-hover,#f7bd6b);text-decoration:underline;}.ds-tone-btn{display:inline-flex;align-items:center;min-height:3.375rem;padding:0 2rem;border-radius:var(--radius-control,2px);background:#fff;color:var(--color-navy,#13212e);font-weight:600;font-size:1.0625rem;text-decoration:none;transition:background-color 150ms cubic-bezier(0.22,1,0.36,1);}.ds-tone-btn:hover{background:var(--color-action-tint,#e8eef9);}.ds-tone a:focus-visible{outline:2px solid #fff;outline-offset:3px;}"
     },
     {
@@ -759,14 +759,14 @@
   ],
   "narrative": {
     "northStar": "The Established Ledger",
-    "overview": "An established staffing firm earns trust through order and deliberate contrast. The home page opens on an animated ink-navy field, then reads through an open run of white and cool-paper bands, including the three-panel stacking deck (paper, white, paper) in the middle. Dark tones arrive later and each has one job: navy client-story cards carry the proof, a steel band speaks to job seekers, one teal band asks for the request, and a navy footer closes. Content stays precisely aligned and mostly rule-divided; the two card families that exist (figures and client stories) are flat and square-shouldered.\n\nThe world was pinned by the user: restrained, corporate, reference-structured (the structure of a large staffing site, never its branding), and unmistakably technical. Its binding rejections are part of the system: no glows, blobs, particles, parallax, scroll hijacking, gradient text, glassmorphism or autoplay carousels of content; no bubbly radii; no eyebrow labels above headings; no invented proof. Dark navy, steel and teal deck panels were built and rejected (\"dull\", \"compressed and closed\"); the middle of the page stays light. Motion is approved in exactly three places (the hero's GradientASCII field, the partner logo strip, the desktop stacking deck) plus functional feedback for hover, focus, menus and disclosure. Reduced motion stills all three and restores normal section flow.\n\n**The palette and the wordmark are PROVISIONAL.** No brand kit exists. The swap points are `src/styles/tokens.css` (every color, type and shape value) and `src/components/site/Wordmark.astro` (the typographic \"Hitech | Solutions\" mark, to be replaced by the supplied vector logo). Components reference tokens, so a brand kit lands in those two files.",
+    "overview": "An established staffing firm earns trust through order and deliberate contrast. The home page opens on an animated ink-navy field, then reads through an open run of white and cool-paper bands, including the three-panel stacking deck (paper, white, paper) in the middle. Dark tones arrive later and each has one job: navy client-story cards carry the proof, a steel band speaks to job seekers, one teal band asks for the request, and a navy footer closes. Content stays precisely aligned and mostly rule-divided; the two card families that exist (figures and client stories) are flat and square-shouldered.\n\nThe world was pinned by the user: restrained, corporate, reference-structured (the structure of a large staffing site, never its branding), and unmistakably technical. Its binding rejections are part of the system: no glows, blobs, particles, parallax, scroll hijacking, gradient text, glassmorphism or autoplay carousels of content; no bubbly radii; no eyebrow labels above headings; no invented proof. Dark navy, steel and teal deck panels were built and rejected (\"dull\", \"compressed and closed\"); the middle of the page stays light. Motion is approved in exactly three places (the hero's GradientASCII field, the partner logo strip, the desktop stacking deck) plus functional feedback for hover, focus, menus and disclosure. Reduced motion stills all three and restores normal section flow.\n\n**The palette and the wordmark are PROVISIONAL.** No brand kit exists. The swap points are `src/styles/tokens.css` (every color, type and shape value) and `src/components/site/Wordmark.astro` (the typographic \"Hitec | Solutions\" mark, to be replaced by the supplied vector logo). Components reference tokens, so a brand kit lands in those two files.",
     "keyCharacteristics": [
       "Navy hero, page heroes and footer; a light middle (white and paper, with a paper/white/paper stacking deck); navy story cards, a steel job-seekers band and a teal closing band supply the contrast.",
       "Light (300) display, section and card headlines against semibold (600) labels and titles: one family, contrast by weight.",
       "Hairline 1px rules divide lists, rows, columns and FAQ items; cards are limited to figures, client stories and the form.",
       "Square shoulders: 2px on controls, 4px on photographs and cards, nothing rounder.",
       "Action blue for actions on light; warm amber for small marks and for links on dark.",
-      "Rectangular, naturally lit, licensed photography with recorded provenance; never masked, never presented as Hitech staff or clients."
+      "Rectangular, naturally lit, licensed photography with recorded provenance; never masked, never presented as Hitec staff or clients."
     ],
     "rules": [
       {
@@ -832,7 +832,7 @@
       "**Don't** make a card grid the default container for a section.",
       "**Don't** lift, scale or shadow elements on hover.",
       "**Don't** add eyebrow or kicker labels above headings.",
-      "**Don't** present stock people as Hitech staff or clients, or invent metrics, logos, client stories, certifications or testimonials."
+      "**Don't** present stock people as Hitec staff or clients, or invent metrics, logos, client stories, certifications or testimonials."
     ]
   }
 }

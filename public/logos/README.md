@@ -1,10 +1,10 @@
 # Partner logos: provenance (retrieved 2026-11-18)
 
 PROVISIONAL. These are the companies' general brand marks, used as placeholders in the
-home-page "Partner programs and certifications" strip. Before launch, Hitech must:
+home-page "Partner programs and certifications" strip. Before launch, Hitec must:
 
 1. confirm it actually holds each membership/certification (remove any it does not), and
-2. replace each file with the official **partner badge** issued to Hitech through that
+2. replace each file with the official **partner badge** issued to Hitec through that
    program's partner portal (programs generally require their partner badge, not the
    corporate logo, and set usage rules for it).
 
@@ -18,7 +18,7 @@ home-page "Partner programs and certifications" strip. Before launch, Hitech mus
 | workday.svg | Wikimedia Commons, File:Workday_logo.svg | Trademark of Workday |
 | googlecloud.svg, redhat.svg, snowflake.svg, databricks.svg, esri.svg | simple-icons v16.38.0 (npm), brand hex fill added | SVG data CC0; marks remain trademarks of their owners |
 
-Not available from a free source, shown as text until Hitech supplies its own
+Not available from a free source, shown as text until Hitec supplies its own
 certificate seals: NMSDC (MBE), WBENC (WBE), NGLCC (LGBTBE), Disability:IN (DOBE).
 
 All SVGs were checked for scripts and external references before use (none present).

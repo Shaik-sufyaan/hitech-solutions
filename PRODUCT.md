@@ -1,4 +1,4 @@
-# Hitech Solutions
+# Hitec Solutions
 
 <!-- impeccable:product-schema 1 -->
 
@@ -16,11 +16,11 @@ Primary: employers evaluating IT staffing support — hiring managers, IT leader
 
 ## Product Purpose
 
-Hitech Solutions is an IT staffing services company. The website must present the company credibly and move employers to request IT talent, with a clear secondary route for job seekers. Success: qualified employer inquiries that reach the right team, and job seekers reaching the approved careers destination.
+Hitec Solutions is an IT staffing services company. The website must present the company credibly and move employers to request IT talent, with a clear secondary route for job seekers. Success: qualified employer inquiries that reach the right team, and job seekers reaching the approved careers destination.
 
 ## Brand Commitments
 
-- Confirmed company name: Hitech Solutions.
+- Confirmed company name: Hitec Solutions.
 - Structural reference made binding by the user: https://www.roberthalf.com/us/en/tech-it — preserve its structure, professional presentation and clear hiring journey. Never copy Robert Half's branding, claims, awards or testimonials.
 - Binding tone (user's words): "established, clean, restrained, and professional." Strong typography, precise alignment, generous consistent spacing, authentic professional photography, a controlled corporate palette, simple section layouts with understated borders, clear navigation and obvious calls to action, mostly static presentation.
 - Binding exclusions: floating/moving circles, animated blobs or particles, decorative backgrounds, bouncing cards, parallax, scroll hijacking (native scrolling is never taken over), animated counters, autoplay carousels or hero video, glassmorphism, neon glows, decorative gradients, excessively rounded/bubbly containers, repetitive card grids for every section, generic AI marketing language.
@@ -32,8 +32,8 @@ Hitech Solutions is an IT staffing services company. The website must present th
 
 ## Evidence on Hand
 
-Reference captures in reference/robert-half (visual study only; none of its imagery or copy ships). Production imagery for the first preview: free Unsplash-licensed stock photography, provenance recorded in src/assets/images/CREDITS.md; generic people must never be presented as Hitech employees or clients. No verified Hitech metrics, client logos, certifications, case studies, locations, service catalog, ATS or CRM details have been supplied. Never invent these. Draft copy from the plan requires business approval.
+Reference captures in reference/robert-half (visual study only; none of its imagery or copy ships). Production imagery for the first preview: free Unsplash-licensed stock photography, provenance recorded in src/assets/images/CREDITS.md; generic people must never be presented as Hitec employees or clients. No verified Hitec metrics, client logos, certifications, case studies, locations, service catalog, ATS or CRM details have been supplied. Never invent these. Draft copy from the plan requires business approval.
 
 ## Capabilities and Constraints
 
-Open decisions: confirmed service specialties and engagement models; office locations and contact details; lead backend/CRM; careers/ATS destination; privacy notice; domain and hosting; whether this replaces an existing site. Sections that depend on missing evidence (office search) are omitted. The home stats band, sample client stories and partner strip are built as user-requested placeholders, marked Pending (or documented as launch blockers) until Hitech supplies real figures, approved stories and confirmed memberships. Additional CEO-supplied reference sites will be reviewed later; components must stay adaptable inside one visual system.
+Open decisions: confirmed service specialties and engagement models; office locations and contact details; lead backend/CRM; careers/ATS destination; privacy notice; domain and hosting; whether this replaces an existing site. Sections that depend on missing evidence (office search) are omitted. The home stats band, sample client stories and partner strip are built as user-requested placeholders, marked Pending (or documented as launch blockers) until Hitec supplies real figures, approved stories and confirmed memberships. Additional CEO-supplied reference sites will be reviewed later; components must stay adaptable inside one visual system.

@@ -284,7 +284,7 @@ a:hover {
 }
 
 /*
- * Smallest phones (under 384px): the floating "Ask Hitech" button shrinks to its
+ * Smallest phones (under 384px): the floating "Ask Hitec" button shrinks to its
  * icon so it does not sit on top of page buttons. The button keeps its aria-label.
  * Lives here rather than in ChatAssistant.astro; body prefix outranks the scoped rule.
  */

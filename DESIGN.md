@@ -1,5 +1,5 @@
 ---
-name: Hitech Solutions
+name: Hitec Solutions
 description: IT staffing for employers and technology professionals, set square-shouldered and quiet, with light reading bands and dark tones held for proof, people and the close.
 colors:
   ink: "#14212d"
@@ -225,7 +225,7 @@ components:
     padding: "8px 12px"
 ---
 
-# Design System: Hitech Solutions
+# Design System: Hitec Solutions
 
 ## Photo hero revision (2026-11-19)
 
@@ -241,19 +241,19 @@ The GradientASCII field is no longer on the page (the component remains in `src/
 
 ### Latest local review: reference-led statistics and photography
 
-Latest homepage layout refinement: keep the At-a-glance heading, two stat cards, three percentage rings and provisional-values notice in a left-aligned content column, with the laptop photograph filling the right column on desktop. Remove the meeting photograph from this section. Stack the photograph below the content under 64rem. A compact white Explore Hitech Solutions navigation strip now separates the homepage's navy closing band from its navy footer; it links to How we work, Specialties and FAQ without adding business claims.
+Latest homepage layout refinement: keep the At-a-glance heading, two stat cards, three percentage rings and provisional-values notice in a left-aligned content column, with the laptop photograph filling the right column on desktop. Remove the meeting photograph from this section. Stack the photograph below the content under 64rem. A compact white Explore Hitec Solutions navigation strip now separates the homepage's navy closing band from its navy footer; it links to How we work, Specialties and FAQ without adding business claims.
 
 Latest navigation/surround refinement: the top header stays white on every page and at every scroll position, with black navigation labels at weight 700 and a white, black-outlined Request talent button. No transparent or navy home-header state remains. The three black stacking panels sit against a white outer background.
 
 The user's latest reference supersedes the open statistics panel described below: use two white icon cards with 8px amber caps and subtle shadows, followed by three blue percentage rings with inline percent signs. Preserve the visible provisional-values notice. Two complementary workplace photographs follow the statistics. Interior pages pair the navy hero copy with a unique rectangular workplace photograph; the form and error pages integrate their own photos into the content instead. Every page has a distinct source photograph, with provenance in `src/content/photography.json` and `src/assets/images/CREDITS.md`.
 
-Header top bar (added 2026-11-18 at the user's request, after an enterprise staffing reference): `UtilityBar.astro` puts a 36px strip in `--color-utility` (the hero navy) above the white navigation row, right-aligned on desktop: Search, the office address and the phone number in 13px on-dark-muted text with amber 16px line icons, a hairline divider before the phone; hover turns an item white with an amber underline. Phones keep the phone (tap to call) left and Search right; the address shows from 48rem. The header is sticky at minus `--utility-height`, so the bar scrolls away and only the navigation row stays pinned (other sticky offsets keep using `--header-height`). Search opens a white panel under the header (a 2px rule under a large light input that turns action blue on focus, then rule-divided result rows with a semibold name, a muted parent-section line and an action arrow); it searches the assistant's page directory in the browser, opens the top match on Enter, moves through results with the arrow keys, closes on Escape or an outside click, and opens from "/" anywhere. The phone number and address in `site.ts` are EXAMPLE values until Hitech supplies real ones.
+Header top bar (added 2026-11-18 at the user's request, after an enterprise staffing reference): `UtilityBar.astro` puts a 36px strip in `--color-utility` (the hero navy) above the white navigation row, right-aligned on desktop: Search, the office address and the phone number in 13px on-dark-muted text with amber 16px line icons, a hairline divider before the phone; hover turns an item white with an amber underline. Phones keep the phone (tap to call) left and Search right; the address shows from 48rem. The header is sticky at minus `--utility-height`, so the bar scrolls away and only the navigation row stays pinned (other sticky offsets keep using `--header-height`). Search opens a white panel under the header (a 2px rule under a large light input that turns action blue on focus, then rule-divided result rows with a semibold name, a muted parent-section line and an action arrow); it searches the assistant's page directory in the browser, opens the top match on Enter, moves through results with the arrow keys, closes on Escape or an outside click, and opens from "/" anywhere. The phone number and address in `site.ts` are EXAMPLE values until Hitec supplies real ones.
 
 Added 2026-11-18 at the user's request (from a split "report / success stories" reference): the home hero carries an experience line between the lead and the button ("30+" light figure, 1px amber rule, semibold muted label "years of IT staffing experience"), and the "at a glance" years card reads 30+. After "at a glance" sits `Features.astro`: two full-bleed photo panels (stacked on phones, side by side from 48rem, 2px navy seam), each one link with a navy scrim, a centred light headline and a muted line. With a mouse, a white square-shouldered "Learn more" button rises in on hover or keyboard focus and the photo eases to 1.04 scale (700ms ease-out); on touch screens the button is always shown, and reduced motion drops the movement. Panel photos are registered in `photography.json` (home-feature-talent, home-feature-process).
 
 The user also approved black stacking panels with white/gray copy and orange links, hiring-model headings and process numbers for local review. This overrides the earlier Light Middle Rule for the three deck panels only. Keep the desktop stacking behavior and mobile/reduced-motion flow. These visual revisions remain uncommitted and unpublished pending review.
 
-The revised home statistics section supersedes the stat-card and ring-figure guidance below. Use an open desktop heading/figures split, with two navy headline values in Libre Franklin at weight 400 and 52–76px. Present the three percentages as aligned 44–60px figures in one Cool Paper panel with internal dividers; keep percent signs inline at half size. Stack the figures and dividers on mobile. Do not use ring charts, individual card borders or amber card caps here. Keep the provisional-values disclosure visible below the panel, marked by a small amber left rule. Values remain unverified until Hitech confirms them.
+The revised home statistics section supersedes the stat-card and ring-figure guidance below. Use an open desktop heading/figures split, with two navy headline values in Libre Franklin at weight 400 and 52–76px. Present the three percentages as aligned 44–60px figures in one Cool Paper panel with internal dividers; keep percent signs inline at half size. Stack the figures and dividers on mobile. Do not use ring charts, individual card borders or amber card caps here. Keep the provisional-values disclosure visible below the panel, marked by a small amber left rule. Values remain unverified until Hitec confirms them.
 
 ## Overview
 
@@ -263,7 +263,7 @@ An established staffing firm earns trust through order and deliberate contrast. 
 
 The world was pinned by the user: restrained, corporate, reference-structured (the structure of a large staffing site, never its branding), and unmistakably technical. Its binding rejections are part of the system: no glows, blobs, particles, parallax, scroll hijacking, gradient text, glassmorphism or autoplay carousels of content; no bubbly radii; no eyebrow labels above headings; no invented proof. Dark navy, steel and teal deck panels were built and rejected ("dull", "compressed and closed"); the middle of the page stays light. Motion is approved in exactly three places (the hero's GradientASCII field, the partner logo strip, the desktop stacking deck) plus functional feedback for hover, focus, menus and disclosure. Reduced motion stills all three and restores normal section flow.
 
-**The palette and the wordmark are PROVISIONAL.** No brand kit exists. The swap points are `src/styles/tokens.css` (every color, type and shape value) and `src/components/site/Wordmark.astro` (the typographic "Hitech | Solutions" mark, to be replaced by the supplied vector logo). Components reference tokens, so a brand kit lands in those two files. The chat assistant has its own provisional mark in `src/components/site/AssistantMark.astro`: a square-shouldered navy speech tile (4px corners, short squared tail) carrying a drawn "H" with white uprights and an amber crossbar, used as the 40px avatar; its line variant (same bubble and H on the 24px icon grid, 1.75 stroke) is the floating launcher's icon. Colors come from tokens, never hex.
+**The palette and the wordmark are PROVISIONAL.** No brand kit exists. The swap points are `src/styles/tokens.css` (every color, type and shape value) and `src/components/site/Wordmark.astro` (the typographic "Hitec | Solutions" mark, to be replaced by the supplied vector logo). Components reference tokens, so a brand kit lands in those two files. The chat assistant has its own provisional mark in `src/components/site/AssistantMark.astro`: a square-shouldered navy speech tile (4px corners, short squared tail) carrying a drawn "H" with white uprights and an amber crossbar, used as the 40px avatar; its line variant (same bubble and H on the 24px icon grid, 1.75 stroke) is the floating launcher's icon. Colors come from tokens, never hex.
 
 **Key Characteristics:**
 - Navy hero, page heroes and footer; a light middle (white and paper, with a paper/white/paper stacking deck); navy story cards, a steel job-seekers band and a teal closing band supply the contrast.
@@ -271,7 +271,7 @@ The world was pinned by the user: restrained, corporate, reference-structured (t
 - Hairline 1px rules divide lists, rows, columns and FAQ items; cards are limited to figures, client stories and the form.
 - Square shoulders: 2px on controls, 4px on photographs and cards, nothing rounder.
 - Action blue for actions on light; warm amber for small marks and for links on dark.
-- Rectangular, naturally lit, licensed photography with recorded provenance; never masked, never presented as Hitech staff or clients.
+- Rectangular, naturally lit, licensed photography with recorded provenance; never masked, never presented as Hitec staff or clients.
 
 ## Colors
 
@@ -447,4 +447,4 @@ It renders in preview so reviewers see every gap. Launch requires zero instances
 - **Don't** make a card grid the default container for a section.
 - **Don't** lift, scale or shadow elements on hover.
 - **Don't** add eyebrow or kicker labels above headings.
-- **Don't** present stock people as Hitech staff or clients, or invent metrics, logos, client stories, certifications or testimonials.
+- **Don't** present stock people as Hitec staff or clients, or invent metrics, logos, client stories, certifications or testimonials.

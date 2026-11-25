@@ -1,8 +1,8 @@
 /**
  * Role pages. DRAFT copy.
  * These describe what each role generally involves in the industry; they are
- * not claims about Hitech's placements, clients or results.
- * CONFIRM: the role list must match what Hitech recruits for.
+ * not claims about Hitec's placements, clients or results.
+ * CONFIRM: the role list must match what Hitec recruits for.
  */
 
 export interface RoleDetail {

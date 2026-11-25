@@ -1,6 +1,6 @@
 ---
 /**
- * Hitech Assistant: compact chat card (avatar header, greeting, two outlined
+ * Hitec Assistant: compact chat card (avatar header, greeting, two outlined
  * choices, single-line question box, centred disclaimer), in the site palette.
  * Behaviour lives in src/scripts/assistant.ts; the data-* hooks below are its contract.
  */
@@ -16,7 +16,7 @@ import AssistantMark from './AssistantMark.astro';
     <div class="assistant__identity">
       <AssistantMark class="assistant__avatar" />
       <div>
-        <p class="assistant__name">Hitech Assistant</p>
+        <p class="assistant__name">Hitec Assistant</p>
         <p class="assistant__role">AI Assistant</p>
       </div>
     </div>
@@ -25,7 +25,7 @@ import AssistantMark from './AssistantMark.astro';
   </div>
 
   <section
-    id="hitech-assistant"
+    id="hitec-assistant"
     class="assistant__panel"
     role="dialog"
     aria-modal="false"
@@ -37,7 +37,7 @@ import AssistantMark from './AssistantMark.astro';
       <div class="assistant__identity">
         <AssistantMark class="assistant__avatar" />
         <div>
-          <h2 id="assistant-title" class="assistant__name">Hitech Assistant</h2>
+          <h2 id="assistant-title" class="assistant__name">Hitec Assistant</h2>
           <p class="assistant__role">AI Assistant</p>
         </div>
       </div>
@@ -45,7 +45,7 @@ import AssistantMark from './AssistantMark.astro';
         <button type="button" class="assistant__icon-btn" aria-label="Start new conversation" title="New chat" data-chat-reset>
           <Icon name="refresh" size={18} />
         </button>
-        <button type="button" class="assistant__icon-btn" aria-label="Close Hitech Assistant" title="Close" data-chat-close>
+        <button type="button" class="assistant__icon-btn" aria-label="Close Hitec Assistant" title="Close" data-chat-close>
           <Icon name="close" size={18} />
         </button>
       </div>
@@ -63,8 +63,8 @@ import AssistantMark from './AssistantMark.astro';
       >
       </div>
       <div class="assistant__suggestions" aria-label="Conversation starters" data-chat-suggestions>
-        <button type="button" class="assistant__choice" data-chat-prompt="I would like to book a meeting with Hitech Solutions about hiring IT talent">Book Meeting</button>
-        <button type="button" class="assistant__choice" data-chat-prompt="I have a question for Hitech Solutions">Get Support</button>
+        <button type="button" class="assistant__choice" data-chat-prompt="I would like to book a meeting with Hitec Solutions about hiring IT talent">Book Meeting</button>
+        <button type="button" class="assistant__choice" data-chat-prompt="I have a question for Hitec Solutions">Get Support</button>
       </div>
       <p class="assistant__status" role="status" data-chat-status></p>
     </div>
@@ -85,7 +85,7 @@ import AssistantMark from './AssistantMark.astro';
         </button>
       </div>
       <p id="assistant-privacy" class="assistant__disclaimer">
-        By continuing you agree that Hitech Solutions and our third-party vendors may monitor, record and access chats to
+        By continuing you agree that Hitec Solutions and our third-party vendors may monitor, record and access chats to
         respond to you, and for quality, training, improvement and other purposes.
         <a href="/privacy" target="_blank" rel="noopener">Privacy Notice<Icon name="external" size={12} /><span class="visually-hidden"> (opens in a new tab)</span></a>
       </p>
@@ -95,13 +95,13 @@ import AssistantMark from './AssistantMark.astro';
   <button
     type="button"
     class="assistant__launcher"
-    aria-label="Open Hitech Assistant"
+    aria-label="Open Hitec Assistant"
     aria-expanded="false"
-    aria-controls="hitech-assistant"
+    aria-controls="hitec-assistant"
     data-chat-launcher
   >
     <AssistantMark variant="line" size={22} class="assistant__launcher-mark" />
-    <span>Ask Hitech</span>
+    <span>Ask Hitec</span>
   </button>
 </div>
 

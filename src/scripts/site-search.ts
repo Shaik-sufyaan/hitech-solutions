@@ -1,6 +1,6 @@
 /**
  * Site search for the header's top bar. Searches the published page directory
- * (the same list the Hitech Assistant links to), entirely in the browser.
+ * (the same list the Hitec Assistant links to), entirely in the browser.
  *
  * - Every word typed must match the start of a word in a page's name, keywords
  *   or parent section ("secu ana" finds Security analyst).
@@ -21,14 +21,14 @@ const normalize = (text: string) =>
 
 const split = (text: string) => normalize(text).split(' ').filter(Boolean);
 
-const all: Page[] = [{ id: 'home', label: 'Home', href: '/', keywords: ['home', 'start', 'hitech'] }, ...(pages as Page[])];
+const all: Page[] = [{ id: 'home', label: 'Home', href: '/', keywords: ['home', 'start', 'hitec'] }, ...(pages as Page[])];
 
 const entries: Entry[] = all.map((page) => {
   const parentHref = page.href.split('/').slice(0, -1).join('/');
   const parent = parentHref ? all.find((other) => other.href === parentHref) : undefined;
   return {
     ...page,
-    crumb: parent ? parent.label : 'Hitech Solutions',
+    crumb: parent ? parent.label : 'Hitec Solutions',
     depth: page.href.split('/').filter(Boolean).length,
     words: split(page.label),
     keywordWords: page.keywords.flatMap(split),

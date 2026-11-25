@@ -1,4 +1,4 @@
-# Hitech Assistant setup
+# Hitec Assistant setup
 
 ## Current state
 

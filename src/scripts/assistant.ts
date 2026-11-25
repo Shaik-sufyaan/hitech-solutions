@@ -7,11 +7,11 @@ type Reply = { mode: 'ai' | 'guide'; answer: string; links: Link[]; navigate?: L
 type Entry = { role: 'user' | 'assistant'; text: string; links: Link[]; mode: string };
 
 const KEY = {
-  closed: 'hitech-assistant-closed',
-  greeting: 'hitech-greeting-dismissed',
-  transcript: 'hitech-assistant-transcript',
-  history: 'hitech-assistant-history',
-  reopen: 'hitech-assistant-reopen',
+  closed: 'hitec-assistant-closed',
+  greeting: 'hitec-greeting-dismissed',
+  transcript: 'hitec-assistant-transcript',
+  history: 'hitec-assistant-history',
+  reopen: 'hitec-assistant-reopen',
 };
 const store = {
   get(key: string) { try { return sessionStorage.getItem(key); } catch { return null; } },
@@ -46,7 +46,7 @@ if (root) {
   let active: AbortController | null = null;
   let generation = 0;
   let busy = false;
-  const welcome = 'Hi, I’m Hitech Assistant from Hitech Solutions. We help employers find IT talent and help technology professionals find their next role. Would you like me to help you hire IT talent, book a meeting with our team, or get support with a question?';
+  const welcome = 'Hi, I’m Hitec Assistant from Hitec Solutions. We help employers find IT talent and help technology professionals find their next role. Would you like me to help you hire IT talent, book a meeting with our team, or get support with a question?';
 
   function dismissGreeting() {
     greeting.hidden = true;
@@ -59,7 +59,7 @@ if (root) {
   function setOpen(open: boolean, moveFocus = true) {
     panel.hidden = !open;
     launcher.setAttribute('aria-expanded', String(open));
-    launcher.setAttribute('aria-label', open ? 'Minimize Hitech Assistant' : 'Open Hitech Assistant');
+    launcher.setAttribute('aria-label', open ? 'Minimize Hitec Assistant' : 'Open Hitec Assistant');
     dismissGreeting();
     if (!open) store.set(KEY.closed, '1'); // Once closed, stay closed for the rest of this visit.
     if (open) scrollToLatest();
@@ -87,7 +87,7 @@ if (root) {
     article.className = `chat-message chat-message--${entry.role}`;
     const label = document.createElement('p');
     label.className = entry.mode === 'guide' ? 'chat-message__label' : 'chat-message__label visually-hidden';
-    label.textContent = entry.role === 'user' ? 'You' : entry.mode === 'guide' ? 'Page guidance' : 'Hitech Assistant';
+    label.textContent = entry.role === 'user' ? 'You' : entry.mode === 'guide' ? 'Page guidance' : 'Hitec Assistant';
     const body = document.createElement('p');
     body.className = 'chat-message__text';
     body.textContent = entry.text;

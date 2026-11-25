@@ -1,4 +1,4 @@
-# Hitech Solutions website
+# Hitec Solutions website
 
 Static marketing site built with Astro, TypeScript and plain CSS. The project is configured for deployment on Vercel.
 

@@ -1,21 +1,21 @@
 /**
  * Homepage copy. ALL COPY IS DRAFT and needs business approval before launch.
  * Rules: no invented metrics, clients, certifications, locations or capabilities.
- * Items marked CONFIRM describe services or process Hitech must verify.
+ * Items marked CONFIRM describe services or process Hitec must verify.
  */
 
 /**
  * Home hero: three photo slides that rotate (user-requested 2026-11-19), each with
  * its own headline, line and link. Slide 1's "30 years" headline was chosen by the
- * user; Hitech must confirm the figure before launch (it matches the at-a-glance card).
+ * user; Hitec must confirm the figure before launch (it matches the at-a-glance card).
  * Photos are AI-generated scenes supplied by the user (see CREDITS.md); the people in
- * them are not Hitech staff or clients.
+ * them are not Hitec staff or clients.
  *
  * Titles: **bold** marks the Open Sans Bold words (the rest is Light);
  * | marks a desktop line break.
  */
 export const hero = {
-  label: 'Hitech Solutions at a glance',
+  label: 'Hitec Solutions at a glance',
   slides: [
     {
       id: 'experience',
@@ -39,7 +39,7 @@ export const hero = {
       id: 'hiring',
       tab: 'Ways to hire',
       title: '**Hire for a project,**|a trial run or|**the long term.**',
-      body: 'Contract, contract-to-hire or direct hire, with one Hitech contact from shortlist to first day.',
+      body: 'Contract, contract-to-hire or direct hire, with one Hitec contact from shortlist to first day.',
       cta: { label: 'See ways to hire', href: '/hire-talent' },
       photo: 'hiring',
       alt: 'A professional at her desk reviewing a system diagram on the wall.',
@@ -52,7 +52,7 @@ export const hero = {
  * Photos are registered in photography.json under each photoKey.
  */
 export const features = {
-  title: 'Explore Hitech Solutions',
+  title: 'Explore Hitec Solutions',
   cta: 'Learn more',
   panels: [
     {
@@ -74,7 +74,7 @@ export const features = {
 
 /*
  * PENDING: partner programs and certifications as supplied by the user (2026-11-18).
- * Hitech must confirm each membership/certification before launch, and supply the
+ * Hitec must confirm each membership/certification before launch, and supply the
  * official partner badge issued by each program's portal (add as `src`). Until
  * then each item renders as its program name in text.
  */
@@ -95,7 +95,7 @@ export const credentials = {
     { title: 'Oracle PartnerNetwork', src: '/logos/oracle.svg', alt: 'Oracle' },
     { title: 'Workday Partner Program', src: '/logos/workday.svg', alt: 'Workday' },
     { title: 'Esri Partner Network', src: '/logos/esri.svg', alt: '', text: 'Esri' },
-    // No free source for these certification seals; text until Hitech supplies its own.
+    // No free source for these certification seals; text until Hitec supplies its own.
     { title: 'NMSDC Certified MBE Program' },
     { title: 'WBENC Certified WBE Program' },
     { title: 'NGLCC Certified LGBTBE Program' },
@@ -104,12 +104,12 @@ export const credentials = {
 };
 
 export const overview = {
-  title: 'How Hitech Solutions helps employers hire IT professionals.',
+  title: 'How Hitec Solutions helps employers hire IT professionals.',
   paragraphs: [
     'Tell us the role, the timeline and how you want to engage. We focus the search on people who fit both the work and your team.',
   ],
   pointsTitle: 'What working with us looks like',
-  // CONFIRM: these describe Hitech's recruiting method.
+  // CONFIRM: these describe Hitec's recruiting method.
   points: [
     {
       title: 'A clear brief before the search begins',
@@ -121,13 +121,13 @@ export const overview = {
     },
     {
       title: 'One contact from shortlist to start date',
-      body: 'Your Hitech contact coordinates interviews, feedback and offers, and stays in touch once the new hire begins.',
+      body: 'Your Hitec contact coordinates interviews, feedback and offers, and stays in touch once the new hire begins.',
     },
   ],
   linkLabel: 'See how the process works',
 };
 
-// CONFIRM: specialty groups and example roles must match what Hitech recruits for.
+// CONFIRM: specialty groups and example roles must match what Hitec recruits for.
 export const specialties = {
   title: 'The technology roles we recruit for.',
   intro:
@@ -165,12 +165,12 @@ export const specialties = {
     },
   ],
   ctaLabel: 'Discuss a role',
-  pending: 'Specialty areas and example roles are a draft until Hitech confirms what it recruits for.',
+  pending: 'Specialty areas and example roles are a draft until Hitec confirms what it recruits for.',
 };
 
-// CONFIRM: engagement models Hitech actually offers.
+// CONFIRM: engagement models Hitec actually offers.
 export const engagement = {
-  title: 'Ways to hire through Hitech.',
+  title: 'Ways to hire through Hitec.',
   intro: 'Choose the arrangement that fits the work, your budget and how long you need the skills.',
   models: [
     {
@@ -188,14 +188,14 @@ export const engagement = {
     {
       id: 'direct-hire',
       title: 'Direct hire',
-      body: 'Recruit a permanent employee, with Hitech managing the search, screening and shortlist.',
+      body: 'Recruit a permanent employee, with Hitec managing the search, screening and shortlist.',
       bestFor: 'Long-term and core team positions',
     },
   ],
-  pending: 'Hiring arrangements are a draft until Hitech confirms which ones it offers.',
+  pending: 'Hiring arrangements are a draft until Hitec confirms which ones it offers.',
 };
 
-// CONFIRM: Hitech's real recruiting workflow and hand-offs.
+// CONFIRM: Hitec's real recruiting workflow and hand-offs.
 export const process = {
   title: 'How the hiring process works.',
   steps: [
@@ -220,8 +220,8 @@ export const process = {
  * These are not verified claims and must be replaced or confirmed before launch.
  */
 export const glance = {
-  title: 'Hitech Solutions at a glance.',
-  pending: 'Values shown are provisional and must be confirmed by Hitech before launch.',
+  title: 'Hitec Solutions at a glance.',
+  pending: 'Values shown are provisional and must be confirmed by Hitec before launch.',
   cards: [
     { label: 'Years placing technology professionals', value: '30+' as string | null }, // supplied by the user 2026-11-18
     { label: 'Technology professionals placed', value: '2,500+' as string | null },
@@ -268,7 +268,7 @@ export const stories = {
 export const jobSeekers = {
   title: 'Looking for your next technology role?',
   body: [
-    'Hitech Solutions also works with technology professionals who are looking for their next role.',
+    'Hitec Solutions also works with technology professionals who are looking for their next role.',
   ],
   ctaLabel: 'Explore opportunities',
 };
@@ -278,7 +278,7 @@ export const faqs = {
   title: 'Frequently asked questions',
   items: [
     {
-      q: 'What kinds of IT roles can Hitech Solutions help us fill?',
+      q: 'What kinds of IT roles can Hitec Solutions help us fill?',
       // CONFIRM: must match the confirmed specialty list.
       a: 'Our specialty areas are listed on the Specialties page. If your role sits outside them, tell us about it and we will say plainly whether we can help.',
     },
@@ -314,7 +314,7 @@ export const faqs = {
 export const pages = {
   hireTalent: {
     title: 'Hire IT talent',
-    lead: 'How hiring through Hitech Solutions works, the arrangements available and the technology areas we recruit for.',
+    lead: 'How hiring through Hitec Solutions works, the arrangements available and the technology areas we recruit for.',
   },
   specialties: {
     title: 'IT specialties',
@@ -322,11 +322,11 @@ export const pages = {
   },
   howWeWork: {
     title: 'How we work',
-    lead: 'What to expect when you hire through Hitech Solutions, from the first conversation to a new hire’s first day.',
+    lead: 'What to expect when you hire through Hitec Solutions, from the first conversation to a new hire’s first day.',
   },
   jobSeekers: {
     title: 'For technology professionals',
-    lead: 'Hitech Solutions also works with technology professionals who are looking for their next role.',
+    lead: 'Hitec Solutions also works with technology professionals who are looking for their next role.',
   },
   faq: {
     title: 'Frequently asked questions',
@@ -336,7 +336,7 @@ export const pages = {
 
 export const closing = {
   title: 'Let’s build your next technology team.',
-  body: 'Share your hiring priorities with Hitech Solutions and take the next step toward the team you need.',
+  body: 'Share your hiring priorities with Hitec Solutions and take the next step toward the team you need.',
   primaryCta: 'Find IT talent',
   candidatePrompt: 'Looking for a technology role?',
   candidateCta: 'Explore opportunities',

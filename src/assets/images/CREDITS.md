@@ -2,7 +2,7 @@
 
 ## Added 2026-11-19: home hero slides
 
-Supplied by the user from their own downloads (`Desktop/images`). The file names (`Gemini_Generated_Image_*`) show they were generated with Google Gemini; they are AI-generated scenes, not photographs of real Hitech staff, clients or offices, and must never be presented as such. Hitech should confirm it is content to use AI-generated imagery before launch. Source size is 1641×640, which is soft when stretched full-width on high-density screens; higher-resolution versions would sharpen the hero.
+Supplied by the user from their own downloads (`Desktop/images`). The file names (`Gemini_Generated_Image_*`) show they were generated with Google Gemini; they are AI-generated scenes, not photographs of real Hitec staff, clients or offices, and must never be presented as such. Hitec should confirm it is content to use AI-generated imagery before launch. Source size is 1641×640, which is soft when stretched full-width on high-density screens; higher-resolution versions would sharpen the hero.
 
 | File | Placement | Source file | Edit |
 |---|---|---|---|
@@ -14,7 +14,7 @@ Supplied by the user from their own downloads (`Desktop/images`). The file names
 
 ## Added 2026-11-18: page-specific workplace photography
 
-These 40 distinct images are stored in `src/assets/photography/` and assigned in `src/content/photography.json`. Retrieved from Pexels at 1600px width; the build generates responsive WebP derivatives. Source listings identify them as free stock photos under the [Pexels License](https://www.pexels.com/license/). Subjects illustrate generic workplaces and are not represented as Hitech employees or clients. No source photo is assigned to more than one page. Existing home photographs are retained, with separate photographs replacing their former reuse on interior pages.
+These 40 distinct images are stored in `src/assets/photography/` and assigned in `src/content/photography.json`. Retrieved from Pexels at 1600px width; the build generates responsive WebP derivatives. Source listings identify them as free stock photos under the [Pexels License](https://www.pexels.com/license/). Subjects illustrate generic workplaces and are not represented as Hitec employees or clients. No source photo is assigned to more than one page. Existing home photographs are retained, with separate photographs replacing their former reuse on interior pages.
 
 | File | Page / placement | Source | Photographer |
 |---|---|---|---|
@@ -61,7 +61,7 @@ These 40 distinct images are stored in `src/assets/photography/` and assigned in
 
 ## Existing Unsplash photography
 
-All photographs below are stock images used under the [Unsplash License](https://unsplash.com/license): free for commercial use, no attribution required, no selling unaltered copies, no implied endorsement. They show generic people, never Hitech employees, clients or candidates, and must not be captioned as such. Replace them with commissioned Hitech photography when it exists.
+All photographs below are stock images used under the [Unsplash License](https://unsplash.com/license): free for commercial use, no attribution required, no selling unaltered copies, no implied endorsement. They show generic people, never Hitec employees, clients or candidates, and must not be captioned as such. Replace them with commissioned Hitec photography when it exists.
 
 | File | Placement | Source page | Photographer | Crop from 3200px master |
 |---|---|---|---|---|
